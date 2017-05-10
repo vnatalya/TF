@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="TF.Views.NewItemPage"
+             xmlns:custom="clr-namespace:TF.Renderers;assembly=TF">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Save" Clicked="Save_Clicked" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <ScrollView Orientation="Vertical">
+        <StackLayout Padding="15" Orientation="Vertical">
+            <StackLayout Spacing="20" Padding="15" Orientation="Horizontal">
+                <Label Text="{Binding Type}" TextColor="Green" WidthRequest="150"/>
+                    <custom:BorderlessButton  Text="{Binding CurrentItem.DisplayType}" HorizontalOptions="EndAndExpand" Image="right_arrow.png"/>
+            </StackLayout>
+            <StackLayout Spacing="20" Padding="15" Orientation="Horizontal">
+                <Label Text="{Binding Time}" TextColor="Green" WidthRequest="150"/>
+                    <custom:BorderlessButton  Text="{Binding CurrentItem.Time}" HorizontalOptions="EndAndExpand" Clicked="TimeButton_Click"/>
+            </StackLayout>
+            <StackLayout Spacing="20" Padding="15" Orientation="Horizontal">
+                <Label Text="{Binding Distance}" TextColor="Green" WidthRequest="150"/>
+                    <Entry  Text="{Binding CurrentItem.Distance}" HorizontalOptions="EndAndExpand" TextChanged="Distance_TextChanged" Keyboard="0-9."/>
+                    <Label Text="m" TextColor="Green"/>
+                </StackLayout>
+            <StackLayout Spacing="20" Padding="15" Orientation="Horizontal">
+                <Label Text="{Binding Date}" TextColor="Green" WidthRequest="150"/>
+                <custom:BorderlessButton  Text="{Binding CurrentItem.Date}" HorizontalOptions="EndAndExpand" Clicked="DateButton_Click"/>
+            </StackLayout>
+        </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

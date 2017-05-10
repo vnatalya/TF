@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TF.Views.LoginPage"
+             xmlns:custom="clr-namespace:TF.Renderers;assembly=TF">
+    <ScrollView>
+        <StackLayout Padding="10">
+            <StackLayout VerticalOptions="CenterAndExpand" >
+                <Label Text="Log in to your account" HorizontalOptions="CenterAndExpand"></Label>
+                <Entry Keyboard="Email" Placeholder="Login" x:Name="Email" TextChanged="TextChanged"></Entry>
+                <Entry Placeholder="Password" IsPassword="True" x:Name="Password" TextChanged="TextChanged"></Entry>
+                <StackLayout Padding="20">
+                    <Button Text="Log In" TextColor="White" BackgroundColor="#FF4081" Clicked="Login_OnClicked"/>
+                    <Label HorizontalTextAlignment="Center">OR</Label>
+                    <Button Clicked="GoogleLogin_OnClicked" TextColor="White" Text="Log in with Google" BackgroundColor="#D73D32" ContentLayout="Left,10" Image="google_plus.png"/>
+                    <Button Clicked="FacebookLogin_OnClicked" TextColor="White" Text="Log in with Facebook" BackgroundColor="#3f5c9a" ContentLayout="Left,10" Image="facebook.png"/>
+                </StackLayout>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                <Label Text="Don't have an account?" VerticalOptions="CenterAndExpand"/>
+                <custom:BorderlessButton x:Name="CreateAccountButton" Clicked="CreateAccount_OnClicked" TextColor="Blue" Text="Create an account" BackgroundColor="Transparent" VerticalOptions="CenterAndExpand"/>
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

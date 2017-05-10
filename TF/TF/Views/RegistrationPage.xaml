@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TF.Views.RegistrationPage"
+              xmlns:custom="clr-namespace:TF.Renderers;assembly=TF">
+    <ScrollView>
+        <StackLayout VerticalOptions="CenterAndExpand" Padding="30">
+            <Label Text="Create an account" HorizontalOptions="CenterAndExpand"/>
+            <Entry Placeholder="Name" x:Name="Name" Unfocused="Completed" TextChanged="TextChanged"></Entry>
+            <Label Text="Username field is required" TextColor="Red" IsVisible="false" x:Name="NameLabel"/>
+            <Entry Keyboard="Email" Placeholder="Email" x:Name="Email"  Unfocused="Completed" TextChanged="TextChanged"></Entry>
+            <Label Text="Email field is required
+Email must be a valid e-mail address" TextColor="Red" IsVisible="false" x:Name="EmailLabel"/>
+            <Entry  Placeholder="Password" IsPassword="True" x:Name="Password" Unfocused="Completed" TextChanged="TextChanged"></Entry>
+            <Label Text="Password field is required" TextColor="Red" IsVisible="false" x:Name="PasswordLabel"/>
+            <Entry  Placeholder="Password (Confirm)" IsPassword="True" x:Name="PasswordConfirm" Unfocused="Completed" TextChanged="TextChanged"></Entry>
+            <Label Text="Password (Confirm) field is required" TextColor="Red" IsVisible="false" x:Name="PasswordConfirmLabel"/>
+            <Button Text="CREATE MY ACСOUNT" BackgroundColor="#ebebe0" Clicked="Create_OnClicked" IsEnabled="false" x:Name="CreateButton"/>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Already have an account?" VerticalOptions="CenterAndExpand"/>
+                <custom:BorderlessButton Clicked="LogIn_OnClicked" TextColor="Blue" Text="Log in" BackgroundColor="White" VerticalOptions="CenterAndExpand"/>
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>
