@@ -8,22 +8,15 @@ namespace TF.Views
 {
     public partial class NewItemPage : ContentPage
     {
-        TriathlonViewModel viewModel { get { return TriathlonViewModel.Instance; } }
+		TriathlonViewModel viewModel { get { return TriathlonViewModel.Instance; } }
         TriathlonTraining currentItem { get { return TriathlonViewModel.Instance.CurrentItem; } }
 
         public NewItemPage()
         {
             InitializeComponent();
             
-            BindingContext = viewModel;
-        }
-
-        private void DateButton_Click(object sender, EventArgs e)
-        {
-            DatePicker datePicker = new DatePicker();
-            datePicker.Date = currentItem.Date;
-            datePicker.MaximumDate = DateTime.Today;
-            datePicker.DateSelected += DateSelectedEvent;
+			BindingContext = viewModel;
+			DateButton.MaximumDate = DateTime.Today;
         }
 
         private void TimeButton_Click(object sender, EventArgs e)
@@ -32,23 +25,21 @@ namespace TF.Views
             timePickerDialog.Time = currentItem.Time;
         }
 
-        private void TimeSelectedEvent(int h, int min, int sec, int milisec)
+		private void TimeSelectedEvent(object sender, EventArgs e)
         {
             //currentItem.Time = new TimeSpan(e.HourOfDay, e.Minute, 0);
             //timeButton.Text = currentItem.Time.ToString();
         }
 
-        private void DateSelectedEvent(object sender, EventArgs e)
-        {
-            //currentItem.Date = e.Date;
-            //timeButton.Text = currentItem.Date.ToString();
-        }
+		async void Handle_DateSelected(object sender, Xamarin.Forms.DateChangedEventArgs e)
+		{
+			currentItem.Date = e.NewDate;
+		}
 
         private void TypeButton_Click(object sender, EventArgs e)
         {
 
         }
-
 
         private void Save_Clicked(object sender, EventArgs e)
         {

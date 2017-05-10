@@ -228,4 +228,7 @@
   <data name="NumberOfTrainings" xml:space="preserve">
     <value>Number of trainings</value>
   </data>
+	<data name="Triathlon" xml:space="preserve">
+    <value>Triathlon</value>
+  </data>
 </root>

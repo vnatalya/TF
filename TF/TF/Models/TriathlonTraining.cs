@@ -60,8 +60,11 @@ namespace TF
                         break;
                     case TriathlonType.None:
                         displayValue = StringService.Instance.None;
-                        break;                                               
-                }
+                        break; 
+					case TriathlonType.Triathlon:
+						displayValue = StringService.Instance.Triathlon;
+						break;
+				}
                 return displayValue;
             }
         }
@@ -85,6 +88,11 @@ namespace TF
                 date = value;
             }
         }
+
+		public string DisplayDate
+		{
+			get { return date.Date.ToString(); }
+		}
 
         private TimeSpan time;
         public TimeSpan Time
@@ -117,7 +125,7 @@ namespace TF
             id = -1;
             distance = 0;
             time = TimeSpan.Zero;
-            date = DateTime.MinValue;
+			date = DateTime.Today;
             type = TriathlonType.Triathlon;
         }
 

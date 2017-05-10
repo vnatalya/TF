@@ -9,11 +9,13 @@ namespace TF.Views
 {
     public partial class ItemsPage : ContentPage
     {
+		TriathlonViewModel viewModel { get { return TriathlonViewModel.Instance; } }
+
         public ItemsPage()
         {
             InitializeComponent();
 
-            BindingContext = TriathlonViewModel.Instance;
+            BindingContext = viewModel;
         }
 
         async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
@@ -35,6 +37,7 @@ namespace TF.Views
 
         async void AddItem_Clicked(object sender, EventArgs e)
         {
+			viewModel.SetCurrentItem();
             await Navigation.PushAsync(new NewItemPage());
         }
 

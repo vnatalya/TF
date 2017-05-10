@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using TF.Helpers;
-using TriathForms;
 using static TF.TriathlonTraining;
 
 namespace TF
@@ -78,11 +77,9 @@ namespace TF
         {
             if (devicePlatform == null)
             {
-#if NETFX_CORE
-                devicePlatform = DevicePlatform.Windows;
-#elif __ANDROID__
+#if __ANDROID__
                 devicePlatform = DevicePlatform.Android;
-#elif __IOS__
+#else                
                 devicePlatform = DevicePlatform.iOS;
 #endif
             }
@@ -145,9 +142,7 @@ namespace TF
             }
             else
             {
-#if __ANDOIRD__
                 currentItem = dbService.GetTriathlonTrainingById(id);
-#endif
             }
         }
 
@@ -178,10 +173,7 @@ namespace TF
                 result.ErrorMessage = StringService.Instance.IncorrectTime;
                 return result;
             }
-#if __ANDROID__
             dbService.SaveTrinathlonTraining(currentItem);
-#endif
-
             return result;
         }
 

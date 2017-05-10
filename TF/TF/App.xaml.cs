@@ -39,7 +39,8 @@ namespace TF
                 };
             }
             else
-                Current.MainPage = new LoginPage();
+                Current.MainPage = new NavigationPage(new LoginPage());
+
         }
 
         public static bool IsLoggedIn

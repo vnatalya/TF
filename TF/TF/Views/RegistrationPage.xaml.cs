@@ -26,15 +26,30 @@ namespace TF.Views
             Navigation.PopAsync();
         }
 
-        /// <summary>
-        /// Is called when user click "Create my account"
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void Create_OnClicked(object sender, EventArgs e)
-        {
-#warning must be implemented!
-        }
+		/// <summary>
+		/// Is called when user click "Create my account"
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void Create_OnClicked(object sender, EventArgs e)
+		{
+			App.Current.MainPage = new TabbedPage
+			{
+				Children =
+				{
+					new NavigationPage(new ItemsPage())
+					{
+						Title = "Browse",
+						Icon = Device.OnPlatform("tab_feed.png",null,null)
+					},
+					new NavigationPage(new AboutPage())
+					{
+						Title = "About",
+						Icon = Device.OnPlatform("tab_about.png",null,null)
+					},
+				}
+			};
+		}
 
         /// <summary>
         /// Is called every time some of the entry fields becomes unfocused
@@ -63,7 +78,7 @@ namespace TF.Views
 
             bool fieldsAreValid = !string.IsNullOrEmpty(PasswordConfirm.Text) && !string.IsNullOrEmpty(Password.Text) && !string.IsNullOrEmpty(Email.Text) && !string.IsNullOrEmpty(Name.Text);
             CreateButton.IsEnabled = fieldsAreValid;
-            CreateButton.BackgroundColor = fieldsAreValid ? Color.Green : Color.Gray;
+			CreateButton.BackgroundColor = fieldsAreValid ? Color.Green : Color.White;
         }
 
         private void TextChanged(object sender, TextChangedEventArgs e)

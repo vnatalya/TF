@@ -11,20 +11,20 @@
         <StackLayout Padding="15" Orientation="Vertical">
             <StackLayout Spacing="20" Padding="15" Orientation="Horizontal">
                 <Label Text="{Binding Type}" TextColor="Green" WidthRequest="150"/>
-                    <custom:BorderlessButton  Text="{Binding CurrentItem.DisplayType}" HorizontalOptions="EndAndExpand" Image="right_arrow.png"/>
+                    <custom:BorderlessButton  x:Name="TypeButton" Text="{Binding CurrentItem.DisplayType}" HorizontalOptions="StartAndExpand" Image="right_arrow.png"/>
             </StackLayout>
             <StackLayout Spacing="20" Padding="15" Orientation="Horizontal">
                 <Label Text="{Binding Time}" TextColor="Green" WidthRequest="150"/>
-                    <custom:BorderlessButton  Text="{Binding CurrentItem.Time}" HorizontalOptions="EndAndExpand" Clicked="TimeButton_Click"/>
+                    <TimePicker x:Name="TimeButton" Time="{Binding CurrentItem.Time, Mode=TwoWay}" Format="hh:mm:ss" HorizontalOptions="StartAndExpand" TextColor="Green"/>
             </StackLayout>
             <StackLayout Spacing="20" Padding="15" Orientation="Horizontal">
                 <Label Text="{Binding Distance}" TextColor="Green" WidthRequest="150"/>
-                    <Entry  Text="{Binding CurrentItem.Distance}" HorizontalOptions="EndAndExpand" TextChanged="Distance_TextChanged" Keyboard="0-9."/>
+                    <Entry  Text="{Binding CurrentItem.Distance, Mode=TwoWay}" HorizontalOptions="StartAndExpand" TextChanged="Distance_TextChanged" Keyboard="Numeric"/>
                     <Label Text="m" TextColor="Green"/>
                 </StackLayout>
             <StackLayout Spacing="20" Padding="15" Orientation="Horizontal">
                 <Label Text="{Binding Date}" TextColor="Green" WidthRequest="150"/>
-                <custom:BorderlessButton  Text="{Binding CurrentItem.Date}" HorizontalOptions="EndAndExpand" Clicked="DateButton_Click"/>
+                <DatePicker x:Name="DateButton" Date="{Binding CurrentItem.Date, Mode=TwoWay}" HorizontalOptions="StartAndExpand" TextColor="Green"/>
             </StackLayout>
         </StackLayout>
         </ScrollView>
