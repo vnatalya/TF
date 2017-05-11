@@ -165,6 +165,12 @@
     <BundleResource Include="Resources\tab_feed.png" />
     <BundleResource Include="Resources\tab_feed%402x.png" />
     <BundleResource Include="Resources\tab_feed%403x.png" />
+    <BundleResource Include="Resources\delete_dark_icon.png" />
+    <BundleResource Include="Resources\delete_dark_icon%402x.png" />
+    <BundleResource Include="Resources\delete_dark_icon%403X.png" />
+    <BundleResource Include="Resources\right_arrow.png" />
+    <BundleResource Include="Resources\right_arrow%402x.png" />
+    <BundleResource Include="Resources\right_arrow%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Renderers\" />

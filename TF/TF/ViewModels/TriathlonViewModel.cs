@@ -56,7 +56,7 @@ namespace TF
         private List<TriathlonTraining> trainings;
         public List<TriathlonTraining> Trainings
         {
-            get { return new List<TriathlonTraining>(trainings.Where((t) => t.Type == currentType)); }
+			get { return trainings;}
         }
 
         private TriathlonType currentType;
@@ -86,6 +86,19 @@ namespace TF
 
             if (trainings == null)
                 trainings = new List<TriathlonTraining>();
+			trainings.Add(new TriathlonTraining(TriathlonType.Bike, new TimeSpan(1, 0, 0), 20, new DateTime(2017, 5, 1)));
+			trainings.Add(new TriathlonTraining(TriathlonType.Run, new TimeSpan(0, 40, 0), 5, new DateTime(2017, 5, 3)));
+			trainings.Add(new TriathlonTraining(TriathlonType.Run, new TimeSpan(1, 0, 0), 8, new DateTime(2017, 5, 4)));
+			trainings.Add(new TriathlonTraining(TriathlonType.SwimmingExercises, new TimeSpan(0, 20, 0), 2, new DateTime(2017, 5, 1)));
+			trainings.Add(new TriathlonTraining(TriathlonType.RunningExercises, new TimeSpan(1, 0, 0), 5, new DateTime(2017, 5, 6)));
+			trainings.Add(new TriathlonTraining(TriathlonType.Bike, new TimeSpan(1, 0, 0), 20, new DateTime(2017, 5, 7)));
+			trainings.Add(new TriathlonTraining(TriathlonType.Breaststroke, new TimeSpan(0, 15, 0), 1, new DateTime(2017, 5, 2)));
+			trainings.Add(new TriathlonTraining(TriathlonType.Bike, new TimeSpan(0, 50, 0), 15, new DateTime(2017, 4, 29)));
+			trainings.Add(new TriathlonTraining(TriathlonType.Bike, new TimeSpan(1, 0, 0), 20, new DateTime(2017, 5, 1)));
+			//trainings.Add(new TriathlonTraining(TriathlonType.Bike, new TimeSpan(1, 0, 0), 20, new DateTime(2017, 5, 1)));
+			//trainings.Add(new TriathlonTraining(TriathlonType.Bike, new TimeSpan(1, 0, 0), 20, new DateTime(2017, 5, 1)));
+			//trainings.Add(new TriathlonTraining(TriathlonType.Bike, new TimeSpan(1, 0, 0), 20, new DateTime(2017, 5, 1)));
+			//trainings.Add(new TriathlonTraining(TriathlonType.Bike, new TimeSpan(1, 0, 0), 20, new DateTime(2017, 5, 1)));
             SetTriathlonTypesLists();
             currentPeriod = PeriodType.All;
             currentType = TriathlonType.Triathlon;
@@ -234,8 +247,8 @@ namespace TF
             get
             {
                 //return string.Format("{0}: {1} \n {2}: {3} \n {4}: {5} \n {6}: {7}",
-                //    StringService.Instance.Type, Ty,
-                //    StringService.Instance.Time, time,
+				            //         StringService.Instance.Type, ,
+                //    StringService.Instance.Time, "",
                 //    StringService.Instance.Distance, distance,
                 //    StringService.Instance.Date, date);
                 return "summary";

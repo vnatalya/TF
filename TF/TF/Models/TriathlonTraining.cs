@@ -49,6 +49,9 @@ namespace TF
                     case TriathlonType.Run:
                         displayValue = StringService.Instance.Run;
                         break;
+					case TriathlonType.Running:
+						displayValue = StringService.Instance.Running;
+						break;
                     case TriathlonType.RunningExercises:
                         displayValue = StringService.Instance.RunningExercises;
                         break;
@@ -129,14 +132,22 @@ namespace TF
             type = TriathlonType.Triathlon;
         }
 
+		public TriathlonTraining(TriathlonType type, TimeSpan time, double distance, DateTime date)
+		{
+			this.type = type;
+			this.time = time;
+			this.distance = distance;
+			this.date = date;
+		}
+
         public string DisplayItem
         {
             get
             {
-                return string.Format("{0}: {1} \n {2}: {3} \n {4}: {5}",
-                    StringService.Instance.NumberOfTrainings, DisplayType,
+				return string.Format("{0}: {1} \n {2}: {3} \n {4}: {5} km",
+				                     StringService.Instance.Type, DisplayType,
                     StringService.Instance.Time, time,
-                    StringService.Instance.Distance, distance);
+				                     StringService.Instance.Distance, distance);
             }
         }
     }

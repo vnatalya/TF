@@ -89,7 +89,8 @@ namespace TF
             breaststroke = Translate("Breaststroke");
             butterfly = Translate("Butterfly");
             swimmingExercices = Translate("SwimmingExercices");
-            running = Translate("Running");
+			running = Translate("Running");
+            run = Translate("Run");
             runningExercises = Translate("RunningExercises");
             cycling = Translate("Cycling");
             bike = Translate("Bike");

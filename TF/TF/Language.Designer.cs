@@ -185,6 +185,24 @@ namespace TF {
             }
         }
         
+        internal static string RunningExercises {
+            get {
+                return ResourceManager.GetString("RunningExercises", resourceCulture);
+            }
+        }
+        
+        internal static string SwimmingExercises {
+            get {
+                return ResourceManager.GetString("SwimmingExercises", resourceCulture);
+            }
+        }
+        
+        internal static string Run {
+            get {
+                return ResourceManager.GetString("Run", resourceCulture);
+            }
+        }
+        
         internal static string sec {
             get {
                 return ResourceManager.GetString("sec", resourceCulture);

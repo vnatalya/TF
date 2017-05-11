@@ -186,6 +186,15 @@
   <data name="Running" xml:space="preserve">
     <value>Running</value>
   </data>
+	<data name="RunningExercises" xml:space="preserve">
+    <value>Running exercises</value>
+  </data>
+	<data name="SwimmingExercises" xml:space="preserve">
+    <value>Swimming exercises</value>
+  </data>
+	<data name="Run" xml:space="preserve">
+    <value>Run</value>
+  </data>
   <data name="sec" xml:space="preserve">
     <value>sec</value>
   </data>

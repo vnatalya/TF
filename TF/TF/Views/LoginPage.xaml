@@ -4,16 +4,18 @@
              x:Class="TF.Views.LoginPage"
              xmlns:custom="clr-namespace:TF.Renderers;assembly=TF">
     <ScrollView>
-        <StackLayout Padding="10" Spacing="20">
+        <StackLayout Padding="10">
             <StackLayout VerticalOptions="StartAndExpand" >
                 <Label Text="Log in to your account" HorizontalOptions="CenterAndExpand" Margin="0,50,0,30"></Label>
                 <Entry Keyboard="Email" Placeholder="Login" x:Name="Email" TextChanged="TextChanged" Margin="10,5"></Entry>
                 <Entry Placeholder="Password" IsPassword="True" x:Name="Password" TextChanged="TextChanged" Margin="10,5"></Entry>
-                <StackLayout Padding="20">
+                <StackLayout Padding="10">
                     <Button Text="Log In" TextColor="White" BackgroundColor="#FF4081" Clicked="Login_OnClicked"/>
                     <Label HorizontalTextAlignment="Center">OR</Label>
                     <Button Clicked="GoogleLogin_OnClicked" TextColor="White" Text="Log in with Google" BackgroundColor="#D73D32" ContentLayout="Left,10" Image="google_plus.png"/>
-                    <Button Clicked="FacebookLogin_OnClicked" TextColor="White" Text="Log in with Facebook" BackgroundColor="#3f5c9a" ContentLayout="Left,10" Image="facebook.png"/>
+                    <Button Clicked="FacebookLogin_OnClicked" TextColor="White" Text="Log in with Facebook" BackgroundColor="#3f5c9a" ContentLayout="Left,10" Image="facebook.png"/> 
+					<Label HorizontalTextAlignment="Center">OR</Label>
+                    <Button  TextColor="White" Text="Continue without log in " BackgroundColor="Green"/>
                 </StackLayout>
             </StackLayout>
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center">

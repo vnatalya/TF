@@ -6,9 +6,9 @@
     <ScrollView>
         <StackLayout VerticalOptions="StartAndExpand" Padding="20" Spacing="20">
             <Label Text="Create an account" HorizontalOptions="CenterAndExpand"  Margin="0,50,0,30"/>
-            <Entry Placeholder="Name" x:Name="Name" Unfocused="Completed" TextChanged="TextChanged"></Entry>
+            <Entry Placeholder="Name" x:Name="Name" Unfocused="Completed" TextChanged="TextChanged" TextColor="Green"></Entry>
             <Label Text="Username field is required" TextColor="Red" IsVisible="false" x:Name="NameLabel"/>
-            <Entry Keyboard="Email" Placeholder="Email" x:Name="Email"  Unfocused="Completed" TextChanged="TextChanged"></Entry>
+            <Entry Keyboard="Email" Placeholder="Email" x:Name="Email"  Unfocused="Completed" TextChanged="TextChanged" TextColor="Green"></Entry>
             <Label Text="Email field is required
 Email must be a valid e-mail address" TextColor="Red" IsVisible="false" x:Name="EmailLabel"/>
             <Entry  Placeholder="Password" IsPassword="True" x:Name="Password" Unfocused="Completed" TextChanged="TextChanged"></Entry>

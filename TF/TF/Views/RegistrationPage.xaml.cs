@@ -79,6 +79,7 @@ namespace TF.Views
             bool fieldsAreValid = !string.IsNullOrEmpty(PasswordConfirm.Text) && !string.IsNullOrEmpty(Password.Text) && !string.IsNullOrEmpty(Email.Text) && !string.IsNullOrEmpty(Name.Text);
             CreateButton.IsEnabled = fieldsAreValid;
 			CreateButton.BackgroundColor = fieldsAreValid ? Color.Green : Color.White;
+			CreateButton.TextColor = fieldsAreValid ? Color.White : Color.Gray;
         }
 
         private void TextChanged(object sender, TextChangedEventArgs e)

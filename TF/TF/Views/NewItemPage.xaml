@@ -10,21 +10,22 @@
         <ScrollView Orientation="Vertical">
         <StackLayout Padding="15" Orientation="Vertical">
             <StackLayout Spacing="20" Padding="15" Orientation="Horizontal">
-                <Label Text="{Binding Type}" TextColor="Green" WidthRequest="150"/>
-                    <custom:BorderlessButton  x:Name="TypeButton" Text="{Binding CurrentItem.DisplayType}" HorizontalOptions="StartAndExpand" Image="right_arrow.png"/>
+                <Label Text="{Binding Type}" TextColor="Green" WidthRequest="100" VerticalOptions="Center"/>
+                    <Button x:Name="TypeButton" Text="{Binding CurrentItem.DisplayType}" HorizontalOptions="FillAndExpand" TextColor="Green"/>
+						<Image Source="right_arrow.png" />
             </StackLayout>
             <StackLayout Spacing="20" Padding="15" Orientation="Horizontal">
-                <Label Text="{Binding Time}" TextColor="Green" WidthRequest="150"/>
-                    <TimePicker x:Name="TimeButton" Time="{Binding CurrentItem.Time, Mode=TwoWay}" Format="hh:mm:ss" HorizontalOptions="StartAndExpand" TextColor="Green"/>
+                <Label Text="{Binding Time}" TextColor="Green" WidthRequest="100" VerticalOptions="Center"/>
+                    <TimePicker x:Name="TimeButton" Time="{Binding CurrentItem.Time, Mode=TwoWay}" Format="hh:mm:ss" HorizontalOptions="FillAndExpand" TextColor="Green"/>
             </StackLayout>
             <StackLayout Spacing="20" Padding="15" Orientation="Horizontal">
-                <Label Text="{Binding Distance}" TextColor="Green" WidthRequest="150"/>
-                    <Entry  Text="{Binding CurrentItem.Distance, Mode=TwoWay}" HorizontalOptions="StartAndExpand" TextChanged="Distance_TextChanged" Keyboard="Numeric"/>
-                    <Label Text="m" TextColor="Green"/>
+                <Label Text="{Binding Distance}" TextColor="Green" WidthRequest="100" VerticalOptions="Center"/>
+                    <Entry  Text="{Binding CurrentItem.Distance, Mode=TwoWay}" HorizontalOptions="FillAndExpand" TextChanged="Distance_TextChanged" Keyboard="Numeric" TextColor="Green"/>
+                    <Label Text="km" TextColor="Green" VerticalOptions="Center"/>
                 </StackLayout>
             <StackLayout Spacing="20" Padding="15" Orientation="Horizontal">
-                <Label Text="{Binding Date}" TextColor="Green" WidthRequest="150"/>
-                <DatePicker x:Name="DateButton" Date="{Binding CurrentItem.Date, Mode=TwoWay}" HorizontalOptions="StartAndExpand" TextColor="Green"/>
+                <Label Text="{Binding Date}" TextColor="Green" WidthRequest="100" VerticalOptions="Center"/>
+                <DatePicker x:Name="DateButton" Date="{Binding CurrentItem.Date, Mode=TwoWay}" HorizontalOptions="FillAndExpand" TextColor="Green"/>
             </StackLayout>
         </StackLayout>
         </ScrollView>

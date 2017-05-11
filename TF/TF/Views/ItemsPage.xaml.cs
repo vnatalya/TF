@@ -32,7 +32,7 @@ namespace TF.Views
 
         private void DeleteButton_Clicked(object sender, System.EventArgs e)
         {
-            DisplayAlert(string.Empty, StringService.Instance.DeleteAlert, null, null);
+			DisplayAlert(string.Empty, StringService.Instance.DeleteAlert, "Ok", "Cancel");
         }
 
         async void AddItem_Clicked(object sender, EventArgs e)

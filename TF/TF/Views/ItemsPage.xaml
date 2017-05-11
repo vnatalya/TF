@@ -12,6 +12,7 @@
             <ListView x:Name="ItemsListView"
 				ItemsSource="{Binding Trainings}"
                 VerticalOptions="FillAndExpand"
+				SeparatorColor="Green"
                 HasUnevenRows="true"
                 RefreshCommand="{Binding LoadItemsCommand}"
                 IsPullToRefreshEnabled="true"
@@ -21,9 +22,9 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <StackLayout Padding="10" Orientation="Horizontal">
-                                <Label Text="{Binding Trainings.DisplayItem}" FontSize="Medium"/>
-                                <Button BackgroundColor="Blue" Clicked="DeleteButton_Clicked"/>
+                            <StackLayout Padding="10" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                <Label Text="{Binding DisplayItem}" FontSize="Medium" HorizontalOptions="FillAndExpand"/>
+                                <Button BackgroundColor="White" Image="delete_dark_icon" Clicked="DeleteButton_Clicked" HorizontalOptions="End"/>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>
