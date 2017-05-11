@@ -16,32 +16,34 @@ namespace TF
             SetMainPage();
         }
 
-        public static void SetMainPage()
-        {
-            TriathlonViewModel.Instance.Initialize();
+		public static void SetMainPage()
+		{
+			TriathlonViewModel.Instance.Initialize();
 			if (IsLoggedIn)
 			{
 				Current.MainPage = new TabbedPage
 				{
 					Children =
-				{
-					new NavigationPage(new ItemsPage())
 					{
-						Title = "Browse",
-						Icon = Device.OnPlatform("tab_feed.png",null,null)
-					},
-					new NavigationPage(new AboutPage())
-					{
-						Title = "About",
-						Icon = Device.OnPlatform("tab_about.png",null,null)
-					},
-				}
+						new NavigationPage(new ItemsPage())
+						{
+							Title = "Browse",
+							Icon = Device.OnPlatform("tab_feed.png",null,null),
+								BarBackgroundColor = Color.Green
+						},
+						new NavigationPage(new AboutPage())
+						{
+							Title = "About",
+							Icon = Device.OnPlatform("tab_about.png",null,null),
+								BarBackgroundColor = Color.Green
+						},
+					}
 				};
 			}
 			else
-				Current.MainPage = new NavigationPage(new LoginPage()){BarBackgroundColor = Color.White};
+				Current.MainPage = new NavigationPage(new LoginPage()) { BarBackgroundColor = Color.White };
 
-        }
+		}
 
         public static bool IsLoggedIn
         {

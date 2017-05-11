@@ -6,6 +6,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Xamarin.Auth;
 //using Xamarin.Auth;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -58,25 +59,25 @@ namespace TF.Views
 
         private void FacebookLogin_OnClicked(object sender, EventArgs e)
         {
-            //var auth = new OAuth2Authenticator(
-            //      clientId: "7291541947da9404a398b45dcb4ab301", // your OAuth2 client id
-            //      scope: "", // the scopes for the particular API you're accessing, delimited by "+" symbols
-            //      authorizeUrl: new Uri(""), // the auth URL for the service
-            //      redirectUrl: new Uri("")); // the redirect URL for the service
+			var auth = new OAuth2Authenticator(
+				  clientId: "303166030106063", // your OAuth2 client id
+				  scope: "", // the scopes for the particular API you're accessing, delimited by "+" symbols
+				  authorizeUrl: new Uri("https://www.facebook.com/dialog/oauth"), // the auth URL for the service
+				  redirectUrl: new Uri("http://windows:8080/login_success.html")); // the redirect URL for the service
 
-            //auth.Completed += (s, eventArgs) =>
-            //{
-            //    if (eventArgs.IsAuthenticated)
-            //    {
-            //        App.SuccessfulLoginAction.Invoke();
-            //        // Use eventArgs.Account to do wonderful things
-            //        App.SaveToken(eventArgs.Account.Properties["access_token"]);
-            //    }
-            //    else
-            //    {
-            //        // The user cancelled
-            //    }
-            //};
+            auth.Completed += (s, eventArgs) =>
+            {
+                if (eventArgs.IsAuthenticated)
+                {
+                    App.SuccessfulLoginAction.Invoke();
+                    // Use eventArgs.Account to do wonderful things
+                    App.SaveToken(eventArgs.Account.Properties["access_token"]);
+                }
+                else
+                {
+                    // The user cancelled
+                }
+            };
         }
 
         private void TextChanged(object sender, TextChangedEventArgs e)

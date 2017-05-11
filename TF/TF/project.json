@@ -1,6 +1,7 @@
 ﻿{
   "dependencies": {
     "sqlite-net-pcl": "1.3.1",
+    "Xamarin.Auth": "1.4.1",
     "Xamarin.Forms": "2.3.3.193"
   },
   "frameworks": {
