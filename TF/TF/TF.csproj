@@ -87,6 +87,13 @@
       <DependentUpon>RegistrationPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\DatePicker.cs" />
+    <Compile Include="Views\BaseContentPage.xaml.cs">
+      <DependentUpon>BaseContentPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ExpandableListViewPage.xaml.cs">
+      <DependentUpon>ExpandableListViewPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\NamedItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="App.xaml">
@@ -116,6 +123,12 @@
     <EmbeddedResource Include="Views\NewItemPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\BaseContentPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ExpandableListViewPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

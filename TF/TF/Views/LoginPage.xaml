@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TF.Views.LoginPage"
              xmlns:custom="clr-namespace:TF.Renderers;assembly=TF">
-    <ScrollView>
+   <ScrollView>
         <StackLayout Padding="10">
             <StackLayout VerticalOptions="StartAndExpand" >
                 <Label Text="Log in to your account" HorizontalOptions="CenterAndExpand" Margin="0,50,0,30"></Label>

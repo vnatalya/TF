@@ -15,12 +15,15 @@ namespace TF.Views
 {
 
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class LoginPage : ContentPage
+	public partial class LoginPage : ContentPage
     {
         public LoginPage()
         {
             InitializeComponent();
-          
+          if (!App.IsLoggedIn)
+			{
+				Navigation.PushModalAsync(new BaseContentPage());
+			}
                 // activity.StartActivity(auth.GetUI(activity));
 
         }
@@ -49,9 +52,22 @@ namespace TF.Views
 
         private void GoogleLogin_OnClicked(object sender, EventArgs e)
         {
+			var googleauth = new OAuth2Authenticator(
+// For Google login, for configure refer http://www.c-sharpcorner.com/article/register-identity-provider-for-new-oauth-application/  
+"1091371417720-s9ps588ehfk0ne0657lhi8bmr30gpqb4.apps.googleusercontent.com",
+"rmNpKymcWJ3ywum7XlREIyUU",
+// Below values do not need changing  
+"https://www.googleapis.com/auth/userinfo.email",
+new Uri("https://accounts.google.com/o/oauth2/auth"),
+new Uri("http://www.devenvexe.com"),// Set this property to the location the user will be redirected too after successfully authenticating  
+new Uri("https://accounts.google.com/o/oauth2/token")
+);
+		}
 
-        }
 
+		//key AIzaSyCN2ejbeW88fmZ4hf_FF48ByIoojn7qTj4
+		// identificator 1091371417720-s9ps588ehfk0ne0657lhi8bmr30gpqb4.apps.googleusercontent.com
+		//secret rmNpKymcWJ3ywum7XlREIyUU
         private void CreateAccount_OnClicked(object sender, EventArgs e)
         {
             Navigation.PushAsync(new RegistrationPage());

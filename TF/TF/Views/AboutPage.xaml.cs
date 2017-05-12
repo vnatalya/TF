@@ -14,8 +14,10 @@ namespace TF.Views
             BindingContext = viewModel;
         }
 
-        private void TimeButton_Click(object sender, System.EventArgs e)
+        private async void Button_Click(object sender, System.EventArgs e)
         {
+			var filterPage = new ExpandableListViewPage(sender == TypeButton);
+			await Navigation.PushModalAsync(filterPage);
 
         }
     }

@@ -5,10 +5,22 @@
              xmlns:vm="clr-namespace:TF.ViewModels;"
              xmlns:custom="clr-namespace:TF.Renderers;assembly=TF">
     <ScrollView Orientation="Vertical">
-        <StackLayout Orientation="Vertical">
-            <custom:BorderlessButton  Text="{Binding DisplayType}" HorizontalOptions="EndAndExpand" Clicked="TimeButton_Click"/>
-            <custom:BorderlessButton  Text="{Binding DisplayPeriod}" HorizontalOptions="EndAndExpand" Clicked="TimeButton_Click"/>
-            <Label Text="{Binding Summary}" TextColor="Green"/>
+        <StackLayout Orientation="Vertical" Padding="15">
+			<StackLayout Orientation="Horizontal"  x:Name="TypeButton">
+				<StackLayout.GestureRecognizers>
+            		<TapGestureRecognizer Tapped="Button_Click" NumberOfTapsRequired="1"/>
+        		</StackLayout.GestureRecognizers>
+            	<Label  Text="{Binding DisplayType}" HorizontalOptions="FillAndExpand" TextColor="Green"/>
+				<Image Source="right_arrow" Scale="1.2"/>
+            </StackLayout>
+			<StackLayout Orientation="Horizontal"  x:Name="PeriodButton">
+				<StackLayout.GestureRecognizers>
+            		<TapGestureRecognizer Tapped="Button_Click" NumberOfTapsRequired="1"/>
+        		</StackLayout.GestureRecognizers>
+            	<Label  Text="{Binding DisplayPeriod}" HorizontalOptions="FillAndExpand" TextColor="Green"/>
+				<Image Source="right_arrow" Scale="1.2"/>
+            </StackLayout>
+			<Label Text="{Binding Summary}" TextColor="Green"/>
         </StackLayout>        
     </ScrollView>
 </ContentPage>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+	x:Class="TF.ExpandableListViewPage"
+	xmlns:res="clr-namespace:TF;assembly=TF">
+	<ContentPage.Content>
+		<StackLayout Orientation="Vertical" Padding="15">
+			<StackLayout Orientation="Horizontal" x:Name="TriathlonButton">
+				<StackLayout.GestureRecognizers>
+            		<TapGestureRecognizer Tapped="Button_Click" NumberOfTapsRequired="1"/>
+        		</StackLayout.GestureRecognizers>
+				<Label Text="{Binding StringTriathlon}" TextColor="Green"/>
+			</StackLayout>
+			<BoxView HeightRequest="1" BackgroundColor="Green" HorizontalOptions="FillAndExpand" />
+			<StackLayout Orientation="Horizontal">
+				<StackLayout.GestureRecognizers>
+            		<TapGestureRecognizer Tapped="Button_Click" NumberOfTapsRequired="1"/>
+        		</StackLayout.GestureRecognizers>
+				<StackLayout Orientation="Horizontal">
+					<Label Text="{Binding StringSwimming}" TextColor="Green" HorizontalOptions="FillAndExpand"/>
+					<Image Source="right_arrow" Scale="1.2"/>
+				</StackLayout>
+				<ListView x:Name="SwimmingListView"
+				ItemsSource="{Binding SwimmingList}"
+                VerticalOptions="FillAndExpand"
+				SeparatorColor="Green"
+                HasUnevenRows="true"
+                IsPullToRefreshEnabled="true"
+                CachingStrategy="RecycleElement"
+				ItemSelected="OnItemSelected">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Padding="10" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                <Label Text="{Binding Name}" FontSize="Medium" HorizontalOptions="FillAndExpand" TextColor="Green"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+			</StackLayout>
+			<BoxView HeightRequest="1" BackgroundColor="Green" HorizontalOptions="FillAndExpand" />
+			
+		</StackLayout>
+
+	</ContentPage.Content>
+</ContentPage>

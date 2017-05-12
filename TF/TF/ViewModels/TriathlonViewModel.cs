@@ -73,6 +73,10 @@ namespace TF
             set { currentPeriod = value; }
         }
 
+		public List<NamedItem> SwimmingList;
+		public List<NamedItem> CyclingList;
+		public List<NamedItem> RunningList;
+
         public void Initialize()
         {
             if (devicePlatform == null)
@@ -104,49 +108,49 @@ namespace TF
             currentType = TriathlonType.Triathlon;
         }
 
-        void SetTriathlonTypesLists()
-        {
-            RegisterHeadersList = new List<string>();
-            RegisterChildrenList = new Dictionary<string, List<string>>();
+		void SetTriathlonTypesLists()
+		{
+			RegisterHeadersList = new List<string>();
+			RegisterChildrenList = new Dictionary<string, List<string>>();
 
-            RegisterHeadersList.Add(StringService.Instance.Triathlon);
-            RegisterHeadersList.Add(StringService.Instance.Swimming);
-            RegisterHeadersList.Add(StringService.Instance.Running);
-            RegisterHeadersList.Add(StringService.Instance.Cycling);
+			RegisterHeadersList.Add(StringService.Instance.Triathlon);
+			RegisterHeadersList.Add(StringService.Instance.Swimming);
+			RegisterHeadersList.Add(StringService.Instance.Running);
+			RegisterHeadersList.Add(StringService.Instance.Cycling);
 
-            var swimmingListView = new List<string>();
-            swimmingListView.Add(StringService.Instance.Butterfly);
-            swimmingListView.Add(StringService.Instance.Freestyle);
-            swimmingListView.Add(StringService.Instance.Breaststroke);
-            swimmingListView.Add(StringService.Instance.Backstroke);
-            swimmingListView.Add(StringService.Instance.SwimmingExercices);
-            
-            RegisterChildrenList.Add(StringService.Instance.Swimming, swimmingListView);
+			SwimmingList = new List<NamedItem>();
+			SwimmingList.Add(new NamedItem(StringService.Instance.Butterfly));
+			SwimmingList.Add(new NamedItem(StringService.Instance.Freestyle));
+			SwimmingList.Add(new NamedItem(StringService.Instance.Breaststroke));
+			SwimmingList.Add(new NamedItem(StringService.Instance.Backstroke));
+			SwimmingList.Add(new NamedItem(StringService.Instance.SwimmingExercices));
 
-            var runningListView = new List<string>();
-            swimmingListView.Add(StringService.Instance.Run);
-            swimmingListView.Add(StringService.Instance.RunningExercises);
+			//    RegisterChildrenList.Add(StringService.Instance.Swimming, swimmingListView);
 
-            RegisterChildrenList.Add(StringService.Instance.Running, runningListView);
+			RunningList = new List<NamedItem>();
+			RunningList.Add(new NamedItem(StringService.Instance.Run));
+			RunningList.Add(new NamedItem(StringService.Instance.RunningExercises));
 
-            var cyclingListView = new List<string>();
-            swimmingListView.Add(StringService.Instance.Bike);
-            swimmingListView.Add(StringService.Instance.Trainer);
+			//RegisterChildrenList.Add(StringService.Instance.Running, runningListView);
 
-            RegisterChildrenList.Add(StringService.Instance.Cycling, cyclingListView);
+			CyclingList = new List<NamedItem>();
+			CyclingList.Add(new NamedItem(StringService.Instance.Bike));
+			CyclingList.Add(new NamedItem(StringService.Instance.Trainer));
 
-            AllHeadersList = RegisterHeadersList;
-            AllHeadersList.Add(StringService.Instance.History);
+			//RegisterChildrenList.Add(StringService.Instance.Cycling, cyclingListView);
 
-            AllChildrenList = RegisterChildrenList;
+			AllHeadersList = RegisterHeadersList;
+			AllHeadersList.Add(StringService.Instance.History);
 
-            var historyListView = new List<string>();
-            historyListView.Add(StringService.Instance.All);
-            historyListView.Add(StringService.Instance.Today);
-            historyListView.Add(StringService.Instance.Week);
-            historyListView.Add(StringService.Instance.Month);
-            AllChildrenList.Add(StringService.Instance.History, historyListView);
-        }
+			AllChildrenList = RegisterChildrenList;
+
+			var historyListView = new List<string>();
+			historyListView.Add(StringService.Instance.All);
+			historyListView.Add(StringService.Instance.Today);
+			historyListView.Add(StringService.Instance.Week);
+			historyListView.Add(StringService.Instance.Month);
+			AllChildrenList.Add(StringService.Instance.History, historyListView);
+		}
 
         public void SetCurrentItem(int id = -1) {
             if (id == -1)
@@ -209,7 +213,11 @@ namespace TF
         }
 
 #region strings
-        public string Type { get { return StringService.Instance.Type; } }
+        public string StringType { get { return StringService.Instance.Type; } }
+		public string StringTriathlon { get { return StringService.Instance.Triathlon; } }
+		public string StringSwimming { get { return StringService.Instance.Swimming; } }
+		public string StringRunning { get { return StringService.Instance.Running; } }
+		public string StringCycling { get { return StringService.Instance.Cycling; } }
         public string Distance { get { return StringService.Instance.Distance; } }
         public string Time { get { return StringService.Instance.Time; } }
         public string Date { get { return StringService.Instance.Date; } }
