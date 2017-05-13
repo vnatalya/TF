@@ -52,16 +52,16 @@ namespace TF.Views
 
         private void GoogleLogin_OnClicked(object sender, EventArgs e)
         {
-			var googleauth = new OAuth2Authenticator(
-// For Google login, for configure refer http://www.c-sharpcorner.com/article/register-identity-provider-for-new-oauth-application/  
-"1091371417720-s9ps588ehfk0ne0657lhi8bmr30gpqb4.apps.googleusercontent.com",
-"rmNpKymcWJ3ywum7XlREIyUU",
-// Below values do not need changing  
-"https://www.googleapis.com/auth/userinfo.email",
-new Uri("https://accounts.google.com/o/oauth2/auth"),
-new Uri("http://www.devenvexe.com"),// Set this property to the location the user will be redirected too after successfully authenticating  
-new Uri("https://accounts.google.com/o/oauth2/token")
-);
+//			var googleauth = new OAuth2Authenticator(
+//// For Google login, for configure refer http://www.c-sharpcorner.com/article/register-identity-provider-for-new-oauth-application/  
+//"1091371417720-s9ps588ehfk0ne0657lhi8bmr30gpqb4.apps.googleusercontent.com",
+//"rmNpKymcWJ3ywum7XlREIyUU",
+//// Below values do not need changing  
+//"https://www.googleapis.com/auth/userinfo.email",
+//new Uri("https://accounts.google.com/o/oauth2/auth"),
+//new Uri("http://www.devenvexe.com"),// Set this property to the location the user will be redirected too after successfully authenticating  
+//new Uri("https://accounts.google.com/o/oauth2/token")
+//);
 		}
 
 
@@ -75,25 +75,25 @@ new Uri("https://accounts.google.com/o/oauth2/token")
 
         private void FacebookLogin_OnClicked(object sender, EventArgs e)
         {
-			var auth = new OAuth2Authenticator(
-				  clientId: "303166030106063", // your OAuth2 client id
-				  scope: "", // the scopes for the particular API you're accessing, delimited by "+" symbols
-				  authorizeUrl: new Uri("https://www.facebook.com/dialog/oauth"), // the auth URL for the service
-				  redirectUrl: new Uri("http://windows:8080/login_success.html")); // the redirect URL for the service
+			//var auth = new OAuth2Authenticator(
+			//	  clientId: "303166030106063", // your OAuth2 client id
+			//	  scope: "", // the scopes for the particular API you're accessing, delimited by "+" symbols
+			//	  authorizeUrl: new Uri("https://www.facebook.com/dialog/oauth"), // the auth URL for the service
+			//	  redirectUrl: new Uri("http://windows:8080/login_success.html")); // the redirect URL for the service
 
-            auth.Completed += (s, eventArgs) =>
-            {
-                if (eventArgs.IsAuthenticated)
-                {
-                    App.SuccessfulLoginAction.Invoke();
-                    // Use eventArgs.Account to do wonderful things
-                    App.SaveToken(eventArgs.Account.Properties["access_token"]);
-                }
-                else
-                {
-                    // The user cancelled
-                }
-            };
+   //         auth.Completed += (s, eventArgs) =>
+   //         {
+   //             if (eventArgs.IsAuthenticated)
+   //             {
+   //                 App.SuccessfulLoginAction.Invoke();
+   //                 // Use eventArgs.Account to do wonderful things
+   //                 App.SaveToken(eventArgs.Account.Properties["access_token"]);
+   //             }
+   //             else
+   //             {
+   //                 // The user cancelled
+   //             }
+   //         };
         }
 
         private void TextChanged(object sender, TextChangedEventArgs e)

@@ -21,6 +21,7 @@
 				<Image Source="right_arrow" Scale="1.2"/>
             </StackLayout>
 			<Label Text="{Binding Summary}" TextColor="Green"/>
+			<StackLayout x:Name="ChartView" Padding="15"/>
         </StackLayout>        
     </ScrollView>
 </ContentPage>

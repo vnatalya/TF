@@ -12,6 +12,9 @@ namespace TF.iOS
 			global::Xamarin.Forms.Forms.Init();
 			LoadApplication(new App());
 
+			App.DeviceWidth = (float) UIScreen.MainScreen.Bounds.Width;
+			App.DeviceHeight = (float) UIScreen.MainScreen.Bounds.Height;
+
 			return base.FinishedLaunching(app, options);
 		}
 	}

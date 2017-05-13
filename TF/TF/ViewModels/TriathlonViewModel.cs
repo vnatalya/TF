@@ -73,11 +73,11 @@ namespace TF
             set { currentPeriod = value; }
         }
 
-		public List<NamedItem> SwimmingList;
-		public List<NamedItem> CyclingList;
-		public List<NamedItem> RunningList;
+		public List<NamedItem> SwimmingList { get; set; }
+		public List<NamedItem> CyclingList { get; set; }
+		public List<NamedItem> RunningList { get; set; }
 
-        public void Initialize()
+		public void Initialize()
         {
             if (devicePlatform == null)
             {
@@ -119,6 +119,9 @@ namespace TF
 			RegisterHeadersList.Add(StringService.Instance.Cycling);
 
 			SwimmingList = new List<NamedItem>();
+			var ni = new NamedItem();
+			ni.Name = "sdkfksdfhsdjhf";
+			SwimmingList.Add(ni);
 			SwimmingList.Add(new NamedItem(StringService.Instance.Butterfly));
 			SwimmingList.Add(new NamedItem(StringService.Instance.Freestyle));
 			SwimmingList.Add(new NamedItem(StringService.Instance.Breaststroke));
@@ -134,8 +137,8 @@ namespace TF
 			//RegisterChildrenList.Add(StringService.Instance.Running, runningListView);
 
 			CyclingList = new List<NamedItem>();
-			CyclingList.Add(new NamedItem(StringService.Instance.Bike));
-			CyclingList.Add(new NamedItem(StringService.Instance.Trainer));
+			CyclingList.Add(new NamedItem { Name = StringService.Instance.Bike });
+			CyclingList.Add(new NamedItem { Name = StringService.Instance.Trainer });
 
 			//RegisterChildrenList.Add(StringService.Instance.Cycling, cyclingListView);
 
@@ -218,11 +221,11 @@ namespace TF
 		public string StringSwimming { get { return StringService.Instance.Swimming; } }
 		public string StringRunning { get { return StringService.Instance.Running; } }
 		public string StringCycling { get { return StringService.Instance.Cycling; } }
-        public string Distance { get { return StringService.Instance.Distance; } }
-        public string Time { get { return StringService.Instance.Time; } }
-        public string Date { get { return StringService.Instance.Date; } }
-        public string Start { get { return StringService.Instance.Start; } }
-        public string Finish { get { return StringService.Instance.Finish; } }
+        public string StringDistance { get { return StringService.Instance.Distance; } }
+        public string StringTime { get { return StringService.Instance.Time; } }
+        public string StringDate { get { return StringService.Instance.Date; } }
+        public string StringStart { get { return StringService.Instance.Start; } }
+        public string StringFinish { get { return StringService.Instance.Finish; } }
         public string DisplayPeriod
         {
             get
@@ -262,10 +265,59 @@ namespace TF
                 return "summary";
             }
         }
-        #endregion
 
-        #region period enum
-        public enum PeriodType
+		public string DisplayType
+		{
+			get
+			{
+				string displayValue = string.Empty;
+				switch (currentType)
+				{
+					case TriathlonType.SwimmingExercises:
+						displayValue = StringService.Instance.SwimmingExercices;
+						break;
+					case TriathlonType.Butterfly:
+						displayValue = StringService.Instance.Butterfly;
+						break;
+					case TriathlonType.Frrestyle:
+						displayValue = StringService.Instance.Freestyle;
+						break;
+					case TriathlonType.Backstroke:
+						displayValue = StringService.Instance.Backstroke;
+						break;
+					case TriathlonType.Breaststroke:
+						displayValue = StringService.Instance.Breaststroke;
+						break;
+					case TriathlonType.Run:
+						displayValue = StringService.Instance.Run;
+						break;
+					case TriathlonType.Running:
+						displayValue = StringService.Instance.Running;
+						break;
+					case TriathlonType.RunningExercises:
+						displayValue = StringService.Instance.RunningExercises;
+						break;
+					case TriathlonType.Bike:
+						displayValue = StringService.Instance.Bike;
+						break;
+					case TriathlonType.Trainer:
+						displayValue = StringService.Instance.Trainer;
+						break;
+					case TriathlonType.None:
+						displayValue = StringService.Instance.None;
+						break;
+					case TriathlonType.Triathlon:
+						displayValue = StringService.Instance.Triathlon;
+						break;
+				}
+				return displayValue;
+			}
+		}
+
+		#endregion
+
+		#region period enum
+		public enum PeriodType
         {
             All = -1,
             Today = 0,

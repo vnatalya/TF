@@ -11,13 +11,13 @@ namespace TF.Renderers
         protected override void OnElementChanged(ElementChangedEventArgs<Xamarin.Forms.Button> e)
         {
             base.OnElementChanged(e);
-            if (e.OldElement == null)
-            {
-                if (Build.VERSION.SdkInt >= Build.VERSION_CODES.Lollipop)
-                {
-                    Control.StateListAnimator = null;
-                }
-            }
+            //if (e.OldElement == null)
+            //{
+            //    if (Build.VERSION.SdkInt >= Build.VERSION_CODES.Lollipop)
+            //    {
+            //        Control.StateListAnimator = null;
+            //    }
+            //}
         }
     }
 }

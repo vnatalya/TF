@@ -9,6 +9,8 @@ namespace TF
 {
     public partial class App : Application
     {
+		public static float DeviceWidth;
+		public static float DeviceHeight;
         public App()
         {
             InitializeComponent();

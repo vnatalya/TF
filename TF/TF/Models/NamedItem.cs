@@ -1,4 +1,6 @@
 ﻿using System;
+using TF.Helpers;
+
 namespace TF
 {
 	public class NamedItem
@@ -8,11 +10,14 @@ namespace TF
 		{
 			get { return name; }
 			set { name = value; }
-		}
+		} 
 
 		public NamedItem(string name)
 		{
-			this.Name = name;
+			this.name = name;
+		}
+		public NamedItem()
+		{
 		}
 	}
 }
