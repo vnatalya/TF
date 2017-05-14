@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-	x:Class="TF.ExpandableListViewPage"
+	x:Class="TF.TypePickerPage"
 	xmlns:custom="clr-namespace:TF.Renderers;assembly=TF">
 	<ContentPage.Content>
-		<ScrollView Orientation="Vertical">
+		<ScrollView Orientation="Vertical" BackgroundColor="White">
 		<StackLayout Orientation="Vertical" Padding="15">
 				
 			<StackLayout Orientation="Horizontal" x:Name="TriathlonButton">
@@ -20,10 +20,11 @@
 					<StackLayout.GestureRecognizers>
             			<TapGestureRecognizer Tapped="Button_Click" NumberOfTapsRequired="1"/>
         			</StackLayout.GestureRecognizers>
-					<Label Text="{Binding StringSwimming}" BackgroundColor="Aqua" TextColor="Green" HorizontalOptions="FillAndExpand"/>
-					<Image Source="right_arrow" Scale="1.2"/>
+					<Label Text="{Binding StringSwimming}" TextColor="Green" HorizontalOptions="FillAndExpand"/>
+                    <custom:BorderlessButton Image="right_arrow" Clicked="Type_Selected" x:Name="SwimmingType"/>
 				</StackLayout>
-				<custom:ShortListView x:Name="SwimmingListView" IsVisible="false" ItemsSource="{Binding SwimmingList}" SeparatorColor="Green"
+                <BoxView HeightRequest="1" BackgroundColor="Green" HorizontalOptions="FillAndExpand" />
+                <custom:ShortListView x:Name="SwimmingListView" IsVisible="false" ItemsSource="{Binding SwimmingList}" SeparatorColor="Green"
 						 HasUnevenRows="false" IsPullToRefreshEnabled="false"  ItemSelected="OnItemSelected">
                 <ListView.ItemTemplate>
                     <DataTemplate>
@@ -34,17 +35,17 @@
                 </ListView.ItemTemplate>
         	</custom:ShortListView>
 			</StackLayout>
-			<BoxView HeightRequest="1" BackgroundColor="Green" HorizontalOptions="FillAndExpand" />
 
 			<StackLayout Orientation="Vertical">
 				<StackLayout Orientation="Horizontal" x:Name="RunningButton">
 					<StackLayout.GestureRecognizers>
             			<TapGestureRecognizer Tapped="Button_Click" NumberOfTapsRequired="1"/>
         			</StackLayout.GestureRecognizers>
-					<Label Text="{Binding StringRunning}" BackgroundColor="Aqua" TextColor="Green" HorizontalOptions="FillAndExpand"/>
-					<Image Source="right_arrow" Scale="1.2"/>
+					<Label Text="{Binding StringRunning}" TextColor="Green" HorizontalOptions="FillAndExpand"/>
+                    <custom:BorderlessButton Image="right_arrow" Clicked="Type_Selected" x:Name="RunningType"/>
 				</StackLayout>
-				<custom:ShortListView x:Name="RunningListView" IsVisible="false" HasUnevenRows="false" IsPullToRefreshEnabled="false"
+                <BoxView HeightRequest="1" BackgroundColor="Green" HorizontalOptions="FillAndExpand" />
+                <custom:ShortListView x:Name="RunningListView" IsVisible="false" HasUnevenRows="false" IsPullToRefreshEnabled="false"
 						ItemsSource="{Binding RunningList}" SeparatorColor="Green" ItemSelected="OnItemSelected">
                 <ListView.ItemTemplate>
                     <DataTemplate>
@@ -55,17 +56,17 @@
                 </ListView.ItemTemplate>
             </custom:ShortListView>
 			</StackLayout>
-			<BoxView HeightRequest="1" BackgroundColor="Green" HorizontalOptions="FillAndExpand" />
 
 			<StackLayout Orientation="Vertical">
 				<StackLayout Orientation="Horizontal" x:Name="CyclingButton">
 					<StackLayout.GestureRecognizers>
             			<TapGestureRecognizer Tapped="Button_Click" NumberOfTapsRequired="1"/>
         			</StackLayout.GestureRecognizers>
-					<Label Text="{Binding StringCycling}" BackgroundColor="Aqua" TextColor="Green" HorizontalOptions="FillAndExpand"/>
-					<Image Source="right_arrow" Scale="1.2"/>
+					<Label Text="{Binding StringCycling}" TextColor="Green" HorizontalOptions="FillAndExpand"/>
+                    <custom:BorderlessButton Image="right_arrow" Clicked="Type_Selected" x:Name="CyclingType"/>
 				</StackLayout>
-				<custom:ShortListView x:Name="CyclingListView" IsVisible="false" ItemsSource="{Binding CyclingList}"  HasUnevenRows="false" IsPullToRefreshEnabled="false"
+                <BoxView HeightRequest="1" BackgroundColor="Green" HorizontalOptions="FillAndExpand" />
+                <custom:ShortListView x:Name="CyclingListView" IsVisible="false" ItemsSource="{Binding CyclingList}"  HasUnevenRows="false" IsPullToRefreshEnabled="false"
 						SeparatorColor="Green" ItemSelected="OnItemSelected">
                 <ListView.ItemTemplate>
                     <DataTemplate>
@@ -76,7 +77,6 @@
                 </ListView.ItemTemplate>
             </custom:ShortListView>
 			</StackLayout>
-			<BoxView HeightRequest="1" BackgroundColor="Green" HorizontalOptions="FillAndExpand" />
 				
 		</StackLayout>
 	</ScrollView>

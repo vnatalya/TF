@@ -62,9 +62,14 @@ namespace TF
         protected string none;
         protected string finish;
         protected string m;
+        protected string km;
         protected string choose;
         protected string period;
         protected string numberOfTrainings;
+        protected string error;
+        protected string ok;
+        protected string startDate;
+        protected string endDate;
 
         public string TrainingSaved { get { return trainingSaved; } }
         public string CouldntSave { get { return couldntSave; } }
@@ -98,8 +103,13 @@ namespace TF
         public string Finish { get { return finish; } }
         public string None { get { return none; } }
         public string M { get { return m; } }
+        public string Km { get { return km; } }
+        public string Ok { get { return ok; } }
         public string Choose { get { return choose; } }
         public string Period { get { return period; } }
         public string NumberOfTrainings { get { return numberOfTrainings; } }
+        public string Error { get { return error; } }
+        public string StartDate { get { return startDate; } }
+        public string EndDate { get { return endDate; } }
     }
 }

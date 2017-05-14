@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TF.HelperViews.PeriodPickerPage"
+             xmlns:custom="clr-namespace:TF.Renderers;assembly=TF">
+    <ContentPage.Content>
+        <custom:ShortListView x:Name="PeriodListView" IsVisible="false" ItemsSource="{Binding PeriodList}" SeparatorColor="Green"
+						 HasUnevenRows="false" IsPullToRefreshEnabled="false"  ItemSelected="OnItemSelected">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Label Text="{Binding Name}" FontSize="Medium" VerticalOptions="Center" TextColor="Green" Margin="15,0"/>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </custom:ShortListView>
+    </ContentPage.Content>
+</ContentPage>

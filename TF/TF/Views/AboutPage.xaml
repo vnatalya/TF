@@ -5,7 +5,7 @@
              xmlns:vm="clr-namespace:TF.ViewModels;"
              xmlns:custom="clr-namespace:TF.Renderers;assembly=TF">
     <ScrollView Orientation="Vertical">
-        <StackLayout Orientation="Vertical" Padding="15">
+        <StackLayout Orientation="Vertical" Padding="15"  BackgroundColor="White">
 			<StackLayout Orientation="Horizontal"  x:Name="TypeButton">
 				<StackLayout.GestureRecognizers>
             		<TapGestureRecognizer Tapped="Button_Click" NumberOfTapsRequired="1"/>

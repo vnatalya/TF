@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TF.HelperViews.ChoosePeriodPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout Orientation="Horizontal" x:Name="StartButton">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Button_Click" NumberOfTapsRequired="1"/>
+                </StackLayout.GestureRecognizers>
+                <Label Text="{Binding StringEndDate}" TextColor="Green" HorizontalOptions="EndAndExpand"/>                
+                <Image Source="right_arrow"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" x:Name="EndButton">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Button_Click" NumberOfTapsRequired="1"/>
+                </StackLayout.GestureRecognizers>
+                <Label Text="{Binding StringStartDate}" TextColor="Green" HorizontalOptions="EndAndExpand"/>
+                <Image Source="right_arrow"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

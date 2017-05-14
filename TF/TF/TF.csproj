@@ -43,6 +43,12 @@
     <Compile Include="Helpers\MessengingCenterAlert.cs" />
     <Compile Include="Helpers\ObservableObject.cs" />
     <Compile Include="Helpers\ObservableRangeCollection.cs" />
+    <Compile Include="HelperViews\ChoosePeriodPage.xaml.cs">
+      <DependentUpon>ChoosePeriodPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="HelperViews\PeriodPickerPage.xaml.cs">
+      <DependentUpon>PeriodPickerPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Language.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -90,8 +96,8 @@
     <Compile Include="Views\BaseContentPage.xaml.cs">
       <DependentUpon>BaseContentPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ExpandableListViewPage.xaml.cs">
-      <DependentUpon>ExpandableListViewPage.xaml</DependentUpon>
+    <Compile Include="HelperViews\TypePickerPage.xaml.cs">
+      <DependentUpon>TypePickerPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\NamedItem.cs" />
     <Compile Include="Renderers\ShortListView.cs" />
@@ -128,7 +134,7 @@
     <EmbeddedResource Include="Views\BaseContentPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\ExpandableListViewPage.xaml">
+    <EmbeddedResource Include="HelperViews\TypePickerPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
@@ -165,7 +171,16 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Controls\" />
+    <EmbeddedResource Include="HelperViews\PeriodPickerPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="HelperViews\ChoosePeriodPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.2.3.3.193\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.3.3.193\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />

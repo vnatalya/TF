@@ -15,13 +15,21 @@ namespace TF.Views
 
 		double distance = 0;
 		Position oldPosition;
+        bool isTracking;
+        IGeolocator geolocator;
 
         public NewItemPage()
         {
             InitializeComponent();
             
 			BindingContext = viewModel;
-			DateButton.MaximumDate = DateTime.Today;
+			DatePicker.MaximumDate = DateTime.Today;
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            StartButton.IsVisible = (int)currentItem.Type % 10 != 0;            
         }
 
         private void TimeButton_Click(object sender, EventArgs e)
@@ -30,95 +38,105 @@ namespace TF.Views
             timePickerDialog.Time = currentItem.Time;
         }
 
-		private void TimeSelectedEvent(object sender, EventArgs e)
-        {
-            //currentItem.Time = new TimeSpan(e.HourOfDay, e.Minute, 0);
-            //timeButton.Text = currentItem.Time.ToString();
-        }
-
 		async void Handle_DateSelected(object sender, Xamarin.Forms.DateChangedEventArgs e)
 		{
-			currentItem.Date = e.NewDate;
+			//currentItem.Date = e.NewDate;
 		}
 
         private void TypeButton_Click(object sender, EventArgs e)
         {
-
+            Navigation.PushAsync(new TypePickerPage(false));
         }
 
         private void Save_Clicked(object sender, EventArgs e)
-        {
-          //  currentItem.Distance = int.Parse(kilometersEditText.Text) * 1000 + int.Parse(metersEditText.Text);
+        {            
+            currentItem.Distance = Double.Parse(DistanceEntry.Text);
+            currentItem.Time = TimePicker.Time;
+            currentItem.Date = DatePicker.Date;
+            
             var result = viewModel.SaveCurrentItem();
+            if (!result.Status)
+            {
+                DisplayAlert(result.Title, result.ErrorMessage, StringService.Instance.Ok);
+            }
+            else
+                Navigation.PopAsync();
         }
 
 		async void Start_Clicked(object sender, System.EventArgs e)
 		{
-			var geolocator = CrossGeolocator.Current;
+            if (isTracking)
+            {
+                (sender as Button).Text = StringService.Instance.Start;
 
-			if (!geolocator.IsGeolocationAvailable)
-			{
-				DisplayAlert("Error", "Location is not awailable", "Ok");
-				return;
-			}
+                if (geolocator == null)
+                    return;
 
-			Position result = null;
+                await geolocator.StopListeningAsync();
+            }
+            else
+            {
+                (sender as Button).Text = StringService.Instance.Finish;
+                geolocator = CrossGeolocator.Current;
 
-			try
-			{
-				geolocator.DesiredAccuracy = 50;
+                if (!geolocator.IsGeolocationAvailable)
+                {
+                    DisplayAlert("Error", "Location is not awailable", "Ok");
+                    return;
+                }
 
-				if (!geolocator.IsListening)
-					await geolocator.StartListeningAsync(5, 10);
+                Position result = null;
 
-				oldPosition = await geolocator.GetPositionAsync(50000, CancellationToken.None);
-				geolocator.PositionChanged += Geolocator_PositionChanged;
-			}
-			catch (Exception ex)
-			{
-				System.Diagnostics.Debug.WriteLine("Error : {0}", ex);
-			}
+                try
+                {
+                    geolocator.DesiredAccuracy = 50;
+
+                    if (!geolocator.IsListening)
+                        await geolocator.StartListeningAsync(5, 10);
+
+                    oldPosition = await geolocator.GetPositionAsync(50000, CancellationToken.None);
+                    geolocator.PositionChanged += Geolocator_PositionChanged;
+                }
+                catch (Exception ex)
+                {
+                    System.Diagnostics.Debug.WriteLine("Error : {0}", ex);
+                }
+            }
 		}
 
 		void Geolocator_PositionChanged(object sender, PositionEventArgs e)
 		{
-			if (oldPosition != null)
-				distance += GeoCodeCalc.CalcDistance(oldPosition.Latitude, oldPosition.Longitude, e.Position.Latitude, e.Position.Longitude);
-			else
-				oldPosition = e.Position;
+            if (oldPosition != null)
+            {
+                distance += GeoCodeCalc.CalcDistance(oldPosition.Latitude, oldPosition.Longitude, e.Position.Latitude, e.Position.Longitude);
+                currentItem.Distance = distance;
+                DistanceEntry.Text = currentItem.Distance.ToString();               
+            }
+            else
+                oldPosition = e.Position;
 		}
 
 		private void Distance_TextChanged(object sender, TextChangedEventArgs e)
         {
+            double distance;
+            if (Double.TryParse(e.NewTextValue, out distance))
+                currentItem.Distance = distance;
+            else if (!string.IsNullOrEmpty(e.OldTextValue))
+                DistanceEntry.Text = e.OldTextValue;
         }
-
 
 		public static class GeoCodeCalc
 		{
-			public const double EarthRadiusInMiles = 3956.0;
 			public const double EarthRadiusInKilometers = 6367.0;
 
 			public static double ToRadian(double val) { return val * (Math.PI / 180); }
 			public static double DiffRadian(double val1, double val2) { return ToRadian(val2) - ToRadian(val1); }
-
+            
 			public static double CalcDistance(double lat1, double lng1, double lat2, double lng2)
 			{
-				return CalcDistance(lat1, lng1, lat2, lng2, GeoCodeCalcMeasurement.Miles);
-			}
-
-			public static double CalcDistance(double lat1, double lng1, double lat2, double lng2, GeoCodeCalcMeasurement m)
-			{
-				double radius = GeoCodeCalc.EarthRadiusInMiles;
-
-				if (m == GeoCodeCalcMeasurement.Kilometers) { radius = GeoCodeCalc.EarthRadiusInKilometers; }
+				double radius = GeoCodeCalc.EarthRadiusInKilometers; 
 				return radius * 2 * Math.Asin(Math.Min(1, Math.Sqrt((Math.Pow(Math.Sin((DiffRadian(lat1, lat2)) / 2.0), 2.0) + Math.Cos(ToRadian(lat1)) * Math.Cos(ToRadian(lat2)) * Math.Pow(Math.Sin((DiffRadian(lng1, lng2)) / 2.0), 2.0)))));
 			}
-		}
-
-		public enum GeoCodeCalcMeasurement : int
-		{
-			Miles = 0,
-			Kilometers = 1
 		}
     }
 }

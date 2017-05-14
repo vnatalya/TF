@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TF.Views.RegistrationPage"
               xmlns:custom="clr-namespace:TF.Renderers;assembly=TF">
-    <ScrollView>
+    <ScrollView BackgroundColor="White">
         <StackLayout VerticalOptions="StartAndExpand" Padding="20" Spacing="20">
             <Label Text="Create an account" HorizontalOptions="CenterAndExpand"  Margin="0,50,0,30"/>
             <Entry Placeholder="Name" x:Name="Name" Unfocused="Completed" TextChanged="TextChanged" TextColor="Green"></Entry>

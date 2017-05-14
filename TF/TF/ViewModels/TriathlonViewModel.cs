@@ -24,39 +24,22 @@ namespace TF
             }
         }
 
-        //private static StringService.Instance StringService.Instance;
-        //public static StringService.Instance StringService.Instance
-        //{
-        //    get
-        //    {
-        //        if (StringService.Instance == null)
-        //            throw new NullReferenceException(string.Format("ViewModelBase.StringService.Instance has not been set. Derive a class from Shared.Localization.StringService.InstanceBase, override Init() metod and init mentioned reference in {0}", devicePlatform.EntryPointName));
-
-        //        return StringService.Instance;
-        //    }
-
-        //    set
-        //    {
-        //        StringService.Instance = value;
-        //    }
-        //}
-
         private TriathlonTraining currentItem;
         public TriathlonTraining CurrentItem
         {
             get { return currentItem; }
         }
 
-        public List<string> AllHeadersList;
-        public Dictionary<string, List<string>> AllChildrenList;
-
-        public List<string> RegisterHeadersList;
-        public Dictionary<string, List<string>> RegisterChildrenList;
-
         private List<TriathlonTraining> trainings;
         public List<TriathlonTraining> Trainings
         {
-			get { return trainings;}
+			get
+            {
+                int aboveTypeValue = (int)currentType % 10 == 0 && currentType != TriathlonType.Triathlon ? (int)currentType  + 9 : (int) currentType;
+                var newList = trainings.Where(x => x.Distance > 0); //x => (int) x.Type <= aboveTypeValue && (int) x.Type >= (int) currentType && x.Date.Ticks > startDate.Ticks && x.Date.Ticks < endDate.Ticks);
+                var list = newList.ToList();
+                return list;
+            }
         }
 
         private TriathlonType currentType;
@@ -66,18 +49,55 @@ namespace TF
             set { currentType = value; }
         }
 
+        private DateTime startDate = DateTime.MinValue;
+        private DateTime StartDate
+        {
+            get { return startDate; }
+            set { startDate = value; }
+        }
+
+        private DateTime endDate = DateTime.Today;
+        private DateTime EndDate
+        {
+            get { return endDate; }
+            set { endDate = value; }
+        }
+
         private PeriodType currentPeriod;
         public PeriodType CurrentPeriod
         {
             get { return currentPeriod; }
-            set { currentPeriod = value; }
+            set
+            {
+                currentPeriod = value;
+                switch(value)
+                {
+                    case PeriodType.Week:
+                        endDate = DateTime.Today;
+                        startDate = DateTime.Today.AddDays(-7);
+                        break;
+                    case PeriodType.Month:
+                        endDate = DateTime.Today;
+                        startDate = DateTime.Today.AddDays(-30);
+                        break;
+                    case PeriodType.Today:
+                        endDate = DateTime.Today;
+                        startDate = DateTime.Today;
+                        break;
+                    case PeriodType.All:
+                        endDate = DateTime.Today;
+                        startDate = DateTime.MinValue;
+                        break;
+                }
+            }
         }
 
 		public List<NamedItem> SwimmingList { get; set; }
 		public List<NamedItem> CyclingList { get; set; }
 		public List<NamedItem> RunningList { get; set; }
+		public List<NamedItem> PeriodList { get; set; }
 
-		public void Initialize()
+        public void Initialize()
         {
             if (devicePlatform == null)
             {
@@ -110,49 +130,28 @@ namespace TF
 
 		void SetTriathlonTypesLists()
 		{
-			RegisterHeadersList = new List<string>();
-			RegisterChildrenList = new Dictionary<string, List<string>>();
-
-			RegisterHeadersList.Add(StringService.Instance.Triathlon);
-			RegisterHeadersList.Add(StringService.Instance.Swimming);
-			RegisterHeadersList.Add(StringService.Instance.Running);
-			RegisterHeadersList.Add(StringService.Instance.Cycling);
 
 			SwimmingList = new List<NamedItem>();
-			var ni = new NamedItem();
-			ni.Name = "sdkfksdfhsdjhf";
-			SwimmingList.Add(ni);
 			SwimmingList.Add(new NamedItem(StringService.Instance.Butterfly));
 			SwimmingList.Add(new NamedItem(StringService.Instance.Freestyle));
 			SwimmingList.Add(new NamedItem(StringService.Instance.Breaststroke));
 			SwimmingList.Add(new NamedItem(StringService.Instance.Backstroke));
 			SwimmingList.Add(new NamedItem(StringService.Instance.SwimmingExercices));
 
-			//    RegisterChildrenList.Add(StringService.Instance.Swimming, swimmingListView);
-
 			RunningList = new List<NamedItem>();
 			RunningList.Add(new NamedItem(StringService.Instance.Run));
 			RunningList.Add(new NamedItem(StringService.Instance.RunningExercises));
-
-			//RegisterChildrenList.Add(StringService.Instance.Running, runningListView);
 
 			CyclingList = new List<NamedItem>();
 			CyclingList.Add(new NamedItem { Name = StringService.Instance.Bike });
 			CyclingList.Add(new NamedItem { Name = StringService.Instance.Trainer });
 
-			//RegisterChildrenList.Add(StringService.Instance.Cycling, cyclingListView);
-
-			AllHeadersList = RegisterHeadersList;
-			AllHeadersList.Add(StringService.Instance.History);
-
-			AllChildrenList = RegisterChildrenList;
-
-			var historyListView = new List<string>();
-			historyListView.Add(StringService.Instance.All);
-			historyListView.Add(StringService.Instance.Today);
-			historyListView.Add(StringService.Instance.Week);
-			historyListView.Add(StringService.Instance.Month);
-			AllChildrenList.Add(StringService.Instance.History, historyListView);
+			PeriodList = new List<NamedItem>();
+            PeriodList.Add(new NamedItem(StringService.Instance.All));
+            PeriodList.Add(new NamedItem(StringService.Instance.Today));
+            PeriodList.Add(new NamedItem(StringService.Instance.Week));
+            PeriodList.Add(new NamedItem(StringService.Instance.Month));
+            PeriodList.Add(new NamedItem(StringService.Instance.Choose));
 		}
 
         public void SetCurrentItem(int id = -1) {
@@ -170,7 +169,7 @@ namespace TF
         {
             Result result = new Result(true, StringService.Instance.TrainingSaved, string.Empty);
 
-            if (currentItem.Type == TriathlonType.Triathlon || currentItem.Type == TriathlonType.Swimming || currentItem.Type == TriathlonType.Running || currentItem.Type == TriathlonType.Cycling)
+            if ((int)currentItem.Type % 10 == 0)
             {
                 result.Status = false;
                 result.Title = StringService.Instance.CouldntSave;
@@ -257,16 +256,30 @@ namespace TF
         {
             get
             {
-                //return string.Format("{0}: {1} \n {2}: {3} \n {4}: {5} \n {6}: {7}",
-				            //         StringService.Instance.Type, ,
-                //    StringService.Instance.Time, "",
-                //    StringService.Instance.Distance, distance,
-                //    StringService.Instance.Date, date);
-                return "summary";
+                TimeSpan totalTime = TimeSpan.Zero;
+                double totalDistance = 0;
+                for (int i = 0; i < trainings.Count; ++ i)
+                {
+                    totalDistance += trainings[i].Distance;
+                    totalTime += trainings[i].Time;
+                }
+                return string.Format("{0}: {1} \n {2}: {3}",
+                    StringService.Instance.Time, totalTime,
+                    StringService.Instance.Distance, totalDistance);
             }
         }
 
-		public string DisplayType
+        public string DisplayStartDate
+        {
+            get { return string.Format("{0}: {1}", StringService.Instance.StartDate, startDate); }
+        }
+
+        public string DisplayEndDate
+        {
+            get { return string.Format("{0}: {1}", StringService.Instance.EndDate, endDate); }
+        }
+
+        public string DisplayType
 		{
 			get
 			{
@@ -319,11 +332,11 @@ namespace TF
 		#region period enum
 		public enum PeriodType
         {
-            All = -1,
-            Today = 0,
-            Week = 1,
-            Month = 2,
-            Choose = 3
+            All = 0,
+            Today = 1,
+            Week = 2,
+            Month = 3,
+            Choose = 4
         }
         #endregion
 
