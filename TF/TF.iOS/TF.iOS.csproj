@@ -210,6 +210,9 @@
     <BundleResource Include="Resources\right_arrow.png" />
     <BundleResource Include="Resources\right_arrow%402x.png" />
     <BundleResource Include="Resources\right_arrow%403x.png" />
+    <BundleResource Include="Resources\cross_add_registration_icon.png" />
+    <BundleResource Include="Resources\cross_add_registration_icon%402x.png" />
+    <BundleResource Include="Resources\cross_add_registration_icon%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Renderers\" />

@@ -97,6 +97,20 @@ namespace TF
 		public List<NamedItem> RunningList { get; set; }
 		public List<NamedItem> PeriodList { get; set; }
 
+		private List<Group>  groupsList;
+		public List<Group>  GroupsList 
+		{
+			get { return groupsList; }
+			set { groupsList = value; }
+		}
+
+		private List<Student> studentsList;
+		public List<Student>  StudentsList 
+		{
+			get { return studentsList; }
+			set { studentsList = value; }
+		}
+
         public void Initialize()
         {
             if (devicePlatform == null)
@@ -126,6 +140,24 @@ namespace TF
             SetTriathlonTypesLists();
             currentPeriod = PeriodType.All;
             currentType = TriathlonType.Triathlon;
+
+			if (studentsList == null)
+				studentsList = new List<Student> ();
+
+			studentsList.Add (new Student { Name = "Anna" , Trainings = trainings});
+			studentsList.Add (new Student { Name = "Vova" , Trainings = trainings});
+			studentsList.Add (new Student { Name = "Vasya" , Trainings = trainings});
+			studentsList.Add (new Student { Name = "Top" , Trainings = trainings});
+			studentsList.Add (new Student { Name = "Jerry" , Trainings = trainings});
+			studentsList.Add (new Student { Name = "Vinny", Trainings = trainings});
+
+			if (groupsList == null)
+				groupsList = new List<Group> ();
+
+			groupsList.Add (new Group { Students = studentsList });
+			groupsList.Add (new Group { Students = studentsList });
+			groupsList.Add (new Group { Students = studentsList });
+			groupsList.Add (new Group { Students = studentsList });
         }
 
 		void SetTriathlonTypesLists()
@@ -263,7 +295,8 @@ namespace TF
                     totalDistance += trainings[i].Distance;
                     totalTime += trainings[i].Time;
                 }
-                return string.Format("{0}: {1} \n {2}: {3}",
+				return string.Format("{0}: {1} \n{2}: {3} \n{2}: {3}",
+				                     StringService.Instance.NumberOfTrainings, trainings.Count,
                     StringService.Instance.Time, totalTime,
                     StringService.Instance.Distance, totalDistance);
             }
@@ -338,7 +371,14 @@ namespace TF
             Month = 3,
             Choose = 4
         }
-        #endregion
+		#endregion
 
+
+		public enum RoleMode
+		{
+			Private = 0,
+			Student = 1,
+			Teacher = 2
+		}
     }
 }

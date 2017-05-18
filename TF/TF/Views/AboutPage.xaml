@@ -4,13 +4,16 @@
              x:Class="TF.Views.AboutPage"
              xmlns:vm="clr-namespace:TF.ViewModels;"
              xmlns:custom="clr-namespace:TF.Renderers;assembly=TF">
+	 <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add Item" Clicked="AddItem_Clicked" />
+    </ContentPage.ToolbarItems>
     <ScrollView Orientation="Vertical">
         <StackLayout Orientation="Vertical" Padding="15"  BackgroundColor="White">
 			<StackLayout Orientation="Horizontal"  x:Name="TypeButton">
 				<StackLayout.GestureRecognizers>
             		<TapGestureRecognizer Tapped="Button_Click" NumberOfTapsRequired="1"/>
         		</StackLayout.GestureRecognizers>
-            	<Label  Text="{Binding DisplayType}" HorizontalOptions="FillAndExpand" TextColor="Green"/>
+            	<Label  Text="Type: Triathlon" HorizontalOptions="FillAndExpand" TextColor="Green"/>
 				<Image Source="right_arrow" Scale="1.2"/>
             </StackLayout>
 			<StackLayout Orientation="Horizontal"  x:Name="PeriodButton">
@@ -20,7 +23,13 @@
             	<Label  Text="{Binding DisplayPeriod}" HorizontalOptions="FillAndExpand" TextColor="Green"/>
 				<Image Source="right_arrow" Scale="1.2"/>
             </StackLayout>
-			<Label Text="{Binding Summary}" TextColor="Green"/>
+			<StackLayout Orientation="Horizontal"  x:Name="SummaryButton">
+				<StackLayout.GestureRecognizers>
+            		<TapGestureRecognizer Tapped="Button_Click" NumberOfTapsRequired="1"/>
+        		</StackLayout.GestureRecognizers>
+            	<Label Text="{Binding DisplaySummary}" TextColor="Green" HorizontalOptions="FillAndExpand"/>
+				<Image Source="right_arrow" Scale="1.2"/>
+            </StackLayout>
 			<StackLayout x:Name="ChartView" Padding="15"/>
         </StackLayout>        
     </ScrollView>

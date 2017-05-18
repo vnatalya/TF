@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
 
 namespace TF
@@ -94,7 +95,7 @@ namespace TF
 
 		public string DisplayDate
 		{
-			get { return date.Date.ToString(); }
+			get { return date.Date.ToString("d", DateTimeFormatInfo.InvariantInfo); }
 		}
 
         private TimeSpan time;
@@ -144,10 +145,11 @@ namespace TF
         {
             get
             {
-				return string.Format("{0}: {1} \n {2}: {3} \n {4}: {5} km",
-				                     StringService.Instance.Type, DisplayType,
-                    StringService.Instance.Time, time,
-				                     StringService.Instance.Distance, distance);
+				return string.Format ("{0}: {1} \n{2}: {3} \n{4}: {5} km \n{6}: {7}",
+									 StringService.Instance.Type, DisplayType,
+					StringService.Instance.Time, time,
+									 StringService.Instance.Distance, distance,
+				                      StringService.Instance.Date, DisplayDate);
             }
         }
     }

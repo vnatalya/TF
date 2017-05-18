@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+	x:Class="TF.StudentsOverviewPage"
+	xmlns:custom="clr-namespace:TF.Renderers;assembly=TF">
+	<ContentPage.Content>
+        <StackLayout BackgroundColor="White">
+            <ListView x:Name="StudentsListView"
+				ItemsSource="{Binding StudentsList}"
+                VerticalOptions="FillAndExpand"
+				SeparatorColor="Green"
+                HasUnevenRows="true"
+                CachingStrategy="RecycleElement"
+				ItemSelected="OnItemSelected">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Padding="10" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                <Label Text="{Binding Name}" FontSize="Medium" HorizontalOptions="FillAndExpand"/>
+                                <custom:BorderlessButton BackgroundColor="White" Image="delete_dark_icon" Clicked="DeleteButton_Clicked" HorizontalOptions="End"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

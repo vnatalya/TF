@@ -23,23 +23,21 @@ namespace TF
 			TriathlonViewModel.Instance.Initialize();
 			if (IsLoggedIn)
 			{
-				Current.MainPage = new TabbedPage
-				{
-					Children =
-					{
-						new NavigationPage(new ItemsPage())
-						{
-							Title = "Browse",
-							Icon = Device.OnPlatform("tab_feed.png",null,null),
-								BarBackgroundColor = Color.Green
-						},
-						new NavigationPage(new AboutPage())
-						{
+				Current.MainPage = //new TabbedPage {
+					//Children =
+					//{
+					//	new NavigationPage(new ItemsPage())
+					//	{
+					//		Title = "Browse",
+					//		Icon = Device.OnPlatform("tab_feed.png",null,null),
+					//			BarBackgroundColor = Color.Green
+					//	},
+						new NavigationPage (new AboutPage ()) {
 							Title = "About",
-							Icon = Device.OnPlatform("tab_about.png",null,null),
-								BarBackgroundColor = Color.Green
-						},
-					}
+							Icon = Device.OnPlatform ("tab_about.png", null, null),
+							BarBackgroundColor = Color.Green
+							//}
+						//}
 				};
 			}
 			else

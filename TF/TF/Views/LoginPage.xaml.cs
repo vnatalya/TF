@@ -30,7 +30,7 @@ namespace TF.Views
 
         private void Login_OnClicked(object sender, EventArgs e)
         {
-            App.Current.MainPage = new TabbedPage
+			App.Current.MainPage = /*new TabbedPage
             {
                 Children =
                 {
@@ -39,15 +39,14 @@ namespace TF.Views
                         Title = "Browse",
                         Icon = Device.OnPlatform("tab_feed.png",null,null),
 						BarBackgroundColor = Color.Green
-                    },
-                    new NavigationPage(new AboutPage())
-                    {
-                        Title = "About",
-                        Icon = Device.OnPlatform("tab_about.png",null,null),
+                    },*/
+					new NavigationPage (new AboutPage ()) {
+						Title = "About",
+						Icon = Device.OnPlatform ("tab_about.png", null, null),
 						BarBackgroundColor = Color.Green
-                    },
-                }
-            };
+						//},
+					};
+          //  }
         }
 
         private void GoogleLogin_OnClicked(object sender, EventArgs e)
