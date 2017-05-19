@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading;
+using System.Threading.Tasks;
 using Plugin.Geolocator;
 using Plugin.Geolocator.Abstractions;
 using TF.Models;
@@ -32,16 +33,13 @@ namespace TF.Views
             StartButton.IsVisible = (int)currentItem.Type % 10 != 0;            
         }
 
-        private void TimeButton_Click(object sender, EventArgs e)
+        private void Time_TextChanged(object sender, TextChangedEventArgs e)
         {
-            TimePicker timePickerDialog = new TimePicker();
-            timePickerDialog.Time = currentItem.Time;
+			int newValue;
+			if (!int.TryParse (e.NewTextValue, out newValue) || newValue > 60)
+				(sender as Entry).Text = !string.IsNullOrEmpty (e.OldTextValue) ? e.OldTextValue : string.Empty;
+				
         }
-
-		async void Handle_DateSelected(object sender, Xamarin.Forms.DateChangedEventArgs e)
-		{
-			//currentItem.Date = e.NewDate;
-		}
 
         private void TypeButton_Click(object sender, EventArgs e)
         {
@@ -51,7 +49,6 @@ namespace TF.Views
         private void Save_Clicked(object sender, EventArgs e)
         {            
             currentItem.Distance = Double.Parse(DistanceEntry.Text);
-            currentItem.Time = TimePicker.Time;
             currentItem.Date = DatePicker.Date;
             
             var result = viewModel.SaveCurrentItem();
@@ -72,36 +69,44 @@ namespace TF.Views
                 if (geolocator == null)
                     return;
 
-                await geolocator.StopListeningAsync();
+               await geolocator.StopListeningAsync();
+
             }
             else
             {
                 (sender as Button).Text = StringService.Instance.Finish;
-                geolocator = CrossGeolocator.Current;
+				bool successStart = await StartTracking ();
+            	if (!successStart) {
+					(sender as Button).Text = StringService.Instance.Start;
+					return;
+				}
+			}
+		}
 
-                if (!geolocator.IsGeolocationAvailable)
-                {
-                    DisplayAlert("Error", "Location is not awailable", "Ok");
-                    return;
-                }
+		async Task<bool> StartTracking ()
+		{
+			geolocator = CrossGeolocator.Current;
 
-                Position result = null;
+			if (!geolocator.IsGeolocationAvailable) {
+				DisplayAlert ("Error", "Location is not awailable", "Ok");
+				return false;
+			}
 
-                try
-                {
-                    geolocator.DesiredAccuracy = 50;
+			Position result = null;
 
-                    if (!geolocator.IsListening)
-                        await geolocator.StartListeningAsync(5, 10);
+			try {
+				geolocator.DesiredAccuracy = 50;
 
-                    oldPosition = await geolocator.GetPositionAsync(50000, CancellationToken.None);
-                    geolocator.PositionChanged += Geolocator_PositionChanged;
-                }
-                catch (Exception ex)
-                {
-                    System.Diagnostics.Debug.WriteLine("Error : {0}", ex);
-                }
-            }
+				if (!geolocator.IsListening)
+					await geolocator.StartListeningAsync (5, 10);
+
+				oldPosition = await geolocator.GetPositionAsync (50000, CancellationToken.None);
+				geolocator.PositionChanged += Geolocator_PositionChanged;
+			} catch (Exception ex) {
+				System.Diagnostics.Debug.WriteLine ("Error : {0}", ex);
+				return false;
+			}
+			return true;
 		}
 
 		void Geolocator_PositionChanged(object sender, PositionEventArgs e)
