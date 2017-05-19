@@ -71,8 +71,6 @@
     <Compile Include="Services\StringService.cs" />
     <Compile Include="ViewModels\AboutViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
-    <Compile Include="ViewModels\ItemDetailViewModel.cs" />
-    <Compile Include="ViewModels\ItemsViewModel.cs" />
     <Compile Include="ViewModels\TriathlonViewModel.cs" />
     <Compile Include="Views\AboutPage.xaml.cs">
       <DependentUpon>AboutPage.xaml</DependentUpon>
@@ -104,13 +102,16 @@
     <Compile Include="Views\GroupsListPage.xaml.cs">
       <DependentUpon>GroupsListPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Models\Student.cs" />
-    <Compile Include="Models\Teacher.cs" />
     <Compile Include="Models\Group.cs" />
     <Compile Include="Views\FeedbackOverviewPage.xaml.cs">
       <DependentUpon>FeedbackOverviewPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\Feedback.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="ViewModels\UserViewModel.cs" />
+    <Compile Include="ViewModels\TeacherViewModel.cs" />
+    <Compile Include="Views\MenuPage.cs" />
+    <Compile Include="Renderers\BorderlessEntry.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="App.xaml">

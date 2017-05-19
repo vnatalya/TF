@@ -15,7 +15,8 @@ namespace TF
         private bool status;
         public bool Status { get { return status; } set { status = value; } }
 
-        public Result(bool status, string title, string message) { 
+		public Result(bool status, string title = "", string message = "") 
+		{ 
             this.status = status;
             this.title = title;
             this.errorMessage = message;

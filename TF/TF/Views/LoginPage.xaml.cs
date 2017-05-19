@@ -40,12 +40,13 @@ namespace TF.Views
                         Icon = Device.OnPlatform("tab_feed.png",null,null),
 						BarBackgroundColor = Color.Green
                     },*/
-					new NavigationPage (new AboutPage ()) {
-						Title = "About",
-						Icon = Device.OnPlatform ("tab_about.png", null, null),
-						BarBackgroundColor = Color.Green
-						//},
-					};
+								   //new NavigationPage (new AboutPage ()) {
+								   //	Title = "About",
+								   //	Icon = Device.OnPlatform ("tab_about.png", null, null),
+								   //	BarBackgroundColor = Color.Green
+								   //	//},
+								   //};
+				new MenuPage.MainPage ();
           //  }
         }
 

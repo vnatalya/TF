@@ -33,7 +33,7 @@ namespace TF.Views
 		/// <param name="e"></param>
 		private void Create_OnClicked(object sender, EventArgs e)
 		{
-			App.Current.MainPage = new TabbedPage
+			App.Current.MainPage = /*new TabbedPage
 			{
 				Children =
 				{
@@ -41,13 +41,13 @@ namespace TF.Views
 					{
 						Title = "Browse",
 						Icon = Device.OnPlatform("tab_feed.png",null,null)
-					},
+					},*/
 					new NavigationPage(new AboutPage())
 					{
 						Title = "About",
 						Icon = Device.OnPlatform("tab_about.png",null,null)
-					},
-				}
+					//},
+				//}
 			};
 		}
 
@@ -74,13 +74,24 @@ namespace TF.Views
             if (sender == Email)
             {
                 EmailLabel.IsVisible = string.IsNullOrWhiteSpace(Email.Text);
-            }
+			}
 
             bool fieldsAreValid = !string.IsNullOrEmpty(PasswordConfirm.Text) && !string.IsNullOrEmpty(Password.Text) && !string.IsNullOrEmpty(Email.Text) && !string.IsNullOrEmpty(Name.Text);
             CreateButton.IsEnabled = fieldsAreValid;
 			CreateButton.BackgroundColor = fieldsAreValid ? Color.Green : Color.White;
 			CreateButton.TextColor = fieldsAreValid ? Color.White : Color.Gray;
         }
+
+		void RadioButton_Clicked (object sender, System.EventArgs e)
+		{
+			PrivateButton.Image = "radiobutton_unselected_icon";
+			StudentButton.Image = "radiobutton_unselected_icon";
+			TeacherButton.Image = "radiobutton_unselected_icon";
+
+			(sender as Button).Image = "radiobutton_selected_icon";
+
+			GroupLayout.IsVisible = sender == StudentButton;
+		}
 
         private void TextChanged(object sender, TextChangedEventArgs e)
         {

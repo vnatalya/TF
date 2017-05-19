@@ -69,7 +69,15 @@ namespace TF
         protected string error;
         protected string ok;
         protected string startDate;
-        protected string endDate;
+		protected string endDate;
+		protected string logout;
+		protected string myGroups;
+		protected string myResults;
+		protected string addFeedback;
+		protected string myFeedbacks;
+		protected string addGroup;
+		protected string addNewTraining;
+		protected string group;
 
         public string TrainingSaved { get { return trainingSaved; } }
         public string CouldntSave { get { return couldntSave; } }
@@ -110,6 +118,14 @@ namespace TF
         public string NumberOfTrainings { get { return numberOfTrainings; } }
         public string Error { get { return error; } }
         public string StartDate { get { return startDate; } }
-        public string EndDate { get { return endDate; } }
+		public string EndDate { get { return endDate; } }
+		public string Logout { get { return logout; } }
+		public string MyGroups { get { return myGroups; } }
+		public string MyResults { get { return myResults; } }
+		public string AddFeedback { get { return addFeedback; } }
+		public string MyFeedbacks { get { return myFeedbacks; } }
+		public string AddGroup { get { return addGroup; } }
+		public string AddNewTraining { get { return addNewTraining; } }
+        public string Group { get { return group; } }
     }
 }

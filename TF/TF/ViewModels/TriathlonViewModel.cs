@@ -4,11 +4,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using TF.Helpers;
+using Xamarin.Forms;
 using static TF.TriathlonTraining;
+using TF.ViewModels;
 
 namespace TF
 {
-    public class TriathlonViewModel : ObservableObject
+	public class TriathlonViewModel : BaseViewModel
     {
         private static TriathlonViewModel instance;
         public static TriathlonViewModel Instance
@@ -104,24 +106,21 @@ namespace TF
 			set { groupsList = value; }
 		}
 
-		private List<Student> studentsList;
-		public List<Student>  StudentsList 
+		private List<User> studentsList;
+		public List<User>  StudentsList 
 		{
 			get { return studentsList; }
 			set { studentsList = value; }
 		}
 
+		public User.UserRole Mode 
+		{
+			get { return UserViewModel.Instance.User != null ? UserViewModel.Instance.User.Role : User.UserRole.Teacher; }
+		}
+
         public void Initialize()
         {
-            if (devicePlatform == null)
-            {
-#if __ANDROID__
-                devicePlatform = DevicePlatform.Android;
-#else                
-                devicePlatform = DevicePlatform.iOS;
-#endif
-            }
-
+           
             if (trainings == null)
                 trainings = new List<TriathlonTraining>();
 			trainings.Add(new TriathlonTraining(TriathlonType.Bike, new TimeSpan(1, 0, 0), 20, new DateTime(2017, 5, 1)));
@@ -142,14 +141,14 @@ namespace TF
             currentType = TriathlonType.Triathlon;
 
 			if (studentsList == null)
-				studentsList = new List<Student> ();
+				studentsList = new List<User> ();
 
-			studentsList.Add (new Student { Name = "Anna" , Trainings = trainings});
-			studentsList.Add (new Student { Name = "Vova" , Trainings = trainings});
-			studentsList.Add (new Student { Name = "Vasya" , Trainings = trainings});
-			studentsList.Add (new Student { Name = "Top" , Trainings = trainings});
-			studentsList.Add (new Student { Name = "Jerry" , Trainings = trainings});
-			studentsList.Add (new Student { Name = "Vinny", Trainings = trainings});
+			studentsList.Add (new User { Name = "Anna" , Trainings = trainings});
+			studentsList.Add (new User { Name = "Vova" , Trainings = trainings});
+			studentsList.Add (new User { Name = "Vasya" , Trainings = trainings});
+			studentsList.Add (new User { Name = "Top" , Trainings = trainings});
+			studentsList.Add (new User { Name = "Jerry" , Trainings = trainings});
+			studentsList.Add (new User { Name = "Vinny", Trainings = trainings});
 
 			if (groupsList == null)
 				groupsList = new List<Group> ();
@@ -193,7 +192,7 @@ namespace TF
             }
             else
             {
-                currentItem = dbService.GetTriathlonTrainingById(id);
+				currentItem = DBService.GetTriathlonTrainingById(id);
             }
         }
 
@@ -224,28 +223,11 @@ namespace TF
                 result.ErrorMessage = StringService.Instance.IncorrectTime;
                 return result;
             }
-            dbService.SaveTrinathlonTraining(currentItem);
+			DBService.SaveTrinathlonTraining(currentItem);
             return result;
         }
 
-        static DevicePlatform devicePlatform;
-        
-        private static DataBaseService dbService;
-        public static DataBaseService DBService
-        {
-            get
-            {
-                if (dbService == null)
-                    throw new NullReferenceException(string.Format("ViewModelBase.DBService has not been set. Derive a class from Shared.Services.DBServiceBase, override Init() method and init mentioned reference in {0}", devicePlatform.EntryPointName));
-
-                return dbService;
-            }
-            set
-            {
-                dbService = value;
-            }
-        }
-
+       
 #region strings
         public string StringType { get { return StringService.Instance.Type; } }
 		public string StringTriathlon { get { return StringService.Instance.Triathlon; } }
@@ -373,12 +355,5 @@ namespace TF
         }
 		#endregion
 
-
-		public enum RoleMode
-		{
-			Private = 0,
-			Student = 1,
-			Teacher = 2
-		}
     }
 }

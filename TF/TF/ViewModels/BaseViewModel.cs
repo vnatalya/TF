@@ -1,4 +1,5 @@
-﻿using TF.Helpers;
+﻿using System;
+using TF.Helpers;
 using TF.Models;
 using TF.Services;
 
@@ -6,31 +7,40 @@ using Xamarin.Forms;
 
 namespace TF.ViewModels
 {
-    public class BaseViewModel : ObservableObject
-    {
-        /// <summary>
-        /// Get the azure service instance
-        /// </summary>
-        public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>();
+	public abstract class BaseViewModel : ObservableObject
+	{
 
-        bool isBusy = false;
-        public bool IsBusy
-        {
-            get { return isBusy; }
-            set { SetProperty(ref isBusy, value); }
-        }
-        /// <summary>
-        /// Private backing field to hold the title
-        /// </summary>
-        string title = string.Empty;
-        /// <summary>
-        /// Public property to set and get the title of the item
-        /// </summary>
-        public string Title
-        {
-            get { return title; }
-            set { SetProperty(ref title, value); }
-        }
-    }
+		bool isBusy = false;
+		public bool IsBusy {
+			get { return isBusy; }
+			set { SetProperty (ref isBusy, value); }
+		}
+
+		public void Initialize ()
+		{
+			if (devicePlatform == null) {
+#if __ANDROID__
+                devicePlatform = DevicePlatform.Android;
+#else
+				devicePlatform = DevicePlatform.iOS;
+#endif
+			}
+
+		}
+
+		static DevicePlatform devicePlatform;
+
+		private static DataBaseService dbService;
+		protected static DataBaseService DBService {
+			get {
+				if (dbService == null)
+					throw new NullReferenceException (string.Format ("ViewModelBase.DBService has not been set. Derive a class from Shared.Services.DBServiceBase, override Init() method and init mentioned reference in {0}", devicePlatform.EntryPointName));
+
+				return dbService;
+			}
+			set {
+				dbService = value;
+			}
+		}
+	}
 }
-

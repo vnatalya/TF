@@ -191,6 +191,7 @@
     <Compile Include="Renderers\BorderlessButton.cs" />
     <Compile Include="Renderers\LoginPageRenderer.cs" />
     <Compile Include="Renderers\ListViewRenderer.cs" />
+    <Compile Include="Renderers\BorderlessEntryRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\profile_generic.png" />
@@ -213,6 +214,12 @@
     <BundleResource Include="Resources\cross_add_registration_icon.png" />
     <BundleResource Include="Resources\cross_add_registration_icon%402x.png" />
     <BundleResource Include="Resources\cross_add_registration_icon%403x.png" />
+    <BundleResource Include="Resources\radiobutton_selected_icon.png" />
+    <BundleResource Include="Resources\radiobutton_selected_icon%402x.png" />
+    <BundleResource Include="Resources\radiobutton_selected_icon%403x.png" />
+    <BundleResource Include="Resources\radiobutton_unselected_icon.png" />
+    <BundleResource Include="Resources\radiobutton_unselected_icon%402x.png" />
+    <BundleResource Include="Resources\radiobutton_unselected_icon%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Renderers\" />
