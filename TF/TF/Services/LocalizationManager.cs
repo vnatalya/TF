@@ -59,7 +59,7 @@ namespace TF
             if (!string.IsNullOrEmpty(key) && !string.IsNullOrWhiteSpace(key))
             {
                 //#if __ANDROID__
-                result = Language.ResourceManager.GetString(key);
+                //result = Language.ResourceManager.GetString(key);
                 //#elif __IOS__
                 //                result =  App2.iOS.Language.ResourceManager.GetString(key);
                 //#elif WINDOWS

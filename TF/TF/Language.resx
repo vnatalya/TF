@@ -156,8 +156,8 @@
   <data name="Freestyle" xml:space="preserve">
     <value>Freestyle</value>
   </data>
-  <data name="h" xml:space="preserve">
-    <value>h</value>
+  <data name="Hours" xml:space="preserve">
+    <value>hrs</value>
   </data>
   <data name="IncorrectDistance" xml:space="preserve">
     <value>Distance is not acceptable</value>
@@ -171,7 +171,7 @@
   <data name="km" xml:space="preserve">
     <value>km</value>
   </data>
-  <data name="m" xml:space="preserve">
+  <data name="M" xml:space="preserve">
     <value>m</value>
   </data>
   <data name="min" xml:space="preserve">
@@ -186,13 +186,13 @@
   <data name="Running" xml:space="preserve">
     <value>Running</value>
   </data>
-	<data name="RunningExercises" xml:space="preserve">
+  <data name="RunningExercises" xml:space="preserve">
     <value>Running exercises</value>
   </data>
-	<data name="SwimmingExercises" xml:space="preserve">
+  <data name="SwimmingExercises" xml:space="preserve">
     <value>Swimming exercises</value>
   </data>
-	<data name="Run" xml:space="preserve">
+  <data name="Run" xml:space="preserve">
     <value>Run</value>
   </data>
   <data name="sec" xml:space="preserve">
@@ -237,7 +237,52 @@
   <data name="NumberOfTrainings" xml:space="preserve">
     <value>Number of trainings</value>
   </data>
-	<data name="Triathlon" xml:space="preserve">
+  <data name="Triathlon" xml:space="preserve">
     <value>Triathlon</value>
+  </data>
+  <data name="AddFeedback" xml:space="preserve">
+    <value>Add feedback</value>
+  </data>
+  <data name="AddGroup" xml:space="preserve">
+    <value>Add new group</value>
+  </data>
+  <data name="AddNewTraining" xml:space="preserve">
+    <value>Add training</value>
+  </data>
+  <data name="EndDate" xml:space="preserve">
+    <value>End date</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Error!</value>
+  </data>
+  <data name="Group" xml:space="preserve">
+    <value>Group</value>
+  </data>
+  <data name="Logout" xml:space="preserve">
+    <value>Log out</value>
+  </data>
+  <data name="Minutes" xml:space="preserve">
+    <value>min</value>
+  </data>
+  <data name="MyFeedbacks" xml:space="preserve">
+    <value>My feedbacks</value>
+  </data>
+  <data name="MyGroups" xml:space="preserve">
+    <value>My groups</value>
+  </data>
+  <data name="MyResults" xml:space="preserve">
+    <value>My results</value>
+  </data>
+  <data name="Seconds" xml:space="preserve">
+    <value>sec</value>
+  </data>
+  <data name="StartDate" xml:space="preserve">
+    <value>Start date</value>
+  </data>
+  <data name="NoInternet" xml:space="preserve">
+    <value>There is no interntet</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Save</value>
   </data>
 </root>

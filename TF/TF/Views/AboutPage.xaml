@@ -13,21 +13,21 @@
 				<StackLayout.GestureRecognizers>
             		<TapGestureRecognizer Tapped="Button_Click" NumberOfTapsRequired="1"/>
         		</StackLayout.GestureRecognizers>
-            	<Label  Text="Type: Triathlon" HorizontalOptions="FillAndExpand" TextColor="Green"/>
+            	<Label  Text="{Binding DisplayType}" HorizontalOptions="FillAndExpand" TextColor="Green" FontSize="Medium"/>
 				<Image Source="right_arrow" Scale="1.2"/>
             </StackLayout>
 			<StackLayout Orientation="Horizontal"  x:Name="PeriodButton">
 				<StackLayout.GestureRecognizers>
             		<TapGestureRecognizer Tapped="Button_Click" NumberOfTapsRequired="1"/>
         		</StackLayout.GestureRecognizers>
-            	<Label  Text="{Binding DisplayPeriod}" HorizontalOptions="FillAndExpand" TextColor="Green"/>
+                <Label  Text="{Binding DisplayPeriod}" HorizontalOptions="FillAndExpand" TextColor="Green" FontSize="Medium"/>
 				<Image Source="right_arrow" Scale="1.2"/>
             </StackLayout>
 			<StackLayout Orientation="Horizontal"  x:Name="SummaryButton">
 				<StackLayout.GestureRecognizers>
             		<TapGestureRecognizer Tapped="Button_Click" NumberOfTapsRequired="1"/>
         		</StackLayout.GestureRecognizers>
-            	<Label Text="{Binding DisplaySummary}" TextColor="Green" HorizontalOptions="FillAndExpand"/>
+                <Label Text="{Binding DisplaySummary}" TextColor="Green" HorizontalOptions="FillAndExpand" FontSize="Medium"/>
 				<Image Source="right_arrow" Scale="1.2"/>
             </StackLayout>
 			<StackLayout x:Name="ChartView" Padding="15"/>

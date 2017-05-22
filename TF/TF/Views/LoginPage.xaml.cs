@@ -28,8 +28,9 @@ namespace TF.Views
 
         }
 
-        private void Login_OnClicked(object sender, EventArgs e)
+        private async void Login_OnClicked(object sender, EventArgs e)
         {
+            var res = UserViewModel.Instance.AddNewUser();
 			App.Current.MainPage = /*new TabbedPage
             {
                 Children =

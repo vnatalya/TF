@@ -29,8 +29,8 @@ namespace TF.Views
 
         protected override void OnAppearing()
         {
-            base.OnAppearing();
-            StartButton.IsVisible = (int)currentItem.Type % 10 != 0;            
+            base.OnAppearing(); 
+            StartButton.IsVisible = (int) viewModel.CurrentType % 10 != 0;
         }
 
         private void Time_TextChanged(object sender, TextChangedEventArgs e)
@@ -46,15 +46,18 @@ namespace TF.Views
             Navigation.PushAsync(new TypePickerPage(false));
         }
 
-        private void Save_Clicked(object sender, EventArgs e)
+        private async void Save_Clicked(object sender, EventArgs e)
         {            
             currentItem.Distance = Double.Parse(DistanceEntry.Text);
             currentItem.Date = DatePicker.Date;
-            
-            var result = viewModel.SaveCurrentItem();
+            currentItem.Time = new TimeSpan(!string.IsNullOrEmpty(HoursEntry.Text) ? int.Parse(HoursEntry.Text) : 0,
+                !string.IsNullOrEmpty(MinutesEntry.Text) ? int.Parse(MinutesEntry.Text) : 0,
+                !string.IsNullOrEmpty(SecondsEntry.Text) ? int.Parse(SecondsEntry.Text) : 0);
+
+            var result = await viewModel.SaveCurrentItem();
             if (!result.Status)
             {
-                DisplayAlert(result.Title, result.ErrorMessage, StringService.Instance.Ok);
+               // DisplayAlert(result.Title, result.ErrorMessage, StringService.Instance.Ok);
             }
             else
                 Navigation.PopAsync();
@@ -66,6 +69,8 @@ namespace TF.Views
             {
                 (sender as Button).Text = StringService.Instance.Start;
 
+                isTracking = false;
+
                 if (geolocator == null)
                     return;
 
@@ -75,13 +80,43 @@ namespace TF.Views
             else
             {
                 (sender as Button).Text = StringService.Instance.Finish;
+                isTracking = true;
+                StartTimer();
 				bool successStart = await StartTracking ();
-            	if (!successStart) {
+            	if (!successStart)
+                {
 					(sender as Button).Text = StringService.Instance.Start;
-					return;
+                    isTracking = false;
 				}
 			}
 		}
+
+        void StartTimer()
+        {
+            int h = 0;
+            int min = 0;
+            int sec = 0;
+            Device.StartTimer(new TimeSpan(0, 0, 1), () =>
+           {
+               ++sec;
+               if (sec == 60)
+               {
+                   ++min;
+                   sec = 0;
+               }
+               if (min == 60)
+               {
+                   ++h;
+                   min = 0;
+               }
+
+               HoursEntry.Text = h.ToString();
+               MinutesEntry.Text = min.ToString();
+               SecondsEntry.Text = sec.ToString();
+
+               return isTracking;
+           });
+        }
 
 		async Task<bool> StartTracking ()
 		{

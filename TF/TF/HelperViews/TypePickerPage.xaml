@@ -11,7 +11,7 @@
 				<StackLayout.GestureRecognizers>
             		<TapGestureRecognizer Tapped="Button_Click" NumberOfTapsRequired="1"/>
         		</StackLayout.GestureRecognizers>
-				<Label Text="{Binding StringTriathlon}" TextColor="Green"/>
+                    <Label Text="{Binding StringTriathlon}" TextColor="Green" FontSize="Medium" VerticalOptions="Center"/>
 			</StackLayout>
 			<BoxView HeightRequest="1" BackgroundColor="Green" HorizontalOptions="FillAndExpand" />
 				
@@ -20,7 +20,7 @@
 					<StackLayout.GestureRecognizers>
             			<TapGestureRecognizer Tapped="Button_Click" NumberOfTapsRequired="1"/>
         			</StackLayout.GestureRecognizers>
-					<Label Text="{Binding StringSwimming}" TextColor="Green" HorizontalOptions="FillAndExpand"/>
+                        <Label Text="{Binding StringSwimming}" TextColor="Green" HorizontalOptions="FillAndExpand" FontSize="Medium" VerticalOptions="Center"/>
                     <custom:BorderlessButton Image="right_arrow" Clicked="Type_Selected" x:Name="SwimmingType"/>
 				</StackLayout>
                 <BoxView HeightRequest="1" BackgroundColor="Green" HorizontalOptions="FillAndExpand" />
@@ -41,7 +41,7 @@
 					<StackLayout.GestureRecognizers>
             			<TapGestureRecognizer Tapped="Button_Click" NumberOfTapsRequired="1"/>
         			</StackLayout.GestureRecognizers>
-					<Label Text="{Binding StringRunning}" TextColor="Green" HorizontalOptions="FillAndExpand"/>
+                        <Label Text="{Binding StringRunning}" TextColor="Green" HorizontalOptions="FillAndExpand" FontSize="Medium" VerticalOptions="Center"/>
                     <custom:BorderlessButton Image="right_arrow" Clicked="Type_Selected" x:Name="RunningType"/>
 				</StackLayout>
                 <BoxView HeightRequest="1" BackgroundColor="Green" HorizontalOptions="FillAndExpand" />
@@ -62,7 +62,7 @@
 					<StackLayout.GestureRecognizers>
             			<TapGestureRecognizer Tapped="Button_Click" NumberOfTapsRequired="1"/>
         			</StackLayout.GestureRecognizers>
-					<Label Text="{Binding StringCycling}" TextColor="Green" HorizontalOptions="FillAndExpand"/>
+                        <Label Text="{Binding StringCycling}" TextColor="Green" HorizontalOptions="FillAndExpand" FontSize="Medium" VerticalOptions="Center"/>
                     <custom:BorderlessButton Image="right_arrow" Clicked="Type_Selected" x:Name="CyclingType"/>
 				</StackLayout>
                 <BoxView HeightRequest="1" BackgroundColor="Green" HorizontalOptions="FillAndExpand" />

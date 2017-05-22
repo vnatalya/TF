@@ -7,6 +7,8 @@ using TF.Helpers;
 using Xamarin.Forms;
 using static TF.TriathlonTraining;
 using TF.ViewModels;
+using TF.Services;
+using System.Threading.Tasks;
 
 namespace TF
 {
@@ -48,7 +50,12 @@ namespace TF
         public TriathlonType CurrentType
         {
             get { return currentType; }
-            set { currentType = value; }
+            set
+            {
+                currentType = value;
+                if (currentItem != null)
+                    currentItem.Type = value;
+            }
         }
 
         private DateTime startDate = DateTime.MinValue;
@@ -118,7 +125,7 @@ namespace TF
 			get { return UserViewModel.Instance.User != null ? UserViewModel.Instance.User.Role : User.UserRole.Teacher; }
 		}
 
-        public void Initialize()
+        public async void Initialize()
         {
            
             if (trainings == null)
@@ -196,7 +203,7 @@ namespace TF
             }
         }
 
-        public Result SaveCurrentItem()
+        public async Task<Result> SaveCurrentItem()
         {
             Result result = new Result(true, StringService.Instance.TrainingSaved, string.Empty);
 
@@ -223,8 +230,15 @@ namespace TF
                 result.ErrorMessage = StringService.Instance.IncorrectTime;
                 return result;
             }
+           // result = await  OnlineService.SaveTrainingAsync(currentItem);
 			DBService.SaveTrinathlonTraining(currentItem);
             return result;
+        }
+
+        public async Task<Result> GetTrainings()
+        {
+            var res = await OnlineService.GetTrainingsAsync(1);
+            return res;
         }
 
        
@@ -239,6 +253,11 @@ namespace TF
         public string StringDate { get { return StringService.Instance.Date; } }
         public string StringStart { get { return StringService.Instance.Start; } }
         public string StringFinish { get { return StringService.Instance.Finish; } }
+        public string StringKm { get { return StringService.Instance.Km; } }
+        public string StringHours { get { return StringService.Instance.Hours; } }
+        public string StringMinutes { get { return StringService.Instance.Minutes; } }
+        public string StringSeconds { get { return StringService.Instance.Seconds; } }
+        public string StringSave { get { return StringService.Instance.Save; } }
         public string DisplayPeriod
         {
             get

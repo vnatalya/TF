@@ -24,9 +24,14 @@ namespace TF
                 lock (lockObject)
                 {
                     if (instance == null)
-                        instance = new LocalizationManager();
+                    throw new NullReferenceException("");
+                    //   instance = new LocalizationManager();
                     return instance;
                 }
+            }
+            set
+            {
+                instance = value;
             }
         }
 
@@ -78,6 +83,11 @@ namespace TF
 		protected string addGroup;
 		protected string addNewTraining;
 		protected string group;
+		protected string minutes;
+		protected string seconds;
+		protected string hours;
+		protected string save;
+		protected string noInternet;
 
         public string TrainingSaved { get { return trainingSaved; } }
         public string CouldntSave { get { return couldntSave; } }
@@ -127,5 +137,11 @@ namespace TF
 		public string AddGroup { get { return addGroup; } }
 		public string AddNewTraining { get { return addNewTraining; } }
         public string Group { get { return group; } }
+        public string Minutes { get { return minutes; } }
+        public string Seconds { get { return seconds; } }
+        public string Hours { get { return hours; } }
+        public string Save { get { return save; } }
+        public string NoInternet { get { return noInternet; } }
+
     }
 }

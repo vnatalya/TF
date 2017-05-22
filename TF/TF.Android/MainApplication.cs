@@ -4,6 +4,8 @@ using Android.App;
 using Android.OS;
 using Android.Runtime;
 using Plugin.CurrentActivity;
+using TF.ViewModels;
+using TF.Android;
 
 namespace TF.Droid
 {
@@ -20,6 +22,8 @@ namespace TF.Droid
         {
             base.OnCreate();
             RegisterActivityLifecycleCallbacks(this);
+            BaseViewModel.DBService = new DBService();
+            StringService.Instance = new LocalizationManager();
             //A great place to initialize Xamarin.Insights and Dependency Services!
         }
 

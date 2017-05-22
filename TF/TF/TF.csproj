@@ -38,11 +38,12 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="DataBaseService.cs" />
+    <Compile Include="Services\DataBaseService.cs" />
     <Compile Include="Helpers\DevicePlatform.cs" />
     <Compile Include="Helpers\MessengingCenterAlert.cs" />
     <Compile Include="Helpers\ObservableObject.cs" />
     <Compile Include="Helpers\ObservableRangeCollection.cs" />
+    <Compile Include="Helpers\Writer.cs" />
     <Compile Include="HelperViews\ChoosePeriodPage.xaml.cs">
       <DependentUpon>ChoosePeriodPage.xaml</DependentUpon>
     </Compile>
@@ -68,6 +69,7 @@
     <Compile Include="Services\IDataStore.cs" />
     <Compile Include="Services\LocalizationManager.cs" />
     <Compile Include="Services\MockDataStore.cs" />
+    <Compile Include="Services\OnlineService.cs" />
     <Compile Include="Services\StringService.cs" />
     <Compile Include="ViewModels\AboutViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />

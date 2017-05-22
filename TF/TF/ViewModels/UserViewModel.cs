@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Threading.Tasks;
+using TF.Services;
 using TF.ViewModels;
 namespace TF
 {
@@ -35,9 +37,11 @@ namespace TF
 				user = new User { Role = User.UserRole.Student };
 		}
 
-		public Result AddNewUser (User user)
+		public async Task<Result> AddNewUser ()
 		{
-			return new Result (true);
+            var user = new User { Name = "new user", Role = User.UserRole.Student, ID = 111 };
+            var res = await OnlineService.CreateUserAsync(user);
+			return res;
 		}
 	}
 }

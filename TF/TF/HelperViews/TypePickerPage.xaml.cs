@@ -26,14 +26,7 @@ namespace TF
 		{
             if (newItemMode)
             {
-                if (sender == CyclingButton)
-                    viewModel.CurrentItem.Type = TriathlonTraining.TriathlonType.Cycling;
-
-                if (sender == RunningButton)
-                    viewModel.CurrentItem.Type = TriathlonTraining.TriathlonType.Running;
-
-                if (sender == SwimmingButton)
-                    viewModel.CurrentItem.Type = TriathlonTraining.TriathlonType.Swimming;
+                Type_Selected((sender as StackLayout).Children[1], new EventArgs());
             }
             else
             {
@@ -48,10 +41,10 @@ namespace TF
 
                 if (sender == TriathlonButton)
                     viewModel.CurrentType = TriathlonTraining.TriathlonType.Triathlon;
-            }
 
-            Navigation.PopAsync();
-		}
+                Navigation.PopAsync();
+            }
+        }
 
         private void Type_Selected(object sender, System.EventArgs e)
         {
@@ -64,7 +57,8 @@ namespace TF
             SwimmingType.Image = "right_arrow";
             RunningType.Image = "right_arrow";
 
-            (sender as Button).Image = "down_button";
+            var b = (sender as Renderers.BorderlessButton);
+           b.Image = "down_arrow";
 
             if (sender == CyclingType)
                 CyclingListView.IsVisible = true;
@@ -79,13 +73,13 @@ namespace TF
         async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
 		{
 			if (sender == SwimmingListView)
-				viewModel.CurrentType = (TriathlonTraining.TriathlonType)((int)TriathlonTraining.TriathlonType.Swimming + viewModel.SwimmingList.IndexOf((NamedItem)args.SelectedItem));
+				viewModel.CurrentType = (TriathlonTraining.TriathlonType)((int)TriathlonTraining.TriathlonType.Swimming + viewModel.SwimmingList.IndexOf((NamedItem)args.SelectedItem) + 1);
 
 			if (sender == RunningListView)
-				viewModel.CurrentType = (TriathlonTraining.TriathlonType)((int)TriathlonTraining.TriathlonType.Running + viewModel.RunningList.IndexOf((NamedItem)args.SelectedItem));
+				viewModel.CurrentType = (TriathlonTraining.TriathlonType)((int)TriathlonTraining.TriathlonType.Running + viewModel.RunningList.IndexOf((NamedItem)args.SelectedItem) + 1);
 
 			if (sender == CyclingListView)
-				viewModel.CurrentType = (TriathlonTraining.TriathlonType)((int)TriathlonTraining.TriathlonType.Cycling + viewModel.CyclingList.IndexOf((NamedItem)args.SelectedItem));
+				viewModel.CurrentType = (TriathlonTraining.TriathlonType)((int)TriathlonTraining.TriathlonType.Cycling + viewModel.CyclingList.IndexOf((NamedItem)args.SelectedItem) + 1);
 
 			Navigation.PopAsync();
 		}

@@ -16,7 +16,7 @@ using TF.Android;
 
 namespace TF.Android
 {
-    public class DBService// : DataBaseService
+    public class DBService : DataBaseService
     {
         private SQLite.SQLiteConnection _connection;
 
@@ -45,7 +45,7 @@ namespace TF.Android
         }
 
 
-        public  SQLite.SQLiteConnection Connection
+        public override SQLite.SQLiteConnection Connection
         {
             get
             {

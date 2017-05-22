@@ -118,6 +118,8 @@ namespace TF
             }
         }
 
+        public int UserId { get; set; }
+
         private int id;
         public int Id
         {

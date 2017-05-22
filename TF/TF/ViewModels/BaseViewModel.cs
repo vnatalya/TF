@@ -31,7 +31,7 @@ namespace TF.ViewModels
 		static DevicePlatform devicePlatform;
 
 		private static DataBaseService dbService;
-		protected static DataBaseService DBService {
+		public static DataBaseService DBService {
 			get {
 				if (dbService == null)
 					throw new NullReferenceException (string.Format ("ViewModelBase.DBService has not been set. Derive a class from Shared.Services.DBServiceBase, override Init() method and init mentioned reference in {0}", devicePlatform.EntryPointName));

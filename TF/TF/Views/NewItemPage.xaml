@@ -10,32 +10,32 @@
         <ScrollView Orientation="Vertical" BackgroundColor="White">
         <StackLayout Padding="15" Orientation="Vertical">
             <StackLayout Spacing="20" Padding="15" Orientation="Horizontal">
-                <Label Text="{Binding StringType}" TextColor="Green" WidthRequest="100" VerticalOptions="Center"/>
+                    <Label Text="{Binding StringType}" TextColor="Green" WidthRequest="100" FontSize="Medium" VerticalOptions="Center"/>
                     <StackLayout x:Name="TypeButton" Orientation="Horizontal">
                         <StackLayout.GestureRecognizers>
                             <TapGestureRecognizer Tapped="TypeButton_Click" NumberOfTapsRequired="1"/>
                         </StackLayout.GestureRecognizers>
-                        <Button x:Name="TypeLabel" Text="{Binding CurrentItem.DisplayType}" HorizontalOptions="FillAndExpand" TextColor="Green"/>
+                        <custom:BorderlessButton x:Name="TypeLabel" Text="{Binding CurrentItem.DisplayType}" HorizontalOptions="FillAndExpand" TextColor="Green"/>
                         <Image Source="right_arrow.png" />
                     </StackLayout>                     
             </StackLayout>
-			<Button Text="{Binding StringStart}" Clicked="Start_Clicked" TextColor="Green" x:Name="StartButton"/>
+			<custom:BorderlessButton Text="{Binding StringStart}" Clicked="Start_Clicked" TextColor="White" x:Name="StartButton" BackgroundColor="Green"/>
             <StackLayout Spacing="20" Padding="15" Orientation="Horizontal">
-                <Label Text="{Binding StringTime}" TextColor="Green" WidthRequest="100" VerticalOptions="Center"/>
+                    <Label Text="{Binding StringTime}" TextColor="Green" WidthRequest="100" VerticalOptions="Center" FontSize="Medium"/>
 					<Entry  Text="{Binding CurrentItem.Hours}" x:Name="HoursEntry" HorizontalOptions="FillAndExpand" TextChanged="Time_TextChanged" Keyboard="Numeric" TextColor="Green"/>
-                    <Label Text="{Binding StringHours}" TextColor="Green" VerticalOptions="Center"/>
+                    <Label Text="{Binding StringHours}" TextColor="Green" VerticalOptions="Center" FontSize="Medium"/>
                     <Entry  Text="{Binding CurrentItem.Minutes}" x:Name="MinutesEntry" HorizontalOptions="FillAndExpand" TextChanged="Time_TextChanged" Keyboard="Numeric" TextColor="Green"/>
-                    <Label Text="{Binding StringMinutes}" TextColor="Green" VerticalOptions="Center"/>
+                    <Label Text="{Binding StringMinutes}" TextColor="Green" VerticalOptions="Center" FontSize="Medium"/>
 					<Entry  Text="{Binding CurrentItem.Seconds}" x:Name="SecondsEntry" HorizontalOptions="FillAndExpand" TextChanged="Time_TextChanged" Keyboard="Numeric" TextColor="Green"/>
-                    <Label Text="{Binding StringSeconds}" TextColor="Green" VerticalOptions="Center"/>
+                    <Label Text="{Binding StringSeconds}" TextColor="Green" VerticalOptions="Center" FontSize="Medium"/>
             </StackLayout>
             <StackLayout Spacing="20" Padding="15" Orientation="Horizontal">
-                <Label Text="{Binding StringDistance}" TextColor="Green" WidthRequest="100" VerticalOptions="Center"/>
+                    <Label Text="{Binding StringDistance}" TextColor="Green" WidthRequest="100" VerticalOptions="Center" FontSize="Medium"/>
                     <Entry  Text="{Binding CurrentItem.Distance}" x:Name="DistanceEntry" HorizontalOptions="FillAndExpand" TextChanged="Distance_TextChanged" Keyboard="Numeric" TextColor="Green"/>
-                    <Label Text="km" TextColor="Green" VerticalOptions="Center"/>
+                    <Label Text="{Binding StringKm}" TextColor="Green" VerticalOptions="Center" FontSize="Medium"/>
                 </StackLayout>
             <StackLayout Spacing="20" Padding="15" Orientation="Horizontal">
-                <Label Text="{Binding StringDate}" TextColor="Green" WidthRequest="100" VerticalOptions="Center"/>
+                    <Label Text="{Binding StringDate}" TextColor="Green" WidthRequest="100" VerticalOptions="Center" FontSize="Medium"/>
                 <DatePicker Date="{Binding CurrentItem.Date}" x:Name="DatePicker" HorizontalOptions="FillAndExpand" TextColor="Green"/>
             </StackLayout>
         </StackLayout>
