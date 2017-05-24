@@ -114,6 +114,9 @@
     <Compile Include="ViewModels\TeacherViewModel.cs" />
     <Compile Include="Views\MenuPage.cs" />
     <Compile Include="Renderers\BorderlessEntry.cs" />
+    <Compile Include="Views\AddFeedbackPage.cs">
+      <DependentUpon>AddFeedbackPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="App.xaml">
@@ -153,6 +156,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\FeedbackOverviewPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\AddFeedbackPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

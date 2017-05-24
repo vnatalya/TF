@@ -28,5 +28,9 @@ namespace TF
 		{
 			DisplayAlert (string.Empty, StringService.Instance.DeleteAlert, "Ok", "Cancel");
 		}
+		private void AddFeedbackButton_Clicked (object sender, System.EventArgs e)
+		{
+			Navigation.PushAsync (new AddFeedbackPage());
+		}
 	}
 }

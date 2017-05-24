@@ -25,7 +25,7 @@ namespace TF
 			if (IsLoggedIn)
 				Current.MainPage = new MenuPage.MainPage ();
 			else
-				Current.MainPage = new NavigationPage(new LoginPage()) { BarBackgroundColor = Color.White };
+				Current.MainPage = new NavigationPage(new LoginPage()) { BarBackgroundColor = Color.Green };
 		}
 
         public static bool IsLoggedIn

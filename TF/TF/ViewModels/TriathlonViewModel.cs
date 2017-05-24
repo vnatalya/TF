@@ -9,6 +9,7 @@ using static TF.TriathlonTraining;
 using TF.ViewModels;
 using TF.Services;
 using System.Threading.Tasks;
+using System.Globalization;
 
 namespace TF
 {
@@ -57,6 +58,8 @@ namespace TF
                     currentItem.Type = value;
             }
         }
+
+		public bool IsEditMode { get; set; }
 
         private DateTime startDate = DateTime.MinValue;
         private DateTime StartDate
@@ -130,22 +133,23 @@ namespace TF
            
             if (trainings == null)
                 trainings = new List<TriathlonTraining>();
-			trainings.Add(new TriathlonTraining(TriathlonType.Bike, new TimeSpan(1, 0, 0), 20, new DateTime(2017, 5, 1)));
-			trainings.Add(new TriathlonTraining(TriathlonType.Run, new TimeSpan(0, 40, 0), 5, new DateTime(2017, 5, 3)));
+			//trainings.Add(new TriathlonTraining(TriathlonType.Bike, new TimeSpan(1, 0, 0), 20, new DateTime(2017, 5, 1)));
+			trainings.Add(new TriathlonTraining(TriathlonType.Run, new TimeSpan(1, 0, 0), 5, new DateTime(2017, 5, 3)));
 			trainings.Add(new TriathlonTraining(TriathlonType.Run, new TimeSpan(1, 0, 0), 8, new DateTime(2017, 5, 4)));
-			trainings.Add(new TriathlonTraining(TriathlonType.SwimmingExercises, new TimeSpan(0, 20, 0), 2, new DateTime(2017, 5, 1)));
-			trainings.Add(new TriathlonTraining(TriathlonType.RunningExercises, new TimeSpan(1, 0, 0), 5, new DateTime(2017, 5, 6)));
-			trainings.Add(new TriathlonTraining(TriathlonType.Bike, new TimeSpan(1, 0, 0), 20, new DateTime(2017, 5, 7)));
-			trainings.Add(new TriathlonTraining(TriathlonType.Breaststroke, new TimeSpan(0, 15, 0), 1, new DateTime(2017, 5, 2)));
-			trainings.Add(new TriathlonTraining(TriathlonType.Bike, new TimeSpan(0, 50, 0), 15, new DateTime(2017, 4, 29)));
-			trainings.Add(new TriathlonTraining(TriathlonType.Bike, new TimeSpan(1, 0, 0), 20, new DateTime(2017, 5, 1)));
+			//trainings.Add(new TriathlonTraining(TriathlonType.SwimmingExercises, new TimeSpan(0, 20, 0), 2, new DateTime(2017, 5, 1)));
+			trainings.Add (new TriathlonTraining (TriathlonType.RunningExercises, new TimeSpan (1, 0, 0), 7, new DateTime (2017, 5, 6)));
+			trainings.Add(new TriathlonTraining(TriathlonType.RunningExercises, new TimeSpan(1, 0, 0), 10, new DateTime(2017, 5, 10)));
+			//trainings.Add(new TriathlonTraining(TriathlonType.Bike, new TimeSpan(1, 0, 0), 20, new DateTime(2017, 5, 7)));
+			//trainings.Add(new TriathlonTraining(TriathlonType.Breaststroke, new TimeSpan(0, 15, 0), 1, new DateTime(2017, 5, 2)));
+			//trainings.Add(new TriathlonTraining(TriathlonType.Bike, new TimeSpan(0, 50, 0), 15, new DateTime(2017, 4, 29)));
+			//trainings.Add(new TriathlonTraining(TriathlonType.Bike, new TimeSpan(1, 0, 0), 20, new DateTime(2017, 5, 1)));
 			//trainings.Add(new TriathlonTraining(TriathlonType.Bike, new TimeSpan(1, 0, 0), 20, new DateTime(2017, 5, 1)));
 			//trainings.Add(new TriathlonTraining(TriathlonType.Bike, new TimeSpan(1, 0, 0), 20, new DateTime(2017, 5, 1)));
 			//trainings.Add(new TriathlonTraining(TriathlonType.Bike, new TimeSpan(1, 0, 0), 20, new DateTime(2017, 5, 1)));
 			//trainings.Add(new TriathlonTraining(TriathlonType.Bike, new TimeSpan(1, 0, 0), 20, new DateTime(2017, 5, 1)));
             SetTriathlonTypesLists();
             currentPeriod = PeriodType.All;
-            currentType = TriathlonType.Triathlon;
+			currentType = TriathlonType.Running;
 
 			if (studentsList == null)
 				studentsList = new List<User> ();
@@ -160,10 +164,10 @@ namespace TF
 			if (groupsList == null)
 				groupsList = new List<Group> ();
 
-			groupsList.Add (new Group { Students = studentsList });
-			groupsList.Add (new Group { Students = studentsList });
-			groupsList.Add (new Group { Students = studentsList });
-			groupsList.Add (new Group { Students = studentsList });
+			groupsList.Add (new Group { Students = studentsList, Name = "Awesome group" });
+			groupsList.Add (new Group { Students = studentsList, Name = "New group" });
+			groupsList.Add (new Group { Students = studentsList, Name = "New new group"});
+			groupsList.Add (new Group { Students = studentsList, Name = "New new new group" });
         }
 
 		void SetTriathlonTypesLists()
@@ -257,7 +261,9 @@ namespace TF
         public string StringHours { get { return StringService.Instance.Hours; } }
         public string StringMinutes { get { return StringService.Instance.Minutes; } }
         public string StringSeconds { get { return StringService.Instance.Seconds; } }
-        public string StringSave { get { return StringService.Instance.Save; } }
+		public string StringSave { get { return StringService.Instance.Save; } }
+        public string StringAddTraining { get { return StringService.Instance.AddNewTraining; } }
+
         public string DisplayPeriod
         {
             get
@@ -278,7 +284,7 @@ namespace TF
                         period = StringService.Instance.Month;
                         break;
                     case PeriodType.Choose:
-                        period = StringService.Instance.Choose;
+					period = string.Format ("{0} - {1}", startDate.ToString ("d", DateTimeFormatInfo.InvariantInfo), endDate.ToString ("d", DateTimeFormatInfo.InvariantInfo));
                         break;
                 }
                 return string.Format("{0}: {1}", StringService.Instance.Period, period);
@@ -296,9 +302,9 @@ namespace TF
                     totalDistance += trainings[i].Distance;
                     totalTime += trainings[i].Time;
                 }
-				return string.Format("{0}: {1} \n{2}: {3} \n{2}: {3}",
+				return string.Format("{0}: {1} \n{2}: {3} {4}: {5} {6}: {7} \n{8}: {9}",
 				                     StringService.Instance.NumberOfTrainings, trainings.Count,
-                    StringService.Instance.Time, totalTime,
+				                     StringService.Instance.Time, totalTime.TotalHours, StringService.Instance.Hours, totalTime.Minutes, StringService.Instance.Minutes, totalTime.Seconds, StringService.Instance.Seconds,
                     StringService.Instance.Distance, totalDistance);
             }
         }
@@ -357,7 +363,7 @@ namespace TF
 						displayValue = StringService.Instance.Triathlon;
 						break;
 				}
-				return displayValue;
+				return string.Format ("{0}: {1}", StringService.Instance.Type, displayValue);
 			}
 		}
 

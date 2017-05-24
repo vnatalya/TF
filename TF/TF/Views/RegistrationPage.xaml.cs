@@ -19,7 +19,7 @@ namespace TF.Views
         public RegistrationPage()
         {
             InitializeComponent();
-          //  BindingContext = new ContentPageViewModel();
+			BindingContext =  UserViewModel.Instance;
         }
         private void LogIn_OnClicked(object sender, EventArgs e)
         {

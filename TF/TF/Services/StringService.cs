@@ -24,8 +24,7 @@ namespace TF
                 lock (lockObject)
                 {
                     if (instance == null)
-                    throw new NullReferenceException("");
-                    //   instance = new LocalizationManager();
+                       instance = new LocalizationManager();
                     return instance;
                 }
             }
@@ -88,6 +87,27 @@ namespace TF
 		protected string hours;
 		protected string save;
 		protected string noInternet;
+		protected string email;
+		protected string name;
+		protected string password;
+		protected string confirmPassword;
+		protected string register;
+		protected string createAccount;
+		protected string login;
+		protected string nameIsRequired;
+		protected string alreadyHaveAccount;
+		protected string emailRequired;
+		protected string dontHaveAccount;
+		protected string student;
+		protected string teacher;
+		protected string privateUser;
+		protected string selectMode;
+		protected string confirmPasswordRequired;
+		protected string passwordRequired;
+		protected string loginToAccount;
+		protected string or;
+		protected string continueWithoutLogging;
+		protected string dataMayBeLost;
 
         public string TrainingSaved { get { return trainingSaved; } }
         public string CouldntSave { get { return couldntSave; } }
@@ -141,7 +161,28 @@ namespace TF
         public string Seconds { get { return seconds; } }
         public string Hours { get { return hours; } }
         public string Save { get { return save; } }
-        public string NoInternet { get { return noInternet; } }
+		public string NoInternet { get { return noInternet; } }
+		public string Email { get { return email; } }
+		public string Password { get { return password; } }
+		public string ConfirmPassword { get { return confirmPassword; } }
+		public string Name { get { return name; } }
+		public string Register { get { return register; } }
+		public string CreateAccount { get { return createAccount; } }
+		public string Login { get { return login; } }
+		public string DataMayBeLost { get { return dataMayBeLost; } }
+		public string NameIsRequired { get { return nameIsRequired; } }
+		public string AlreadyHaveAccount { get { return alreadyHaveAccount; } }
+		public string EmailRequired { get { return emailRequired; } }
+		public string DontHaveAccount { get { return dontHaveAccount; } }
+		public string Student { get { return student; } }
+		public string Teacher { get { return teacher; } }
+		public string Private { get { return privateUser; } }
+		public string SelectMode { get { return selectMode; } }
+		public string ConfirmPasswordRequired { get { return confirmPasswordRequired; } }
+		public string PasswordRequired { get { return passwordRequired; } }
+		public string LoginToAccount { get { return loginToAccount; } }
+		public string Or { get { return or; } }
+		public string ContinueWithoutLogging { get { return continueWithoutLogging; } }
 
     }
 }

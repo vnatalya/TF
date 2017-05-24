@@ -45,7 +45,7 @@
 		<string>location</string>
 	</array>
 	<key>NSLocationWhenInUseUsageDescription</key>
-    <string>Your message goes here</string>
+	<string>Your message goes here</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict/>

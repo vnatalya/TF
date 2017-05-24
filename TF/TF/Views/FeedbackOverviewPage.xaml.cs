@@ -10,6 +10,7 @@ namespace TF
 		public FeedbackOverviewPage ()
 		{
 			InitializeComponent ();
+			BindingContext = UserViewModel.Instance;
 		}
 	}
 }

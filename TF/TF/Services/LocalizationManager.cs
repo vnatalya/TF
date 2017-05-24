@@ -59,7 +59,7 @@ namespace TF
             if (!string.IsNullOrEmpty(key) && !string.IsNullOrWhiteSpace(key))
             {
                 //#if __ANDROID__
-                //result = Language.ResourceManager.GetString(key);
+                result = Language.ResourceManager.GetString(key);
                 //#elif __IOS__
                 //                result =  App2.iOS.Language.ResourceManager.GetString(key);
                 //#elif WINDOWS
@@ -114,6 +114,43 @@ namespace TF
             choose = Translate("Choose");
             period = Translate("Period");
             numberOfTrainings = Translate("NumberOfTrainings");
+			hours = Translate ("Hours");
+			triathlon = Translate ("Triathlon");
+			addFeedback = Translate ("AddFeedback");
+			addGroup = Translate ("AddGroup");
+			addNewTraining = Translate ("AddNewTraining");
+			endDate = Translate ("EndDate");
+			error = Translate ("Error");
+			group = Translate ("Group");
+			logout = Translate ("Logout");
+			minutes = Translate ("Minutes");
+			myFeedbacks = Translate ("MyFeedbacks");
+			myGroups = Translate ("MyGroups");
+			myResults= Translate ("MyResults");
+			seconds = Translate ("Seconds");
+			noInternet = Translate ("NoInternet");
+			save = Translate ("Save");
+			name = Translate ("Name");
+			password = Translate ("Password");
+			confirmPassword = Translate ("ConfirmPassword");
+			email = Translate ("Email");
+			register = Translate ("Register");
+			createAccount = Translate ("CreateAccount");
+			login = Translate ("Login");
+			nameIsRequired = Translate ("NameIsRequired");
+			alreadyHaveAccount = Translate ("AlreadyHaveAccount");
+			emailRequired = Translate ("EmailRequired");
+			dontHaveAccount = Translate ("DontHaveAccount");
+			student = Translate ("Student");
+			privateUser = Translate ("Private");
+			teacher = Translate ("Teacher");
+			selectMode = Translate ("SelectMode");
+			confirmPasswordRequired = Translate ("ConfirmPasswordRequired");
+			passwordRequired = Translate ("PasswordRequired");
+			loginToAccount = Translate ("LoginToAccount");
+			or = Translate ("Or");
+			continueWithoutLogging = Translate ("ContinueWithoutLogging");
+			dataMayBeLost = Translate ("DataMayBeLost");
         }
     }
 }

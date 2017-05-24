@@ -1,5 +1,6 @@
 ﻿
 using Foundation;
+using TF.ViewModels;
 using UIKit;
 
 namespace TF.iOS
@@ -14,7 +15,7 @@ namespace TF.iOS
 
 			App.DeviceWidth = (float) UIScreen.MainScreen.Bounds.Width;
 			App.DeviceHeight = (float) UIScreen.MainScreen.Bounds.Height;
-
+			StringService.Instance = new LocalizationManager ();
 			return base.FinishedLaunching(app, options);
 		}
 	}

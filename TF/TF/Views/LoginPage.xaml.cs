@@ -20,6 +20,7 @@ namespace TF.Views
         public LoginPage()
         {
             InitializeComponent();
+			BindingContext = UserViewModel.Instance;
           if (!App.IsLoggedIn)
 			{
 				Navigation.PushModalAsync(new BaseContentPage());

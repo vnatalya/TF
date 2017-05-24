@@ -19,6 +19,13 @@ namespace TF.Views
             BindingContext = viewModel;
 			ChartView.HeightRequest = App.DeviceWidth - 30;
 			ChartView.WidthRequest = App.DeviceWidth * 2 - 30;
+			if (viewModel.IsEditMode) 
+			{
+				var toolBar = new ToolbarItem { Name = viewModel.StringAddTraining };
+				toolBar.Clicked += AddItem_Clicked;
+
+				ToolbarItems.Add (toolBar);
+			}
 		}
 
         private void Button_Click(object sender, System.EventArgs e)

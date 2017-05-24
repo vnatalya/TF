@@ -16,6 +16,13 @@ namespace TF.Views
             InitializeComponent();
 
             BindingContext = viewModel;
+
+			if (viewModel.IsEditMode) {
+				var toolBar = new ToolbarItem { Name = viewModel.StringAddTraining };
+				toolBar.Clicked += AddItem_Clicked;
+
+				ToolbarItems.Add (toolBar);
+			}
         }
 
         async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)

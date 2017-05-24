@@ -29,7 +29,7 @@ namespace TF
 					IconSource = "reminders.png",
 					TargetType = UserViewModel.Instance.User.Role == User.UserRole.Teacher ? typeof (GroupsListPage) : typeof (FeedbackOverviewPage)
 				});
-			if (App.IsLoggedIn)
+		//	if (App.IsLoggedIn)
 				masterPageItems.Add (new MasterPageItem {
 				Title = StringService.Instance.Logout,
 					IconSource = "todo.png",
@@ -41,6 +41,7 @@ namespace TF
 					var imageCell = new ImageCell ();
 					imageCell.SetBinding (TextCell.TextProperty, "Title");
 					imageCell.SetBinding (ImageCell.ImageSourceProperty, "IconSource");
+					imageCell.TextColor = Color.Green;
 					return imageCell;
 				}),
 				VerticalOptions = LayoutOptions.FillAndExpand,
@@ -49,7 +50,7 @@ namespace TF
 
 			Padding = new Thickness (0, 40, 0, 0);
 			Icon = "hamburger.png";
-			Title = "Personal Organiser";
+			Title = "Menu";
 			Content = new StackLayout {
 				VerticalOptions = LayoutOptions.FillAndExpand,
 				Children = {

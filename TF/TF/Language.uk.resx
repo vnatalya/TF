@@ -98,4 +98,235 @@
 	<resheader name="writer">
 		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
 	</resheader>
+	  <data name="All" xml:space="preserve">
+    <value>Всі</value>
+  </data>
+  <data name="Backstrok" xml:space="preserve">
+    <value>На спині</value>
+  </data>
+  <data name="Bicycle" xml:space="preserve">
+    <value>Вело</value>
+  </data>
+  <data name="Bike" xml:space="preserve">
+    <value>Велосипед</value>
+  </data>
+  <data name="Breaststroke" xml:space="preserve">
+    <value>Брас</value>
+  </data>
+  <data name="Butterfly" xml:space="preserve">
+    <value>Батерфляй</value>
+  </data>
+  <data name="Choose" xml:space="preserve">
+    <value>Вибрати</value>
+  </data>
+  <data name="CouldntSave" xml:space="preserve">
+    <value>Тренування не було збережено</value>
+  </data>
+  <data name="Cycling" xml:space="preserve">
+    <value>Вело</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>Дата</value>
+  </data>
+  <data name="Distance" xml:space="preserve">
+    <value>Дистанція</value>
+  </data>
+  <data name="Exercises" xml:space="preserve">
+    <value>Вправи</value>
+  </data>
+  <data name="Freestyle" xml:space="preserve">
+    <value>Вільний стиль</value>
+  </data>
+  <data name="Hours" xml:space="preserve">
+    <value>год</value>
+  </data>
+  <data name="IncorrectDistance" xml:space="preserve">
+    <value>Невалідна дистанція</value>
+  </data>
+  <data name="IncorrectTime" xml:space="preserve">
+    <value>Невалідний час</value>
+  </data>
+  <data name="IncorrectType" xml:space="preserve">
+    <value>Невалідний вид тренування</value>
+  </data>
+  <data name="km" xml:space="preserve">
+    <value>км</value>
+  </data>
+  <data name="M" xml:space="preserve">
+    <value>м</value>
+  </data>
+  <data name="min" xml:space="preserve">
+    <value>хв</value>
+  </data>
+  <data name="Month" xml:space="preserve">
+    <value>Місяць</value>
+  </data>
+  <data name="Period" xml:space="preserve">
+    <value>Період</value>
+  </data>
+  <data name="Running" xml:space="preserve">
+    <value>Біг</value>
+  </data>
+  <data name="RunningExercises" xml:space="preserve">
+    <value>Бігові вправи</value>
+  </data>
+  <data name="SwimmingExercises" xml:space="preserve">
+    <value>Вправи на плавання</value>
+  </data>
+  <data name="Run" xml:space="preserve">
+    <value>Біг</value>
+  </data>
+  <data name="sec" xml:space="preserve">
+    <value>сек</value>
+  </data>
+  <data name="Swimming" xml:space="preserve">
+    <value>Плавання</value>
+  </data>
+  <data name="Time" xml:space="preserve">
+    <value>Час</value>
+  </data>
+  <data name="Today" xml:space="preserve">
+    <value>Сьогодні</value>
+  </data>
+  <data name="Total" xml:space="preserve">
+    <value>Загально</value>
+  </data>
+  <data name="Trainer" xml:space="preserve">
+    <value>Станок</value>
+  </data>
+  <data name="TrainingSaved" xml:space="preserve">
+    <value>Тренування було збережено</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Вид</value>
+  </data>
+  <data name="Week" xml:space="preserve">
+    <value>Тиждень</value>
+  </data>
+  <data name="DeleteAlert" xml:space="preserve">
+    <value>Ви дійно бажаєте видалити це?</value>
+  </data>
+  <data name="Finish" xml:space="preserve">
+    <value>Завершити тренування</value>
+  </data>
+  <data name="None" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="Start" xml:space="preserve">
+    <value>Start</value>
+  </data>
+  <data name="NumberOfTrainings" xml:space="preserve">
+    <value>Кількість тренувань</value>
+  </data>
+  <data name="Triathlon" xml:space="preserve">
+    <value>Тріатлон</value>
+  </data>
+  <data name="AddFeedback" xml:space="preserve">
+    <value>Додати оцінку</value>
+  </data>
+  <data name="AddGroup" xml:space="preserve">
+    <value>Додати групу</value>
+  </data>
+  <data name="AddNewTraining" xml:space="preserve">
+    <value>Додати тренування</value>
+  </data>
+  <data name="EndDate" xml:space="preserve">
+    <value>Кінцева дата</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Помилка!</value>
+  </data>
+  <data name="Group" xml:space="preserve">
+    <value>Група</value>
+  </data>
+  <data name="Logout" xml:space="preserve">
+    <value>Вилогуватися</value>
+  </data>
+  <data name="Minutes" xml:space="preserve">
+    <value>хв</value>
+  </data>
+  <data name="MyFeedbacks" xml:space="preserve">
+    <value>MМої оцінки</value>
+  </data>
+  <data name="MyGroups" xml:space="preserve">
+    <value>Мої групи</value>
+  </data>
+  <data name="MyResults" xml:space="preserve">
+    <value>Мої результати</value>
+  </data>
+  <data name="Seconds" xml:space="preserve">
+    <value>сек</value>
+  </data>
+  <data name="StartDate" xml:space="preserve">
+    <value>Початкова дата</value>
+  </data>
+  <data name="NoInternet" xml:space="preserve">
+    <value>Інтернет з'єднання відсутнє</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Зберегти</value>
+  </data>
+	<data name="Email" xml:space="preserve">
+    <value>Пошта</value>
+  </data>
+	<data name="Name" xml:space="preserve">
+    <value>Ім'я</value>
+  </data>
+	<data name="Password" xml:space="preserve">
+    <value>Пароль</value>
+  </data>
+	<data name="ConfirmPassword" xml:space="preserve">
+    <value>Підтвердити пароль</value>
+  </data>
+	<data name="Register" xml:space="preserve">
+    <value>Зареєструватися</value>
+  </data>
+	<data name="CreateAccount" xml:space="preserve">
+    <value>Створити аккаунт</value>
+  </data>
+	<data name="Login" xml:space="preserve">
+    <value>Залогуватися</value>
+  </data>
+	<data name="NameIsRequired" xml:space="preserve">
+    <value>Ім'я є обов'язковим</value>
+  </data>
+	<data name="AlreadyHaveAccount" xml:space="preserve">
+    <value>Вже маєте аккаунт?</value>
+  </data>
+	<data name="EmailRequired" xml:space="preserve">
+    <value>Пошта є обов'язковою</value>
+  </data>
+	<data name="DontHaveAccount" xml:space="preserve">
+    <value>Ще не маєте аккаунту?</value>
+  </data>
+	<data name="Student" xml:space="preserve">
+    <value>Студент</value>
+  </data>
+	<data name="Teacher" xml:space="preserve">
+    <value>Викладач</value>
+  </data>
+	<data name="Private" xml:space="preserve">
+    <value>Приватний користувач</value>
+  </data>
+	<data name="SelectMode" xml:space="preserve">
+    <value>Виберіть функціональність</value>
+  </data>
+	<data name="ConfirmPasswordRequired" xml:space="preserve">
+    <value>Піджтердження паролю є обов'язкове</value>
+  </data>
+	<data name="PasswordRequired" xml:space="preserve">
+    <value>Пароль обов'язковий</value>
+  </data>
+	<data name="LoginToAccount" xml:space="preserve">
+    <value>Залогуватися</value>
+  </data>
+	<data name="Or" xml:space="preserve">
+    <value>АБО</value>
+  </data>
+	<data name="ContinueWithoutLogging" xml:space="preserve">
+    <value>Продовжити без логування *</value>
+  </data>
+	<data name="DataMayBeLost" xml:space="preserve">
+    <value>* Дані можуть бути втрачені у випадку пошкодження пристрою</value>
+  </data>
 </root>

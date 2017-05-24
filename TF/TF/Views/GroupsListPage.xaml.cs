@@ -12,6 +12,7 @@ namespace TF
 		public GroupsListPage ()
 		{
 			InitializeComponent ();
+			BindingContext = viewModel;
 		}
 
 		async void OnItemSelected (object sender, SelectedItemChangedEventArgs args)
