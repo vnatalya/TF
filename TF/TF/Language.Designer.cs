@@ -508,5 +508,23 @@ namespace TF {
                 return ResourceManager.GetString("DataMayBeLost", resourceCulture);
             }
         }
+        
+        internal static string Back {
+            get {
+                return ResourceManager.GetString("Back", resourceCulture);
+            }
+        }
+        
+        internal static string EnterFeedback {
+            get {
+                return ResourceManager.GetString("EnterFeedback", resourceCulture);
+            }
+        }
+        
+        internal static string Menu {
+            get {
+                return ResourceManager.GetString("Menu", resourceCulture);
+            }
+        }
     }
 }

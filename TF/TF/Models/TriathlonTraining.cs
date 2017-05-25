@@ -95,7 +95,7 @@ namespace TF
 
 		public string DisplayDate
 		{
-			get { return date.Date.ToString("d", DateTimeFormatInfo.InvariantInfo); }
+			get { return date.Date.ToString("MM/dd/yy", DateTimeFormatInfo.InvariantInfo); }
 		}
 
         private TimeSpan time;
@@ -147,10 +147,10 @@ namespace TF
         {
             get
             {
-				return string.Format ("{0}: {1} \n{2}: {3} \n{4}: {5} km \n{6}: {7}",
+				return string.Format ("{0}: {1} \n{2}: {3} \n{4}: {5} {6} \n{7}: {8}",
 									 StringService.Instance.Type, DisplayType,
 					StringService.Instance.Time, time,
-									 StringService.Instance.Distance, distance,
+				                      StringService.Instance.Distance, distance, StringService.Instance.Km,
 				                      StringService.Instance.Date, DisplayDate);
             }
         }

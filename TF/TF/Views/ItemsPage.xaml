@@ -6,28 +6,31 @@
              x:Name="BrowseItemsPage"
              xmlns:custom="clr-namespace:TF.Renderers;assembly=TF">
     <ContentPage.Content>
-        <StackLayout BackgroundColor="White">
-            <ListView x:Name="ItemsListView"
-				ItemsSource="{Binding Trainings}"
-                VerticalOptions="FillAndExpand"
-				SeparatorColor="Green"
-                HasUnevenRows="true"
-                RefreshCommand="{Binding LoadItemsCommand}"
-                IsPullToRefreshEnabled="true"
-                IsRefreshing="{Binding IsBusy, Mode=OneWay}"
-                CachingStrategy="RecycleElement"
-				ItemSelected="OnItemSelected">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <StackLayout Padding="10" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                                <Label Text="{Binding DisplayItem}" FontSize="Medium" HorizontalOptions="FillAndExpand"/>
-                                <custom:BorderlessButton BackgroundColor="White" Image="delete_dark_icon" Clicked="DeleteButton_Clicked" HorizontalOptions="End"/>
-                            </StackLayout>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-        </StackLayout>
+		<AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+	        <StackLayout BackgroundColor="White">
+	            <ListView x:Name="ItemsListView"
+					ItemsSource="{Binding Trainings}"
+	                VerticalOptions="FillAndExpand"
+					SeparatorColor="Green"
+	                HasUnevenRows="true"
+	                RefreshCommand="{Binding LoadItemsCommand}"
+	                IsPullToRefreshEnabled="true"
+	                IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+	                CachingStrategy="RecycleElement"
+					ItemSelected="OnItemSelected">
+	                <ListView.ItemTemplate>
+	                    <DataTemplate>
+	                        <ViewCell>
+	                            <StackLayout Padding="10" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+	                                <Label Text="{Binding DisplayItem}" FontSize="Medium" HorizontalOptions="FillAndExpand"/>
+	                                <custom:BorderlessButton BackgroundColor="White" Image="delete_dark_icon" Clicked="DeleteButton_Clicked" HorizontalOptions="End" IsVisible="{Binding IsEditMode}"/>
+	                            </StackLayout>
+	                        </ViewCell>
+	                    </DataTemplate>
+	                </ListView.ItemTemplate>
+	            </ListView>
+	        </StackLayout>
+			<ActivityIndicator x:Name="actIndicator2" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}"/>
+		</AbsoluteLayout>
     </ContentPage.Content>
 </ContentPage>

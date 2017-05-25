@@ -7,6 +7,7 @@ namespace TF
 {
 	public class UserViewModel : BaseViewModel
 	{
+		#region properties and fields
 		static object ob = new object ();
 		private static UserViewModel instance;
 		public static UserViewModel Instance {
@@ -22,17 +23,56 @@ namespace TF
 		}
 
 		private User user;
-		public User User {
+		public User User 
+		{
 			get { return user; }
 			set { user = value; }
 		}
 
 		private List<Feedback> feedbackList;
-		public List<Feedback> FeedbackList {
+		public List<Feedback> FeedbackList 
+		{
 			get { return feedbackList;}
 			set { feedbackList = value;}
 		}
 
+
+		private List<Group> groupsList;
+		public List<Group> GroupsList 
+		{
+			get { return groupsList; }
+			set { groupsList = value; }
+		}
+
+		private List<User> studentsList;
+		public List<User> StudentsList 
+		{
+			get { return studentsList; }
+			set { studentsList = value; }
+		}
+
+		private List<TriathlonTraining> currentTrainings;
+		public List<TriathlonTraining> Trainings 
+		{
+			get { return currentTrainings; }
+			set { currentTrainings = value; }
+		}
+
+		private User currentStudent;
+		public User CurrentStudent 
+		{
+			get { return currentStudent; }
+			set { currentStudent = value; }
+		}
+
+		private Group currentGroup;
+		public Group CurrentGroup 
+		{
+			get { return currentGroup; }
+			set { currentGroup = value; }
+		}
+#endregion
+		#region Methods
 		public void Initialize ()
 		{
 			if (user == null)
@@ -43,15 +83,90 @@ namespace TF
 			feedbackList.Add (new Feedback { Description = "5. Good result. Continue" , Date = new DateTime (2017, 5, 4)});
 			feedbackList.Add (new Feedback { Description = "2. Are you training at all??", Date = new DateTime (2017, 5, 3) });
 			feedbackList.Add (new Feedback { Description = "4. You could do better", Date = new DateTime (2017, 5, 1)});
+
+
+
+			if (studentsList == null)
+				studentsList = new List<User> ();
+
+			studentsList.Add (new User { Name = "Anna"});
+			studentsList.Add (new User { Name = "Vova" });
+			studentsList.Add (new User { Name = "Vasya"});
+			studentsList.Add (new User { Name = "Top"});
+			studentsList.Add (new User { Name = "Jerry"});
+			studentsList.Add (new User { Name = "Vinny"});
+
+			if (groupsList == null)
+				groupsList = new List<Group> ();
+
+			groupsList.Add (new Group { Students = studentsList, Name = "Awesome group" });
+			groupsList.Add (new Group { Students = studentsList, Name = "New group" });
+			groupsList.Add (new Group { Students = studentsList, Name = "New new group" });
+			groupsList.Add (new Group { Students = studentsList, Name = "New new new group" });
 		}
 
 		public async Task<Result> AddNewUser ()
 		{
+			IsBusy = true;
 			var user = new User { Name = "new user", Role = User.UserRole.Student, ID = 111 };
 			var res = await OnlineService.CreateUserAsync (user);
+			IsBusy = false;
 			return res;
 		}
 
+#region teacher
+		public async Task<Result> AddNewGroup (string name)
+		{
+			if (string.IsNullOrWhiteSpace (name))
+				return new Result (false, StringService.Instance.Error, StringService.Instance.NameIsRequired);
+			IsBusy = true;
+			var group = new Group { Name = name, TeacherID = user.ID };
+			var res = await OnlineService.AddGroupAsync (group);
+			IsBusy = false;
+			return res;
+		}
+
+		public async Task<Result> AddFeedback (string feedbackValue)
+		{
+			if (string.IsNullOrWhiteSpace (feedbackValue))
+				return new Result (false, StringService.Instance.Error, StringService.Instance.NameIsRequired);
+			IsBusy = true;
+			var feedback = new Feedback {
+				Date = DateTime.Today,
+				Description = feedbackValue,
+				StudentID = currentStudent.ID
+			};
+			var res = await OnlineService.AddFeedbackAsync (feedback);
+			IsBusy = false;
+			return res;
+		}
+
+		public async Task<Result> DeleteFeedback (int id)
+		{
+			IsBusy = true;
+			var res = await OnlineService.DeleteFeedbackAsync (id);
+			IsBusy = false;
+			return res;
+		}
+
+		public async Task<Result> DeleteStudentFromGroup (int id)
+		{
+			IsBusy = true;
+			var res = await OnlineService.DeleteStudentFromGroupAsync  (id);
+			IsBusy = false;
+			return res;
+		}
+
+		public async Task<Result> DeleteGroup (int id)
+		{
+			IsBusy = true;
+			var res = await OnlineService.DeleteGroupAsync(id);
+			IsBusy = false;
+			return res;
+		}
+#endregion
+
+		#endregion
 		#region strings
 		public string StringEmail { get { return StringService.Instance.Email; } }
 		public string StringName { get { return StringService.Instance.Name; } }
@@ -74,6 +189,8 @@ namespace TF
 		public string StringContinueWithoutLogging { get { return StringService.Instance.ContinueWithoutLogging; } }
 		public string DataMayBeLost { get { return StringService.Instance.DataMayBeLost; } }
 		public string StringCreateAccount { get { return StringService.Instance.CreateAccount; } }
+		public string StringEnterFeedback { get { return StringService.Instance.EnterFeedback; } }
+		public string StringAddGroup { get { return StringService.Instance.AddGroup; } }
 
   #endregion
 	}

@@ -5,17 +5,12 @@
 	xmlns:custom="clr-namespace:TF.Renderers;assembly=TF">
 	<ContentPage.Content>
         <StackLayout BackgroundColor="White">
-            <ListView x:Name="StudentsListView"
-				ItemsSource="{Binding StudentsList}"
-                VerticalOptions="FillAndExpand"
-				SeparatorColor="Green"
-                HasUnevenRows="true"
-                CachingStrategy="RecycleElement"
-				ItemSelected="OnItemSelected">
+            <custom:ShortListView x:Name="StudentsListView" ItemsSource="{Binding StudentsList}" VerticalOptions="FillAndExpand"
+				SeparatorColor="Green" HasUnevenRows="true" ItemSelected="OnItemSelected">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <StackLayout Padding="10" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                            <StackLayout Padding="10" Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Spacing="20">
                                 <Label Text="{Binding Name}" FontSize="Medium" HorizontalOptions="FillAndExpand"/>
                                 <custom:BorderlessButton BackgroundColor="White" Image="notes_enable_icon" Clicked="AddFeedbackButton_Clicked" HorizontalOptions="End"/>
                                 <custom:BorderlessButton BackgroundColor="White" Image="delete_dark_icon" Clicked="DeleteButton_Clicked" HorizontalOptions="End"/>
@@ -23,7 +18,7 @@
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
-            </ListView>
+            </custom:ShortListView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

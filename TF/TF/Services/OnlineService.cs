@@ -80,7 +80,7 @@ namespace TF.Services
             return new Result(true);
         }
 
-        public static async Task<Result> DeleteGroupAsync(int id)
+		public static async Task<Result> DeleteGroupAsync(int id)
         {
             if (!CrossConnectivity.Current.IsConnected)
                 return new Result(false, StringService.Instance.Error, StringService.Instance.NoInternet);
@@ -90,11 +90,33 @@ namespace TF.Services
             var result = await response.Content.ReadAsStringAsync();
             return new Result(true);
         }
-        #endregion
 
-        #region user
+		public static async Task<Result> DeleteStudentFromGroupAsync (int id)
+		{
+			throw new NotImplementedException ();
+		}
 
-        public static async Task<Result> CreateUserAsync(User item)
+		public static async Task<Result> AddGroupAsync (Group group)
+		{
+			throw new NotImplementedException ();
+		}
+		#endregion
+
+		#region feedback
+		public static async Task<Result> DeleteFeedbackAsync (int id)
+		{
+			throw new NotImplementedException ();
+		}
+
+		public static async Task<Result> AddFeedbackAsync (Feedback feedback)
+		{
+			throw new NotImplementedException ();
+		}
+		#endregion
+
+		#region user
+
+		public static async Task<Result> CreateUserAsync(User item)
         {
             if (!CrossConnectivity.Current.IsConnected)
                 return new Result(false, StringService.Instance.Error, StringService.Instance.NoInternet);

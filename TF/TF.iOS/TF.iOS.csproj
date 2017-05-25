@@ -149,9 +149,6 @@
     <Reference Include="PCLCrypto">
       <HintPath>..\..\packages\PCLCrypto.2.0.147\lib\xamarinios10\PCLCrypto.dll</HintPath>
     </Reference>
-    <Reference Include="Xamarin.Auth">
-      <HintPath>..\..\packages\Xamarin.Auth.1.4.1.0\lib\Xamarin.iOS10\Xamarin.Auth.dll</HintPath>
-    </Reference>
     <Reference Include="System.Json" />
     <Reference Include="SkiaSharp">
       <HintPath>..\..\packages\SkiaSharp.1.57.1\lib\XamariniOS\SkiaSharp.dll</HintPath>
@@ -199,7 +196,6 @@
     <Compile Include="AppDelegate.cs" />
     <Compile Include="DBService.cs" />
     <Compile Include="Renderers\BorderlessButton.cs" />
-    <Compile Include="Renderers\LoginPageRenderer.cs" />
     <Compile Include="Renderers\ListViewRenderer.cs" />
     <Compile Include="Renderers\BorderlessEntryRenderer.cs" />
   </ItemGroup>

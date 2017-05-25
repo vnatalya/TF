@@ -17,7 +17,7 @@ namespace TF
 			var masterPageItems = new List<MasterPageItem> ();
 			masterPageItems.Add (new MasterPageItem 
 			{
-				Title = "Contacts",
+				Title = StringService.Instance.MyResults,
 				IconSource = "contacts.png",
 				TargetType = typeof (AboutPage)
 			});
@@ -41,22 +41,24 @@ namespace TF
 					var imageCell = new ImageCell ();
 					imageCell.SetBinding (TextCell.TextProperty, "Title");
 					imageCell.SetBinding (ImageCell.ImageSourceProperty, "IconSource");
-					imageCell.TextColor = Color.Green;
+					imageCell.TextColor = Color.White;
 					return imageCell;
 				}),
 				VerticalOptions = LayoutOptions.FillAndExpand,
-				SeparatorVisibility = SeparatorVisibility.None
+				SeparatorVisibility = SeparatorVisibility.None,
+				BackgroundColor = Color.Green
 			};
 
 			Padding = new Thickness (0, 40, 0, 0);
 			Icon = "hamburger.png";
-			Title = "Menu";
+			Title = StringService.Instance.Menu;
 			Content = new StackLayout {
 				VerticalOptions = LayoutOptions.FillAndExpand,
 				Children = {
 				listView
 			}
 			};
+			BackgroundColor = Color.Green;
 		}
 
 		public class MainPage : MasterDetailPage

@@ -59,7 +59,12 @@ namespace TF
             }
         }
 
-		public bool IsEditMode { get; set; }
+		private bool isEditMode = true;
+		public bool IsEditMode 
+		{
+			get { return isEditMode; }
+			set { isEditMode = value; }
+		}
 
         private DateTime startDate = DateTime.MinValue;
         private DateTime StartDate
@@ -109,20 +114,6 @@ namespace TF
 		public List<NamedItem> RunningList { get; set; }
 		public List<NamedItem> PeriodList { get; set; }
 
-		private List<Group>  groupsList;
-		public List<Group>  GroupsList 
-		{
-			get { return groupsList; }
-			set { groupsList = value; }
-		}
-
-		private List<User> studentsList;
-		public List<User>  StudentsList 
-		{
-			get { return studentsList; }
-			set { studentsList = value; }
-		}
-
 		public User.UserRole Mode 
 		{
 			get { return UserViewModel.Instance.User != null ? UserViewModel.Instance.User.Role : User.UserRole.Teacher; }
@@ -151,23 +142,7 @@ namespace TF
             currentPeriod = PeriodType.All;
 			currentType = TriathlonType.Running;
 
-			if (studentsList == null)
-				studentsList = new List<User> ();
 
-			studentsList.Add (new User { Name = "Anna" , Trainings = trainings});
-			studentsList.Add (new User { Name = "Vova" , Trainings = trainings});
-			studentsList.Add (new User { Name = "Vasya" , Trainings = trainings});
-			studentsList.Add (new User { Name = "Top" , Trainings = trainings});
-			studentsList.Add (new User { Name = "Jerry" , Trainings = trainings});
-			studentsList.Add (new User { Name = "Vinny", Trainings = trainings});
-
-			if (groupsList == null)
-				groupsList = new List<Group> ();
-
-			groupsList.Add (new Group { Students = studentsList, Name = "Awesome group" });
-			groupsList.Add (new Group { Students = studentsList, Name = "New group" });
-			groupsList.Add (new Group { Students = studentsList, Name = "New new group"});
-			groupsList.Add (new Group { Students = studentsList, Name = "New new new group" });
         }
 
 		void SetTriathlonTypesLists()
@@ -239,9 +214,13 @@ namespace TF
             return result;
         }
 
-        public async Task<Result> GetTrainings()
+        public async Task<Result> GetTrainings(int userId = -1)
         {
-            var res = await OnlineService.GetTrainingsAsync(1);
+			IsBusy = true;
+			if (userId == -1)
+				userId = UserViewModel.Instance.User.ID;
+			var res = await OnlineService.GetTrainingsAsync(userId);
+			IsBusy = false;
             return res;
         }
 
@@ -302,7 +281,7 @@ namespace TF
                     totalDistance += trainings[i].Distance;
                     totalTime += trainings[i].Time;
                 }
-				return string.Format("{0}: {1} \n{2}: {3} {4}: {5} {6}: {7} \n{8}: {9}",
+				return string.Format("{0}: {1} \n{2}: {3} {4} {5} {6} {7} {8}\n{9}: {10}",
 				                     StringService.Instance.NumberOfTrainings, trainings.Count,
 				                     StringService.Instance.Time, totalTime.TotalHours, StringService.Instance.Hours, totalTime.Minutes, StringService.Instance.Minutes, totalTime.Seconds, StringService.Instance.Seconds,
                     StringService.Instance.Distance, totalDistance);

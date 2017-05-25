@@ -4,10 +4,6 @@
              x:Class="TF.Views.AboutPage"
              xmlns:vm="clr-namespace:TF.ViewModels;"
              xmlns:custom="clr-namespace:TF.Renderers;assembly=TF">
-		 <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Add Item" Clicked="AddItem_Clicked" />
-    </ContentPage.ToolbarItems>
-
     <ScrollView Orientation="Vertical">
         <StackLayout Orientation="Vertical" Padding="15"  BackgroundColor="White">
 			<StackLayout Orientation="Horizontal"  x:Name="TypeButton">

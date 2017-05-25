@@ -349,4 +349,13 @@ Email must be a valid e-mail address</value>
 	<data name="DataMayBeLost" xml:space="preserve">
     <value>* Your data might be lost if the device gets damaged or reset</value>
   </data>
+	<data name="Back" xml:space="preserve">
+    <value>Back</value>
+  </data>
+	<data name="EnterFeedback" xml:space="preserve">
+    <value>Enter a feedback</value>
+  </data>
+	<data name="Menu" xml:space="preserve">
+    <value>Menu</value>
+  </data>
 </root>

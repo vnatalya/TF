@@ -151,6 +151,9 @@ namespace TF
 			or = Translate ("Or");
 			continueWithoutLogging = Translate ("ContinueWithoutLogging");
 			dataMayBeLost = Translate ("DataMayBeLost");
+			back = Translate ("Back");
+			enterFeedback = Translate ("EnterFeedback");
+			menu = Translate ("Menu");
         }
     }
 }

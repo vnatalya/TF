@@ -25,6 +25,15 @@ namespace TF.Views
             
 			BindingContext = viewModel;
 			DatePicker.MaximumDate = DateTime.Today;
+
+			if (viewModel.IsEditMode) {
+				var toolBar = new ToolbarItem { Name = StringService.Instance.Save };
+				toolBar.Clicked += Save_Clicked;
+
+				ToolbarItems.Add (toolBar);
+			}
+
+			NavigationPage.SetBackButtonTitle (this, StringService.Instance.Back);
         }
 
         protected override void OnAppearing()

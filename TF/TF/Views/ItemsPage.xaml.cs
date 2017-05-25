@@ -23,6 +23,8 @@ namespace TF.Views
 
 				ToolbarItems.Add (toolBar);
 			}
+
+			NavigationPage.SetBackButtonTitle (this, StringService.Instance.Back);
         }
 
         async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)

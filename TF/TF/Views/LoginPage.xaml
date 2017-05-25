@@ -4,25 +4,28 @@
              x:Class="TF.Views.LoginPage"
              xmlns:custom="clr-namespace:TF.Renderers;assembly=TF">
    <ScrollView BackgroundColor="White">
-        <StackLayout Padding="10">
-            <StackLayout VerticalOptions="StartAndExpand" >
-                <Label Text="{Binding StringLoginToAccount}" HorizontalOptions="CenterAndExpand" Margin="0,50,0,30"></Label>
-                <Entry Keyboard="Email" Placeholder="{Binding StringLogin}" x:Name="Email" TextChanged="TextChanged" Margin="10,5"></Entry>
-                <Entry Placeholder="{Binding StringPassword}" IsPassword="True" x:Name="Password" TextChanged="TextChanged" Margin="10,5"></Entry>
-                <StackLayout Padding="10">
-                    <Button Text="{Binding StringLogin}" TextColor="White" BackgroundColor="Green" Clicked="Login_OnClicked" FontSize="18"/>
-                    <!--<Label HorizontalTextAlignment="Center">OR</Label>
-                    <Button Clicked="GoogleLogin_OnClicked" TextColor="White" Text="Log in with Google" BackgroundColor="#D73D32" ContentLayout="Left,10" Image="google_plus.png"/>
-                    <Button Clicked="FacebookLogin_OnClicked" TextColor="White" Text="Log in with Facebook" BackgroundColor="#3f5c9a" ContentLayout="Left,10" Image="facebook.png"/> -->
-					<Label HorizontalTextAlignment="Center" Text="{Binding StringOr}" Margin="20"/>
-                    <Button  TextColor="Green" Text="{Binding StringContinueWithoutLogging}" BackgroundColor="White" FontSize="18"/>
-					<Label HorizontalTextAlignment="Center" Text="{Binding DataMayBeLost}" FontSize="14"/>
-                </StackLayout>
-            </StackLayout>
-            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                <Label Text="{Binding StringDontHaveAccount}" VerticalOptions="CenterAndExpand"/>
-                <custom:BorderlessButton x:Name="CreateAccountButton" Clicked="CreateAccount_OnClicked" TextColor="Blue" Text="{Binding StringCreateAccount}" BackgroundColor="Transparent" VerticalOptions="CenterAndExpand"/>
-            </StackLayout>
-        </StackLayout>
+		<AbsoluteLayout >
+	        <StackLayout Padding="10">
+	            <StackLayout VerticalOptions="StartAndExpand" >
+	                <Label Text="{Binding StringLoginToAccount}" HorizontalOptions="CenterAndExpand" Margin="0,50,0,30"></Label>
+	                <Entry Keyboard="Email" Placeholder="{Binding StringLogin}" x:Name="Email" TextChanged="TextChanged" Margin="10,5"></Entry>
+	                <Entry Placeholder="{Binding StringPassword}" IsPassword="True" x:Name="Password" TextChanged="TextChanged" Margin="10,5"></Entry>
+	                <StackLayout Padding="10">
+	                    <Button Text="{Binding StringLogin}" TextColor="White" BackgroundColor="Green" Clicked="Login_OnClicked" FontSize="18"/>
+	                    <!--<Label HorizontalTextAlignment="Center">OR</Label>
+	                    <Button Clicked="GoogleLogin_OnClicked" TextColor="White" Text="Log in with Google" BackgroundColor="#D73D32" ContentLayout="Left,10" Image="google_plus.png"/>
+	                    <Button Clicked="FacebookLogin_OnClicked" TextColor="White" Text="Log in with Facebook" BackgroundColor="#3f5c9a" ContentLayout="Left,10" Image="facebook.png"/> -->
+						<Label HorizontalTextAlignment="Center" Text="{Binding StringOr}" Margin="20"/>
+	                    <Button  TextColor="Green" Text="{Binding StringContinueWithoutLogging}" BackgroundColor="White" FontSize="18"/>
+						<Label HorizontalTextAlignment="Center" Text="{Binding DataMayBeLost}" FontSize="14"/>
+	                </StackLayout>
+	            </StackLayout>
+	            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+	                <Label Text="{Binding StringDontHaveAccount}" VerticalOptions="CenterAndExpand"/>
+	                <custom:BorderlessButton x:Name="CreateAccountButton" Clicked="CreateAccount_OnClicked" TextColor="Blue" Text="{Binding StringCreateAccount}" BackgroundColor="Transparent" VerticalOptions="CenterAndExpand"/>
+	            </StackLayout>
+	        </StackLayout>
+			<ActivityIndicator x:Name="actIndicator2" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}"/>
+		</AbsoluteLayout>
     </ScrollView>
 </ContentPage>

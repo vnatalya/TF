@@ -108,6 +108,9 @@ namespace TF
 		protected string or;
 		protected string continueWithoutLogging;
 		protected string dataMayBeLost;
+		protected string back;
+		protected string enterFeedback;
+		protected string menu;
 
         public string TrainingSaved { get { return trainingSaved; } }
         public string CouldntSave { get { return couldntSave; } }
@@ -183,6 +186,9 @@ namespace TF
 		public string LoginToAccount { get { return loginToAccount; } }
 		public string Or { get { return or; } }
 		public string ContinueWithoutLogging { get { return continueWithoutLogging; } }
+		public string Back { get { return back; } }
+		public string EnterFeedback { get { return enterFeedback; } }
+		public string Menu { get { return menu; } }
 
     }
 }

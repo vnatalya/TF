@@ -7,31 +7,38 @@ namespace TF
 {
 	public partial class GroupsListPage : ContentPage
 	{
-		TriathlonViewModel viewModel { get { return TriathlonViewModel.Instance; } }
+		UserViewModel viewModel { get { return UserViewModel.Instance; } }
 
 		public GroupsListPage ()
 		{
 			InitializeComponent ();
 			BindingContext = viewModel;
+
+			NavigationPage.SetBackButtonTitle (this, StringService.Instance.Back);
 		}
 
 		async void OnItemSelected (object sender, SelectedItemChangedEventArgs args)
 		{
 			await Navigation.PushAsync (new StudentsOverviewPage ());
-
-			// Manually deselect item
-			GroupsListView.SelectedItem = null;
 		}
 
-
-		private void DeleteButton_Clicked (object sender, System.EventArgs e)
+		private async void DeleteButton_Clicked (object sender, System.EventArgs e)
 		{
-			DisplayAlert (string.Empty, StringService.Instance.DeleteAlert, "Ok", "Cancel");
+			var item = (sender as Button).BindingContext as Group;
+			var res = await viewModel.DeleteGroup (item.ID);
+			if (res.Status)
+				GroupsListView.ItemsSource = viewModel.GroupsList;
+			else
+				DisplayAlert (res.Title, res.ErrorMessage, StringService.Instance.Ok);
 		}
 
-		private void AddButton_Clicked (object sender, System.EventArgs e)
+		private async void AddButton_Clicked (object sender, System.EventArgs e)
 		{
-			DisplayAlert (string.Empty, StringService.Instance.DeleteAlert, "Ok", "Cancel");
+			var res = await viewModel.AddNewGroup (NewGroupName.Text);
+			if (res.Status)
+				GroupsListView.ItemsSource = viewModel.GroupsList;
+			else
+				DisplayAlert (res.Title, res.ErrorMessage, StringService.Instance.Ok);
 		}
 	}
 }

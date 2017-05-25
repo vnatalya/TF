@@ -4,28 +4,31 @@
 	x:Class="TF.GroupsListPage"
 	xmlns:custom="clr-namespace:TF.Renderers;assembly=TF">
 	<ContentPage.Content>
-		<StackLayout BackgroundColor="White">
-			<StackLayout Padding="10" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                                <custom:BorderlessEntry Placeholder="Add new group" x:Name="NewGroupName" FontSize="Medium" HorizontalOptions="FillAndExpand"/>
-                                <custom:BorderlessButton BackgroundColor="White" Image="cross_add_registration_icon" Clicked="AddButton_Clicked" HorizontalOptions="End"/>
-            </StackLayout>
-            <custom:ShortListView x:Name="GroupsListView"
-				ItemsSource="{Binding GroupsList}"
-                VerticalOptions="FillAndExpand"
-				SeparatorColor="Green"
-                HasUnevenRows="true"
-				ItemSelected="OnItemSelected">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <StackLayout Padding="10" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                                <Label Text="{Binding Name}" FontSize="Medium" HorizontalOptions="FillAndExpand"/>
-                                <custom:BorderlessButton BackgroundColor="White" Image="delete_dark_icon" Clicked="DeleteButton_Clicked" HorizontalOptions="End"/>
-                            </StackLayout>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </custom:ShortListView>
-        </StackLayout>
+		<AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+			<StackLayout BackgroundColor="White">
+				<StackLayout Padding="10" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+	                                <custom:BorderlessEntry Placeholder="{Binding StringAddGroup}" x:Name="NewGroupName" FontSize="Medium" HorizontalOptions="FillAndExpand"/>
+	                                <custom:BorderlessButton BackgroundColor="White" Image="cross_add_registration_icon" Clicked="AddButton_Clicked" HorizontalOptions="End"/>
+	            </StackLayout>
+	            <custom:ShortListView x:Name="GroupsListView"
+					ItemsSource="{Binding GroupsList}"
+	                VerticalOptions="FillAndExpand"
+					SeparatorColor="Green"
+	                HasUnevenRows="true"
+					ItemSelected="OnItemSelected">
+	                <ListView.ItemTemplate>
+	                    <DataTemplate>
+	                        <ViewCell>
+	                            <StackLayout Padding="10" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+	                                <Label Text="{Binding Name}" FontSize="Medium" HorizontalOptions="FillAndExpand"/>
+	                                <custom:BorderlessButton BackgroundColor="White" Image="delete_dark_icon" Clicked="DeleteButton_Clicked" HorizontalOptions="End"/>
+	                            </StackLayout>
+	                        </ViewCell>
+	                    </DataTemplate>
+	                </ListView.ItemTemplate>
+	            </custom:ShortListView>
+	        </StackLayout>
+			<ActivityIndicator x:Name="actIndicator2" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}"/>
+		</AbsoluteLayout>
 	</ContentPage.Content>
 </ContentPage>

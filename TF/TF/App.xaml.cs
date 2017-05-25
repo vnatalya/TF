@@ -24,13 +24,13 @@ namespace TF
 			TriathlonViewModel.Instance.Initialize();
 			if (IsLoggedIn)
 				Current.MainPage = new MenuPage.MainPage ();
-			else
-				Current.MainPage = new NavigationPage(new LoginPage()) { BarBackgroundColor = Color.Green };
+			else 
+				Current.MainPage = new NavigationPage (new LoginPage ()) { BarBackgroundColor = Color.Green };
 		}
 
         public static bool IsLoggedIn
         {
-            get { return !string.IsNullOrWhiteSpace(_Token); }
+			get { return false; }//!string.IsNullOrWhiteSpace(_Token); }
         }
 
         static string _Token;

@@ -23,7 +23,7 @@ namespace TF.HelperViews
 
         private void OnItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-			viewModel.CurrentPeriod = (PeriodType)((int)viewModel.SwimmingList.IndexOf((NamedItem)e.SelectedItem));
+			viewModel.CurrentPeriod = (PeriodType)((int)viewModel.PeriodList.IndexOf((NamedItem)e.SelectedItem));
             Navigation.PopAsync();
         }
     }

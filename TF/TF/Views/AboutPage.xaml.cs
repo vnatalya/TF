@@ -93,7 +93,7 @@ namespace TF.Views
 
 			double biggestValue = 0;
 
-            #region draw time
+            #region draw distance and time
 
             SKPaint timePaint = new SKPaint
             {
@@ -102,43 +102,38 @@ namespace TF.Views
                 StrokeWidth = 1
             };
 
-            List<SKPoint> timePoints = new List<SKPoint>();
-			for (int i = 0; i < pointsCount; ++i)
+
+            SKPaint distancePaint = new SKPaint {
+				Style = SKPaintStyle.Stroke,
+				Color = Color.Blue.ToSKColor (),
+				StrokeWidth = 1
+			};
+
+			for (int i = 0; i < pointsCount; ++i) 
 			{
-				biggestValue = viewModel.Trainings[i].Time.TotalMinutes > biggestValue ? viewModel.Trainings[i].Time.TotalMinutes : biggestValue;
+				biggestValue = viewModel.Trainings [i].Time.TotalHours > biggestValue ? viewModel.Trainings [i].Time.TotalHours : biggestValue;
+				biggestValue = viewModel.Trainings [i].Distance > biggestValue ? viewModel.Trainings [i].Distance : biggestValue;
+			}
+
+            List<SKPoint> timePoints = new List<SKPoint>();
+			List<SKPoint> distancePoints = new List<SKPoint> ();
+			
+			for (int i = 0; i < pointsCount; ++i) 
+			{
 				pointHeight = (pictureHeight - 15) / biggestValue;
 				canvas.DrawText(viewModel.Trainings[i].DisplayDate, 30 + i * pointWidth, pictureHeight, textPaint);
-				canvas.DrawText(viewModel.Trainings[i].Time.TotalMinutes.ToString(), 20, pictureHeight - (int)(viewModel.Trainings[i].Time.TotalMinutes * pointHeight), textPaint);
+				canvas.DrawText(viewModel.Trainings[i].Time.TotalHours.ToString(), 20, pictureHeight - (int)(viewModel.Trainings[i].Time.TotalHours * pointHeight), textPaint);
 				
-				timePoints.Add(new SKPoint(30 + i * pointWidth, pictureHeight - 15 - (int)(viewModel.Trainings[i].Time.TotalMinutes * pointHeight)));
+				timePoints.Add(new SKPoint(30 + i * pointWidth, pictureHeight - 15 - (int)(viewModel.Trainings[i].Time.TotalHours * pointHeight)));
+
+				canvas.DrawText (viewModel.Trainings [i].Distance.ToString (), 20, pictureHeight - (int)(viewModel.Trainings [i].Distance * pointHeight), textPaint);
+
+				distancePoints.Add (new SKPoint (30 + i * pointWidth, pictureHeight - 15 - (int)(viewModel.Trainings [i].Distance * pointHeight)));
 			}
 
             canvas.DrawPoints(SKPointMode.Polygon, timePoints.ToArray(), timePaint);
 
-            #endregion
-            SKPaint distancePaint = new SKPaint
-            {
-                Style = SKPaintStyle.Stroke,
-                Color = Color.Blue.ToSKColor(),
-                StrokeWidth = 1
-            };
-
-            biggestValue = 0;
-
-            List<SKPoint> distancePoints = new List<SKPoint>();
-
-            for (int i = 0; i < pointsCount; ++i)
-            {
-                biggestValue = viewModel.Trainings[i].Distance > biggestValue ? viewModel.Trainings[i].Distance : biggestValue;
-				pointHeight = (pictureHeight  - 15)/ biggestValue;
-                //canvas.DrawText(viewModel.Trainings[i].DisplayDate, i * pointWidth, pictureHeight - 10, textPaint);
-                canvas.DrawText(viewModel.Trainings[i].Distance.ToString(), 20, pictureHeight - (int)(viewModel.Trainings[i].Distance * pointHeight), textPaint);
-
-                distancePoints.Add(new SKPoint(30 + i * pointWidth, pictureHeight - 15 - (int)(viewModel.Trainings[i].Distance * pointHeight)));
-            }
-
             canvas.DrawPoints(SKPointMode.Polygon, distancePoints.ToArray(), distancePaint);
-            #region draw distance
 
             #endregion
 

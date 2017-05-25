@@ -4,29 +4,32 @@
              x:Class="TF.Views.RegistrationPage"
               xmlns:custom="clr-namespace:TF.Renderers;assembly=TF">
     <ScrollView BackgroundColor="White">
-        <StackLayout VerticalOptions="StartAndExpand" Padding="20" Spacing="10">
-            <Label Text="{Binding StringCreateAccount}" HorizontalOptions="CenterAndExpand"  Margin="0,20,0,20"/>
-            <Entry Placeholder="Name" x:Name="Name" Unfocused="Completed" TextChanged="TextChanged" TextColor="Green"></Entry>
-            <Label Text="" TextColor="Red" IsVisible="false" x:Name="NameLabel"/>
-            <Entry Keyboard="Email" Placeholder="Email" x:Name="Email"  Unfocused="Completed" TextChanged="TextChanged" TextColor="Green"></Entry>
-            <Label Text="{Binding StringEmailRequired}" TextColor="Red" IsVisible="false" x:Name="EmailLabel"/>
-            <Entry  Placeholder="{Binding StringPassword}" IsPassword="True" x:Name="Password" Unfocused="Completed" TextChanged="TextChanged"></Entry>
-            <Label Text="{Binding StringPasswordRequired}" TextColor="Red" IsVisible="false" x:Name="PasswordLabel"/>
-            <Entry  Placeholder="{Binding StringConfirmPassword}" IsPassword="True" x:Name="PasswordConfirm" Unfocused="Completed" TextChanged="TextChanged"></Entry>
-            <Label Text="{Binding StringConfirmPasswordRequired}" TextColor="Red" IsVisible="false" x:Name="PasswordConfirmLabel"/>
-			<Label TextColor="Green" Text="{Binding StringSelectMode}"/>
-            <custom:BorderlessButton Image="radiobutton_selected_icon" Clicked="RadioButton_Clicked" x:Name="PrivateButton" Text="{Binding StringPrivate}" Margin="0" HeightRequest="40"/> 
-            <custom:BorderlessButton Image="radiobutton_unselected_icon" Clicked="RadioButton_Clicked" x:Name="StudentButton" Text="{Binding StringStudent}" Margin="0" HeightRequest="40"/> 
-            <custom:BorderlessButton Image="radiobutton_unselected_icon" Clicked="RadioButton_Clicked" x:Name="TeacherButton" Text="{Binding StringTeacher}" Margin="0" HeightRequest="40"/> 
-			 <StackLayout Spacing="10" Padding="15" Orientation="Horizontal" x:Name="GroupLayout" IsVisible="false">
-                <Label Text="Group" TextColor="Green" WidthRequest="70" VerticalOptions="Center" HorizontalOptions="Start"/>
-                    <Entry x:Name="GroupEntry" HorizontalOptions="FillAndExpand" TextColor="Green"/>
-                </StackLayout>
-			<Button Text="{Binding StringCreateAccount}" BackgroundColor="#ebebe0" Clicked="Create_OnClicked" IsEnabled="false" x:Name="CreateButton"/>
-            <StackLayout Orientation="Horizontal">
-                <Label Text="{Binding StringAlreadyHaveAccount}" VerticalOptions="CenterAndExpand"/>
-                <custom:BorderlessButton Clicked="LogIn_OnClicked" TextColor="Gray" Text="{Binding StringLogin}" BackgroundColor="White" VerticalOptions="CenterAndExpand"/>
-            </StackLayout>
-        </StackLayout>
+		<AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+	        <StackLayout VerticalOptions="StartAndExpand" Padding="20" Spacing="10">
+	            <Label Text="{Binding StringCreateAccount}" HorizontalOptions="CenterAndExpand"  Margin="0,20,0,20"/>
+	            <Entry Placeholder="Name" x:Name="Name" Unfocused="Completed" TextChanged="TextChanged" TextColor="Green"></Entry>
+	            <Label Text="" TextColor="Red" IsVisible="false" x:Name="NameLabel"/>
+	            <Entry Keyboard="Email" Placeholder="Email" x:Name="Email"  Unfocused="Completed" TextChanged="TextChanged" TextColor="Green"></Entry>
+	            <Label Text="{Binding StringEmailRequired}" TextColor="Red" IsVisible="false" x:Name="EmailLabel"/>
+	            <Entry  Placeholder="{Binding StringPassword}" IsPassword="True" x:Name="Password" Unfocused="Completed" TextChanged="TextChanged"></Entry>
+	            <Label Text="{Binding StringPasswordRequired}" TextColor="Red" IsVisible="false" x:Name="PasswordLabel"/>
+	            <Entry  Placeholder="{Binding StringConfirmPassword}" IsPassword="True" x:Name="PasswordConfirm" Unfocused="Completed" TextChanged="TextChanged"></Entry>
+	            <Label Text="{Binding StringConfirmPasswordRequired}" TextColor="Red" IsVisible="false" x:Name="PasswordConfirmLabel"/>
+				<Label TextColor="Green" Text="{Binding StringSelectMode}"/>
+	            <custom:BorderlessButton Image="radiobutton_selected_icon" Clicked="RadioButton_Clicked" x:Name="PrivateButton" Text="{Binding StringPrivate}" Margin="0" HeightRequest="40"/> 
+	            <custom:BorderlessButton Image="radiobutton_unselected_icon" Clicked="RadioButton_Clicked" x:Name="StudentButton" Text="{Binding StringStudent}" Margin="0" HeightRequest="40"/> 
+	            <custom:BorderlessButton Image="radiobutton_unselected_icon" Clicked="RadioButton_Clicked" x:Name="TeacherButton" Text="{Binding StringTeacher}" Margin="0" HeightRequest="40"/> 
+				 <StackLayout Spacing="10" Padding="15" Orientation="Horizontal" x:Name="GroupLayout" IsVisible="false">
+	                <Label Text="Group" TextColor="Green" WidthRequest="70" VerticalOptions="Center" HorizontalOptions="Start"/>
+	                    <Entry x:Name="GroupEntry" HorizontalOptions="FillAndExpand" TextColor="Green"/>
+	                </StackLayout>
+				<Button Text="{Binding StringCreateAccount}" BackgroundColor="#ebebe0" Clicked="Create_OnClicked" IsEnabled="false" x:Name="CreateButton"/>
+	            <StackLayout Orientation="Horizontal">
+	                <Label Text="{Binding StringAlreadyHaveAccount}" VerticalOptions="CenterAndExpand"/>
+	                <custom:BorderlessButton Clicked="LogIn_OnClicked" TextColor="Gray" Text="{Binding StringLogin}" BackgroundColor="White" VerticalOptions="CenterAndExpand"/>
+	            </StackLayout>
+	        </StackLayout>
+			<ActivityIndicator x:Name="actIndicator2" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}"/>
+		</AbsoluteLayout>
     </ScrollView>
 </ContentPage>

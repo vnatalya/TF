@@ -329,4 +329,13 @@
 	<data name="DataMayBeLost" xml:space="preserve">
     <value>* Дані можуть бути втрачені у випадку пошкодження пристрою</value>
   </data>
+	<data name="Back" xml:space="preserve">
+    <value>Назад</value>
+  </data>
+	<data name="EnterFeedback" xml:space="preserve">
+    <value>Введіть оцінку</value>
+  </data>
+	<data name="Menu" xml:space="preserve">
+    <value>Меню</value>
+  </data>
 </root>

@@ -4,23 +4,29 @@
 	xmlns:custom="clr-namespace:TF.Renderers;assembly=TF"
 	x:Class="TF.FeedbackOverviewPage">
 	<ContentPage.Content>
-		<StackLayout BackgroundColor="White">
-            <custom:ShortListView x:Name="FeedbackListView"
-				ItemsSource="{Binding FeedbackList}"
-                VerticalOptions="FillAndExpand"
-				SeparatorColor="Green"
-                HasUnevenRows="true">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <StackLayout Padding="0" Orientation="Vertical" HorizontalOptions="FillAndExpand">
-                                <Label Text="{Binding DisplayDate}" FontSize="Medium" HorizontalOptions="FillAndExpand"/>
-                                <Label Text="{Binding Description}" FontSize="Medium" HorizontalOptions="FillAndExpand"/>
-                            </StackLayout>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </custom:ShortListView>
-        </StackLayout>
+		<AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+			<StackLayout BackgroundColor="White">
+	            <custom:ShortListView x:Name="FeedbackListView"
+					ItemsSource="{Binding FeedbackList}"
+	                VerticalOptions="FillAndExpand"
+					SeparatorColor="Green"
+	                HasUnevenRows="true">
+	                <ListView.ItemTemplate>
+	                    <DataTemplate>
+	                        <ViewCell>
+								<StackLayout Orientation="Horizontal">
+	                            <StackLayout Padding="0" Orientation="Vertical" HorizontalOptions="FillAndExpand">
+	                                <Label Text="{Binding DisplayDate}" FontSize="Medium" HorizontalOptions="FillAndExpand"/>
+	                                <Label Text="{Binding Description}" FontSize="Medium" HorizontalOptions="FillAndExpand"/>
+	                            </StackLayout>
+	                                <custom:BorderlessButton BackgroundColor="White" Image="delete_dark_icon" Clicked="DeleteButton_Clicked" HorizontalOptions="End" IsVisible="{Binding IsEditMode}"/>
+									</StackLayout>
+	                        </ViewCell>
+	                    </DataTemplate>
+	                </ListView.ItemTemplate>
+	            </custom:ShortListView>
+	        </StackLayout>
+			<ActivityIndicator x:Name="actIndicator2" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}"/>
+		</AbsoluteLayout>
 	</ContentPage.Content>
 </ContentPage>
