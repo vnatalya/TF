@@ -5,7 +5,7 @@
              xmlns:custom="clr-namespace:TF.Renderers;assembly=TF">
    <ScrollView BackgroundColor="White">
 		<AbsoluteLayout >
-	        <StackLayout Padding="10">
+	        <StackLayout Padding="0">
 	            <StackLayout VerticalOptions="StartAndExpand" >
 	                <Label Text="{Binding StringLoginToAccount}" HorizontalOptions="CenterAndExpand" Margin="0,50,0,30"></Label>
 	                <Entry Keyboard="Email" Placeholder="{Binding StringLogin}" x:Name="Email" TextChanged="TextChanged" Margin="10,5"></Entry>

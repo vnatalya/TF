@@ -82,7 +82,10 @@ namespace TF
 
 			feedbackList.Add (new Feedback { Description = "5. Good result. Continue" , Date = new DateTime (2017, 5, 4)});
 			feedbackList.Add (new Feedback { Description = "2. Are you training at all??", Date = new DateTime (2017, 5, 3) });
-			feedbackList.Add (new Feedback { Description = "4. You could do better", Date = new DateTime (2017, 5, 1)});
+			feedbackList.Add (new Feedback { Description = "4. You could do better", Date = new DateTime (2017, 5, 1) });
+			feedbackList.Add (new Feedback { Description = "4. Good training", Date = new DateTime (2017, 4, 29) });
+			feedbackList.Add (new Feedback { Description = "5. Not bad", Date = new DateTime (2017, 4, 28) });
+			feedbackList.Add (new Feedback { Description = "4. Pretty well", Date = new DateTime (2017, 4, 27)});
 
 
 
@@ -103,6 +106,9 @@ namespace TF
 			groupsList.Add (new Group { Students = studentsList, Name = "New group" });
 			groupsList.Add (new Group { Students = studentsList, Name = "New new group" });
 			groupsList.Add (new Group { Students = studentsList, Name = "New new new group" });
+			groupsList.Add (new Group { Students = studentsList, Name = "My favoirites" });
+			groupsList.Add (new Group { Students = studentsList, Name = "Interesting name for group" });
+			groupsList.Add (new Group { Students = studentsList, Name = "My first group" });
 		}
 
 		public async Task<Result> AddNewUser ()

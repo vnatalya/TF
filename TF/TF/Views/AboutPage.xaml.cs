@@ -122,7 +122,7 @@ namespace TF.Views
 			{
 				pointHeight = (pictureHeight - 15) / biggestValue;
 				canvas.DrawText(viewModel.Trainings[i].DisplayDate, 30 + i * pointWidth, pictureHeight, textPaint);
-				canvas.DrawText(viewModel.Trainings[i].Time.TotalHours.ToString(), 20, pictureHeight - (int)(viewModel.Trainings[i].Time.TotalHours * pointHeight), textPaint);
+				canvas.DrawText(String.Format ("{0:0.0}" ,viewModel.Trainings[i].Time.TotalHours), 20, pictureHeight - (int)(viewModel.Trainings[i].Time.TotalHours * pointHeight), textPaint);
 				
 				timePoints.Add(new SKPoint(30 + i * pointWidth, pictureHeight - 15 - (int)(viewModel.Trainings[i].Time.TotalHours * pointHeight)));
 

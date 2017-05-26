@@ -125,11 +125,12 @@ namespace TF
             if (trainings == null)
                 trainings = new List<TriathlonTraining>();
 			//trainings.Add(new TriathlonTraining(TriathlonType.Bike, new TimeSpan(1, 0, 0), 20, new DateTime(2017, 5, 1)));
-			trainings.Add(new TriathlonTraining(TriathlonType.Run, new TimeSpan(1, 0, 0), 5, new DateTime(2017, 5, 3)));
+			trainings.Add(new TriathlonTraining(TriathlonType.Run, new TimeSpan(0, 50, 0), 5, new DateTime(2017, 5, 3)));
 			trainings.Add(new TriathlonTraining(TriathlonType.Run, new TimeSpan(1, 0, 0), 8, new DateTime(2017, 5, 4)));
 			//trainings.Add(new TriathlonTraining(TriathlonType.SwimmingExercises, new TimeSpan(0, 20, 0), 2, new DateTime(2017, 5, 1)));
-			trainings.Add (new TriathlonTraining (TriathlonType.RunningExercises, new TimeSpan (1, 0, 0), 7, new DateTime (2017, 5, 6)));
-			trainings.Add(new TriathlonTraining(TriathlonType.RunningExercises, new TimeSpan(1, 0, 0), 10, new DateTime(2017, 5, 10)));
+			trainings.Add (new TriathlonTraining (TriathlonType.RunningExercises, new TimeSpan (0, 55, 0), 7, new DateTime (2017, 5, 6)));
+			trainings.Add (new TriathlonTraining (TriathlonType.RunningExercises, new TimeSpan (1, 10, 0), 10, new DateTime (2017, 5, 10)));
+			trainings.Add(new TriathlonTraining(TriathlonType.RunningExercises, new TimeSpan(1, 0, 0), 9, new DateTime(2017, 5, 11)));
 			//trainings.Add(new TriathlonTraining(TriathlonType.Bike, new TimeSpan(1, 0, 0), 20, new DateTime(2017, 5, 7)));
 			//trainings.Add(new TriathlonTraining(TriathlonType.Breaststroke, new TimeSpan(0, 15, 0), 1, new DateTime(2017, 5, 2)));
 			//trainings.Add(new TriathlonTraining(TriathlonType.Bike, new TimeSpan(0, 50, 0), 15, new DateTime(2017, 4, 29)));
@@ -281,7 +282,7 @@ namespace TF
                     totalDistance += trainings[i].Distance;
                     totalTime += trainings[i].Time;
                 }
-				return string.Format("{0}: {1} \n{2}: {3} {4} {5} {6} {7} {8}\n{9}: {10}",
+				return string.Format("{0}: {1} \n{2}: {0:0}{3} {4} {5} {6} {7} {8}\n{9}: {10}",
 				                     StringService.Instance.NumberOfTrainings, trainings.Count,
 				                     StringService.Instance.Time, totalTime.TotalHours, StringService.Instance.Hours, totalTime.Minutes, StringService.Instance.Minutes, totalTime.Seconds, StringService.Instance.Seconds,
                     StringService.Instance.Distance, totalDistance);
