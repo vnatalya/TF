@@ -98,15 +98,29 @@ namespace TF.Views
             SKPaint timePaint = new SKPaint
             {
                 Style = SKPaintStyle.Stroke,
+				TextSize = 16,
                 Color = Color.Red.ToSKColor(),
                 StrokeWidth = 1
             };
 
+			SKPaint timePointPaint = new SKPaint {
+				Style = SKPaintStyle.Stroke,
+				Color = Color.Red.ToSKColor (),
+				StrokeWidth = 4
+			};
+
 
             SKPaint distancePaint = new SKPaint {
 				Style = SKPaintStyle.Stroke,
+				TextSize = 16,
 				Color = Color.Blue.ToSKColor (),
 				StrokeWidth = 1
+			};
+
+			SKPaint distancePointPaint = new SKPaint {
+				Style = SKPaintStyle.Stroke,
+				Color = Color.Blue.ToSKColor (),
+				StrokeWidth = 2
 			};
 
 			for (int i = 0; i < pointsCount; ++i) 
@@ -120,19 +134,29 @@ namespace TF.Views
 			
 			for (int i = 0; i < pointsCount; ++i) 
 			{
-				pointHeight = (pictureHeight - 15) / biggestValue;
-				canvas.DrawText(viewModel.Trainings[i].DisplayDate, 30 + i * pointWidth, pictureHeight, textPaint);
-				canvas.DrawText(String.Format ("{0:0.0}" ,viewModel.Trainings[i].Time.TotalHours), 20, pictureHeight - (int)(viewModel.Trainings[i].Time.TotalHours * pointHeight), textPaint);
+				pointHeight = (pictureHeight - bottomOffset) / biggestValue;
+				canvas.DrawText(viewModel.Trainings[i].DisplayDate, leftOffset + i * pointWidth, pictureHeight , textPaint);
+				canvas.DrawText(String.Format ("{0:0.0}" ,viewModel.Trainings[i].Time.TotalHours), 20, pictureHeight - bottomOffset - (int)(viewModel.Trainings[i].Time.TotalHours * pointHeight), textPaint);
 				
-				timePoints.Add(new SKPoint(30 + i * pointWidth, pictureHeight - 15 - (int)(viewModel.Trainings[i].Time.TotalHours * pointHeight)));
+				timePoints.Add(new SKPoint(leftOffset + i * pointWidth, pictureHeight - bottomOffset - (int)(viewModel.Trainings[i].Time.TotalHours * pointHeight)));
 
 				canvas.DrawText (viewModel.Trainings [i].Distance.ToString (), 20, pictureHeight - (int)(viewModel.Trainings [i].Distance * pointHeight), textPaint);
 
-				distancePoints.Add (new SKPoint (30 + i * pointWidth, pictureHeight - 15 - (int)(viewModel.Trainings [i].Distance * pointHeight)));
+				distancePoints.Add (new SKPoint (leftOffset + i * pointWidth, pictureHeight - bottomOffset - (int)(viewModel.Trainings [i].Distance * pointHeight)));
 			}
 
-            canvas.DrawPoints(SKPointMode.Polygon, timePoints.ToArray(), timePaint);
+			canvas.DrawPoints (SKPointMode.Points, timePoints.ToArray (), timePointPaint);
 
+			canvas.DrawPoints (SKPointMode.Polygon, timePoints.ToArray (), timePaint);
+
+			if (timePoints.Count > 0)			
+				canvas.DrawText (StringService.Instance.Time, timePoints [timePoints.Count - 1].X, timePoints [timePoints.Count - 1].Y, timePaint);
+			
+			canvas.DrawPoints (SKPointMode.Points, distancePoints.ToArray (), distancePointPaint);
+			
+			if (distancePoints.Count > 0)
+				canvas.DrawText (StringService.Instance.Distance, distancePoints[distancePoints.Count - 1].X, distancePoints [distancePoints.Count - 1].Y, distancePaint);
+			
             canvas.DrawPoints(SKPointMode.Polygon, distancePoints.ToArray(), distancePaint);
 
             #endregion
@@ -144,8 +168,11 @@ namespace TF.Views
                 StrokeWidth = 3
             };
 
-            canvas.DrawLine(30, pictureHeight - 15, pictureWidth, pictureHeight - 15, axesPaint);
-			canvas.DrawLine(30, pictureHeight - 15, 30, 0, axesPaint);
+            canvas.DrawLine(leftOffset, pictureHeight - bottomOffset, pictureWidth, pictureHeight - bottomOffset, axesPaint);
+			canvas.DrawLine(leftOffset, pictureHeight - bottomOffset, leftOffset, 0, axesPaint);
 		}
+
+		int bottomOffset = 30;
+		int leftOffset = 30;
     }
 }

@@ -13,20 +13,29 @@
 		                        <StackLayout.GestureRecognizers>
 		                            <TapGestureRecognizer Tapped="TypeButton_Click" NumberOfTapsRequired="1"/>
 		                        </StackLayout.GestureRecognizers>
-		                        <custom:BorderlessButton x:Name="TypeLabel" Text="{Binding CurrentItem.DisplayType}" HorizontalOptions="FillAndExpand" TextColor="Green"/>
+		                        <custom:BorderlessButton x:Name="TypeLabel" Text="{Binding CurrentType}" HorizontalOptions="FillAndExpand" TextColor="Green"/>
 		                        <Image Source="right_arrow.png" />
 		                    </StackLayout>                     
 		            </StackLayout>
-					<custom:BorderlessButton Text="{Binding StringStart}" Clicked="Start_Clicked" TextColor="White" x:Name="StartButton" BackgroundColor="Green"/>
-		            <StackLayout Spacing="5" Padding="10" Orientation="Horizontal">
+					<Button Text="{Binding StringStart}" Clicked="Start_Clicked" TextColor="White" x:Name="StartButton" BackgroundColor="Green"/>
+		            <StackLayout Spacing="5" Padding="10" Orientation="Vertical">
+						<StackLayout Spacing="5" Padding="10" Orientation="Horizontal">
+						
 		                    <Label Text="{Binding StringTime}" TextColor="Green" WidthRequest="80" VerticalOptions="Center" FontSize="Medium"/>
-							<Entry  Text="{Binding CurrentItem.Hours}" x:Name="HoursEntry" HorizontalOptions="FillAndExpand" TextChanged="Time_TextChanged" Keyboard="Numeric" TextColor="Green"/>
+							<Entry  Text="{Binding CurrentItem.Hours}" x:Name="HoursEntry" HorizontalOptions="EndAndExpand" TextChanged="Time_TextChanged" Keyboard="Numeric" TextColor="Green"/>
+							
 		                    <Label Text="{Binding StringHours}" TextColor="Green" VerticalOptions="Center" FontSize="Medium"/>
-		                    <Entry  Text="{Binding CurrentItem.Minutes}" x:Name="MinutesEntry" HorizontalOptions="FillAndExpand" TextChanged="Time_TextChanged" Keyboard="Numeric" TextColor="Green"/>
+							</StackLayout>
+							<StackLayout Spacing="5" Padding="10" Orientation="Horizontal" HorizontalOptions="EndAndExpand">
+		                    
+								<Entry  Text="{Binding CurrentItem.Minutes}" x:Name="MinutesEntry"  TextChanged="Time_TextChanged" Keyboard="Numeric" TextColor="Green"/>
 		                    <Label Text="{Binding StringMinutes}" TextColor="Green" VerticalOptions="Center" FontSize="Medium"/>
-							<Entry  Text="{Binding CurrentItem.Seconds}" x:Name="SecondsEntry" HorizontalOptions="FillAndExpand" TextChanged="Time_TextChanged" Keyboard="Numeric" TextColor="Green"/>
+							</StackLayout>
+						<StackLayout Spacing="5" Padding="10" Orientation="Horizontal" HorizontalOptions="EndAndExpand" >
+							<Entry  Text="{Binding CurrentItem.Seconds}" x:Name="SecondsEntry" TextChanged="Time_TextChanged" Keyboard="Numeric" TextColor="Green"/>
 		                    <Label Text="{Binding StringSeconds}" TextColor="Green" VerticalOptions="Center" FontSize="Medium"/>
-		            </StackLayout>
+		            	</StackLayout>
+					 </StackLayout>
 		            <StackLayout Spacing="5" Padding="15" Orientation="Horizontal">
 		                    <Label Text="{Binding StringDistance}" TextColor="Green" WidthRequest="80" VerticalOptions="Center" FontSize="Medium"/>
 		                    <Entry  Text="{Binding CurrentItem.Distance}" x:Name="DistanceEntry" HorizontalOptions="FillAndExpand" TextChanged="Distance_TextChanged" Keyboard="Numeric" TextColor="Green"/>

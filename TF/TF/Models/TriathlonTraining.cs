@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
+using TF.Helpers;
 
 namespace TF
 {
-    public class TriathlonTraining
+	public class TriathlonTraining : ObservableObject
     {
         public enum TriathlonType
         {
